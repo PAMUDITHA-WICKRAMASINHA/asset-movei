@@ -1,79 +1,82 @@
-<div class="mainHdev">
-   <nav class="mainNav">
-      <div class="mainNav__logo">
-         <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" />
+<div class="text-center main_hed">
+  <div class="hed_row">
+    <div class="hed_dics">
+      <div class="hed_dics_col_left">
+        <img class="main_emt_image"
+          src="https://cdn.wallpapersafari.com/18/53/t7gp3E.jpg"
+          alt=""
+        />
       </div>
-      <div class="mainNav__links">
-         <div class="wrap">
-            <div class="search">
-               <input type="text" class="searchTerm" placeholder="What are you looking for?">
-               <button type="submit" class="searchButton">
-                  <i class="fa fa-search"></i>
-               </button>
+      <div class="hed_dics_col_right">
+        <div class="movei_desc">
+          <p><b>2023</b></p>
+          <h1><b>Film Name</b></h1>
+          <p>description description description description description description description
+          description description description description description description description
+          description description description description description description description</p>
+          <div class="icon_infor">
+            <div class="time">
+              <i class="fa-solid fa-stopwatch"></i>
+              <p>3h 23min</p>
             </div>
-         </div>
-         <a href="" class="mainNav__link">About</a>
-         <a href="" class="mainNav__link">Projects</a>
-         <a href="" class="mainNav__link">Team</a>
-         <a href="" class="mainNav__link">Contacts</a>
+            <div class="star">
+              <i class="fa-solid fa-star"></i>
+              <p>6.3/10</p>
+            </div>
+          </div>
+          <div class="button_trailer">
+            <button>Watch Trailer</button>
+            <button>More Details</button>
+          </div>
+        </div>
       </div>
-      <div class="mainNav__icon" onclick="toggleSidebar()">
-         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <g data-name="Layer 2" fill="#9197AE">
-               <g data-name="menu-2">
-                  <rect
-                     width="24"
-                     height="24"
-                     transform="rotate(180 12 12)"
-                     opacity="0"
-                  />
-                  <circle cx="4" cy="12" r="1" />
-                  <rect x="7" y="11" width="14" height="2" rx=".94" ry=".94" />
-                  <rect x="3" y="16" width="18" height="2" rx=".94" ry=".94" />
-                  <rect x="3" y="6" width="18" height="2" rx=".94" ry=".94" />
-               </g>
-            </g>
-         </svg>
+    </div>
+    <div class="mian_data">
+        <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" />
+        <div class="mainNav__links">
+          <a href="" class="mainNav__link">About</a>
+          <a href="" class="mainNav__link">Projects</a>
+          <a href="" class="mainNav__link">Team</a>
+          <a href="" class="mainNav__link">Contacts</a>
+        </div>
+        <div class="search">
+  <input type="text" placeholder="search" />
+  <div class="symbol">
+    <svg class="cloud">
+      <use xlink:href="#cloud" />
+    </svg>
+    <svg class="lens">
+      <use xlink:href="#lens" />
+    </svg>
+  </div>
+</div>
+  
+<!-- SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="cloud">
+    <path d="M31.714,25.543c3.335-2.17,4.27-6.612,2.084-9.922c-1.247-1.884-3.31-3.077-5.575-3.223h-0.021
+	C27.148,6.68,21.624,2.89,15.862,3.931c-3.308,0.597-6.134,2.715-7.618,5.708c-4.763,0.2-8.46,4.194-8.257,8.919
+	c0.202,4.726,4.227,8.392,8.991,8.192h4.873h13.934C27.784,26.751,30.252,26.54,31.714,25.543z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="lens">
+    <path d="M15.656,13.692l-3.257-3.229c2.087-3.079,1.261-7.252-1.845-9.321c-3.106-2.068-7.315-1.25-9.402,1.83
+	s-1.261,7.252,1.845,9.32c1.123,0.748,2.446,1.146,3.799,1.142c1.273-0.016,2.515-0.39,3.583-1.076l3.257,3.229
+	c0.531,0.541,1.404,0.553,1.95,0.025c0.009-0.008,0.018-0.017,0.026-0.025C16.112,15.059,16.131,14.242,15.656,13.692z M2.845,6.631
+	c0.023-2.188,1.832-3.942,4.039-3.918c2.206,0.024,3.976,1.816,3.951,4.004c-0.023,2.171-1.805,3.918-3.995,3.918
+	C4.622,10.623,2.833,8.831,2.845,6.631L2.845,6.631z" />
+  </symbol>
+</svg>  
+        <div class="mainNav__icon" onclick="toggleSidebar()">
+           <i class="fa-solid fa-bars"></i>
       </div>
-   </nav>
-   <header class="mainHeading">
-      <div class="secound_search_wrap">
-         <div class="search">
-            <input type="text" class="searchTerm" placeholder="What are you looking for?">
-               <button type="submit" class="searchButton">
-                  <i class="fa fa-search"></i>
-               </button>
-         </div>
       </div>
-      <div class="mainHeading__content">
-         <article class="mainHeading__text">
-            <p class="mainHeading__preTitle">nature</p>
-            <h2 class="mainHeading__title">behind the mountains</h2>
-            <p class="mainHeading__description">
-               Far far away, behind the word mountains, far from the countries
-               Vokalia and Consonantia, there live the blind texts.
-            </p>
-            <button class="cta">know more</button>
-         </article>
-
-         <figure class="mainHeading__image">
-            <img
-               src="https://cdn.wallpapersafari.com/18/53/t7gp3E.jpg"
-               alt=""
-            />
-         </figure>
-      </div>
-   </header>
-   <div class="sidebar" id="sidebar">
+    <div class="col_left main_hed_emt">
+    </div>
+    <div class="col_right main_hed_image">
+    </div>
+  </div>
+  <div class="sidebar" id="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
-        <div class="sidebar_wrap">
-            <div class="search">
-               <input type="text" class="searchTerm" placeholder="What are you looking for?">
-               <button type="submit" class="searchButton">
-                  <i class="fa fa-search"></i>
-               </button>
-            </div>
-         </div>
         <a href="#" class="sidebar_mainNav__link">About</a>
         <a href="#" class="sidebar_mainNav__link">Projects</a>
         <a href="#" class="sidebar_mainNav__link">Team</a>
