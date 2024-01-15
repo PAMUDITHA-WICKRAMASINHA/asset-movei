@@ -13,6 +13,6 @@
                 <li class="list-inline-item"><a href="#">Terms</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
-            <p class="copyright">Asset Movei | Powered By Asset Tec © 2023</p>
+            <p class="copyright">Asset Movie | Powered By Asset Tec &copy; {{ date('Y') }}</p>
     </footer>
 </div>
