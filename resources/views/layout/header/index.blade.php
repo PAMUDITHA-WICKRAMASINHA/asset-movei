@@ -34,9 +34,8 @@
     <div class="mian_data">
         <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" />
         <div class="mainNav__links">
-          <a href="" class="mainNav__link">About</a>
-          <a href="" class="mainNav__link">Projects</a>
-          <a href="" class="mainNav__link">Team</a>
+          <a href="" class="mainNav__link">Trending</a>
+          <a href="" class="mainNav__link">Latest</a>
           <a href="" class="mainNav__link">Contacts</a>
         </div>
         <div class="search">
@@ -77,9 +76,8 @@
   </div>
   <div class="sidebar" id="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
-        <a href="#" class="sidebar_mainNav__link">About</a>
-        <a href="#" class="sidebar_mainNav__link">Projects</a>
-        <a href="#" class="sidebar_mainNav__link">Team</a>
+        <a href="#" class="sidebar_mainNav__link">Trending</a>
+        <a href="#" class="sidebar_mainNav__link">Latest</a>
         <a href="#" class="sidebar_mainNav__link">Contacts</a>
     </div>
 </div>
