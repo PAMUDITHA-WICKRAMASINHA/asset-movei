@@ -8,6 +8,6 @@ class MovieController extends Controller
 {
     public function index()
     {
-        return view('movei.index');
+        return view('movie.index');
     }
 }

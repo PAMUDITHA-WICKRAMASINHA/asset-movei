@@ -8,7 +8,7 @@
         />
       </div>
       <div class="hed_dics_col_right">
-        <div class="movei_desc">
+        <div class="movie_desc">
           <p><b>2023</b></p>
           <h1><b>Film Name</b></h1>
           <p>description description description description description description description

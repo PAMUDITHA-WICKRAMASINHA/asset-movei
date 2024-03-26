@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Asset Movie')</title>
 
-    @include('layout.style')
+    @include('admin.style')
 
   </head>
   <body>
-    @include('layout.header.index')
+    @include('admin.header.index')
     <div id="main">
-          @yield('content')
+          @yield('admin_content')
     </div>
-    @include('layout.footer.index')
-    @include('layout.script')
+    @include('admin.footer.index')
+    @include('admin.script')
 
   </body>
 </html>
