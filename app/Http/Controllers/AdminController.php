@@ -62,7 +62,7 @@ class AdminController extends Controller
             $movie->description = $request->input('description');
         
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('movie_images');
+                $imagePath = $request->file('image')->store('movie_images', 'public');
                 $movie->image = $imagePath;
             }
             
