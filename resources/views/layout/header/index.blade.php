@@ -1,21 +1,19 @@
 <div class="text-center main_hed">
     <div class="hed_row">
-        <div class="hed_dics">
+        @foreach ($movies as $movie)
+        <div class="hed_dics slide">
             <div class="hed_dics_col_left">
-                <img class="main_emt_image" src="https://cdn.wallpapersafari.com/18/53/t7gp3E.jpg" alt="" />
+                <img class="main_emt_image" src="{{ Storage::url($movie->image) }}" alt="" />
             </div>
             <div class="hed_dics_col_right">
                 <div class="movie_desc">
-                    <p><b>2023</b></p>
-                    <h1><b>Film Name</b></h1>
-                    <p class="movie_de">description description description description description description
-                        description
-                        description description description description description description description
-                        description description description description description description description</p>
+                    <p><b>{{ date('Y', strtotime($movie->release_date)) }}</b></p>
+                    <h1><b>{{$movie->title}}</b></h1>
+                    <p class="movie_de">{{$movie->description}}</p>
                     <div class="icon_infor">
                         <div class="time">
                             <i class="fa-solid fa-stopwatch"></i>
-                            <p>3h 23min</p>
+                            <p>{{$movie->duration}}</p>
                         </div>
                         <div class="star">
                             <i class="fa-solid fa-star"></i>
@@ -29,6 +27,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
         <div class="mian_data">
             <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" />
             <div class="mainNav__links">
