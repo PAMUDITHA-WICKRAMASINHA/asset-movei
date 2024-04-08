@@ -50,6 +50,10 @@
   color: rgb(255, 255, 255);
 }
 
+.mian_data .mainNav__links {
+  display: block;
+}
+
 .hed_dics_col_left {
   width: 35%;
 }
@@ -167,6 +171,28 @@
   .mainNav__icon {
     display: block;
     color: rgb(255, 255, 255);
+  }
+  .mian_data .mainNav__links {
+    display: none;
+  }
+  .mian_data {
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+  }
+  .hed_dics_col_right .button_trailer button {
+    padding: 5px;
+  }
+  .movie_desc {
+    height: 350px;
+  }
+  .movie_de {
+    display: none;
+  }
+  .main_hed_emt {
+    height: 300px;
+  }
+  .main_hed_image {
+    height: 300px;
   }
 }
 .sidebar {
