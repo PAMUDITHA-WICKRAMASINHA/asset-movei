@@ -8,10 +8,9 @@
             </div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="#">Trending</a></li>
+                <li class="list-inline-item"><a href="#">Latest</a></li>
+                <li class="list-inline-item"><a href="#">Contact</a></li>
             </ul>
             <p class="copyright">Asset Movie | Powered By Asset Tec &copy; {{ date('Y') }}</p>
     </footer>

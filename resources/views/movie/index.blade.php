@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title', 'Asset Movei | Home')
+@section('title', 'Asset Movie | Home')
 
 @section('styles')
 @stop

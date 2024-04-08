@@ -1,7 +1,11 @@
-<div class="main_body">
-    <div class="card-container">
-        <div class="card">
-            <button id="show-movie-button" class="show-movei-button">Click Me</button>
+<div class="card-container">
+    @foreach ($movies as $movie)
+    <div class="card-frame">
+        <div class="card" style="background-image: url('{{ Storage::url($movie->image) }}');">
+            <button id="show-movie-button" class="show-movie-button">Click Me</button>
         </div>
+        <div class="card-name">{{$movie->title}} ({{ date('Y', strtotime($movie->release_date)) }})</div>
+        <!-- Card name outside the card -->
     </div>
+    @endforeach
 </div>
