@@ -20,7 +20,7 @@ use App\Http\Controllers\DirectorController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
-Route::get('/get-movie', [HomeController::class, 'index']);
+Route::get('/get-movie/{id}', [HomeController::class, 'get_movie']);
 
 // Route::resource('admin', AdminController::class);
 // Route::resource('directors', DirectorController::class);

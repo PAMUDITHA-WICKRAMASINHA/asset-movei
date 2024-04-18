@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    @include('layout.header.main')
+    @include('layout.header.secound')
     <div id="main">
         @yield('content')
     </div>

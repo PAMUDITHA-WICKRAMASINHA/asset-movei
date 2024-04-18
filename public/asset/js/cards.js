@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".show-movie-button").on("click", function () {
-        window.location.href = "/home";
+        var movieId = $(this).data('id');
+        window.location.href = "/get-movie/" + movieId;
     });
 });
