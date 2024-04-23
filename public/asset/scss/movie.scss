@@ -42,8 +42,8 @@
     justify-content: space-evenly;
 }
 
-.section {
-    // display: inline-block;
+.movie_de{
+    max-width: 500px;
 }
 
 .section:last-child {
@@ -70,7 +70,21 @@ h1{
     display: inline;
 }
 
+.button_trailer a {
+    color: $white-color;
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: $red-color;
+    display: inline;
+}
+
 .button_trailer button:hover {
+    padding: 15px 20px;
+    background-color: transparent;
+    border: 1px solid $white-color;
+}
+
+.button_trailer a:hover {
     padding: 15px 20px;
     background-color: transparent;
     border: 1px solid $white-color;
@@ -128,17 +142,7 @@ h1{
     margin-left: 10px;
 }
 
-.card-pricing.popular {
-    z-index: 1;
-    border: 3px solid #007bff;
-}
-.card-pricing .list-unstyled li {
-    padding: .5rem 0;
-    color: #6c757d;
-}
-
 .movie-sub-container {
-    // display: inline-block;
     vertical-align: middle;
 }
 
@@ -148,9 +152,40 @@ h1{
     border-radius: 50%;
 }
 
+.movie-table {
+    min-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.movie-table .table {
+    width: 100%;
+    margin: 0;
+}
+
 .movie-sub-name {
     display: inline-block;
     margin-left: 10px;
+}
+
+.category-card{
+    padding: 0 5px 3px 5px;
+    border-radius: 10px;
+    border: 2px solid $white-background;
+}
+
+.movie-download{
+    text-decoration: none;
+    color: $white-color;
+    border: 2px solid $white-color;
+    font-size: 13px;
+    padding: 0 5px 3px 5px;
+    border-radius: 10px;
+}
+
+.movie-download:hover{
+    background-color: $red-color;
+    border: 2px solid $red-color;
 }
 
 @media screen and (max-width: 980px) {
@@ -167,6 +202,12 @@ h1{
 
     .container-next .section:last-child{
         margin-top: 50px;
+    }
+
+    .movie-table {
+        min-width: auto;
+        margin: 0 auto;
+        padding: 10px;
     }
 }
 

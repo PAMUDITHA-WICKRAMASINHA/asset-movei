@@ -26,7 +26,7 @@
         <div class="hed_dics slide">
             <div class="container-data">
                 <div class="hed_dics_col_left">
-                    <img class="main_emt_image" src="{{ Storage::url($movie->image) }}" alt="" />
+                    <img class="main_emt_image" src="{{ url($movie->image) }}" alt="" />
                 </div>
                 <div class="hed_dics_col_right">
                     <p><b>{{ date('Y', strtotime($movie->release_date)) }}</b></p>
@@ -43,8 +43,9 @@
                         </div>
                     </div>
                     <div class="button_trailer">
-                        <button>Watch Trailer</button>
-                        <button>More Details</button>
+                        <a href="{{ ($movie->trailer) }}" target="_blank" class="button">Watch Trailer</a>
+                        <button id="more-movie-button" data-id="{{ $movie->id }}">More
+                            Details</button>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();;
+            $table->string('title')->unique();
             $table->string('image')->nullable();
             $table->string('duration')->nullable();
             $table->text('description')->nullable();
@@ -21,7 +21,7 @@ return new class extends Migration
             // $table->integer('top_cast')->nullable();
             // $table->integer('category')->nullable();
             $table->date('release_date')->nullable();
-            $table->string('file_data')->nullable();
+            $table->string('short_description')->nullable();
             $table->string('trailer')->nullable();
             $table->integer('download_count')->nullable();
             $table->timestamps();

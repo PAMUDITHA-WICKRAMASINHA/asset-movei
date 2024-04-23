@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('movies_top_casts', function (Blueprint $table) {
+        Schema::create('movies_formats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('movie_id')->constrained()->onDelete('cascade');
-            $table->foreignId('top_cast_id')->constrained()->onDelete('cascade');
+            $table->foreignId('format_id')->constrained()->onDelete('cascade');
+            $table->string('disk_space')->nullable();
+            $table->string('file')->nullable();
+            $table->integer('sub_seeds')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('movies_top_casts');
+        Schema::dropIfExists('movies_formats');
     }
 };

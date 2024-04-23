@@ -49,11 +49,17 @@
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: $green-color;
+    background-color: $red-color;
     color: $white-color;
     padding: 8px 16px;
-    border: none;
-    border-radius: 15px;
+    border: 2px solid $white-background;
+    border-radius: 10px;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.7;
+}
+
+.show-movie-button:hover {
+    color: $white-color;
+    border: 2px solid $white-background;
+    opacity: 0.9;
 }

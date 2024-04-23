@@ -171,6 +171,20 @@
     display: inline;
 }
 
+.hed_dics_col_right .button_trailer a {
+    color: $white-color;
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: $red-color;
+    display: inline;
+}
+
+.hed_dics_col_right .button_trailer a:hover {
+    padding: 15px 20px;
+    background-color: transparent;
+    border: 1px solid $white-color;
+}
+
 .hed_dics_col_right .button_trailer button:hover {
     padding: 15px 20px;
     background-color: transparent;
