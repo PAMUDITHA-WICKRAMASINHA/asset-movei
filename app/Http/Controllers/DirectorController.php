@@ -45,7 +45,7 @@ class DirectorController extends Controller
 
             if ($request->hasFile('image')) {
                 $imagePath = $request->file('image')->store('director_images', 'public');
-                $director->image = 'asset/img/' . $imagePath;
+                $director->image = 'assets/img/' . $imagePath;
             }
             $director->save();
 

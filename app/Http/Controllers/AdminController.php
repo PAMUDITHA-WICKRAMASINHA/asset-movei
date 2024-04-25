@@ -63,7 +63,7 @@ class AdminController extends Controller
         
             if ($request->hasFile('image')) {
                 $imagePath = $request->file('image')->store('movie_images', 'public');
-                $movie->image = 'asset/img/' . $imagePath;
+                $movie->image = 'assets/img/' . $imagePath;
             }
             
             $movie->save();
@@ -101,7 +101,7 @@ class AdminController extends Controller
 
             if ($request->hasFile('file')) {
                 $filePath = $request->file('file')->store('movie_file', 'public');
-                $movie->file = 'asset/file/' . $filePath;
+                $movie->file = 'assets/file/' . $filePath;
             }
             
             $syncData = [

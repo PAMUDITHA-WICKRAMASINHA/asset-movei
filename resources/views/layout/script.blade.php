@@ -1,6 +1,6 @@
 <!-- public js -->
-<script src="{{ asset('asset/js/app.js') }}"></script>
-<script src="{{ asset('asset/js/header.js') }}"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/header.js') }}"></script>
 <!-- j-quary -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- bootstrap -->

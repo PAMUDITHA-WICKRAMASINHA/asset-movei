@@ -9,6 +9,8 @@
 
 .card-frame {
     position: relative;
+    display: flex;
+    justify-content: center;
     width: 250px;
     height: 400px;
     margin-bottom: 20px;
@@ -16,14 +18,14 @@
 }
 
 .card {
-    width: 100%;
+    width: 80%;
     height: 90%;
-    border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
     background-size: contain;
     position: relative;
+    background-color: $body-color;
 }
 
 .card-name {
@@ -46,7 +48,7 @@
 
 .show-movie-button {
     position: absolute;
-    bottom: 30px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     background-color: $red-color;
@@ -63,3 +65,26 @@
     border: 2px solid $white-background;
     opacity: 0.9;
 }
+
+@media screen and (max-width: 525px) {
+    .card-frame {
+        width: 200px;
+        height: 350px;
+    }
+    .card {
+        width: 80%;
+        height: 90%;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .card-frame {
+        width: 250px;
+        height: 450px;
+    }
+    .card {
+        width: 90%;
+        height: 90%;
+    }
+}
+

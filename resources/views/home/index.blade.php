@@ -4,14 +4,14 @@
 
 @section('styles')
 <!-- cards style -->
-<link rel="stylesheet" href="{{ asset('asset/css/cards.css') }}">
-<link rel="stylesheet" href="{{ asset('asset/css/home.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
 @stop
 
 
 @section('scripts')
 <!-- cards js -->
-<script src="{{ asset('asset/js/cards.js') }}"></script>
+<script src="{{ asset('assets/js/cards.js') }}"></script>
 @stop
 
 @section('content')

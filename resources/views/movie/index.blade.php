@@ -3,7 +3,7 @@
 @section('title', 'Asset Movie')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('asset/css/movie.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}">
 @stop
 
 
@@ -14,7 +14,7 @@
 <div class="main_tag_movie">
     <div class="container-dev">
         <div class="section">
-            <img class="emt_image" src="{{ Storage::url($movie->image) }}" alt="" />
+            <img class="emt_image" src="{{ url($movie->image) }}" alt="" />
         </div>
         <div class="section">
             <h2><b>{{ date('Y', strtotime($movie->release_date)) }}</b></h2>
@@ -45,7 +45,7 @@
             <div>
                 @foreach ($latestMovies as $index => $latestMovie)
                 @if ($index
-                < 2) <img class="similar_emt_image" src="{{ Storage::url($latestMovie->image) }}" alt="" />
+                < 2) <img class="similar_emt_image" src="{{ url($latestMovie->image) }}" alt="" />
                 @else
                 @break
                 @endif
@@ -55,7 +55,7 @@
             <div>
                 @foreach ($latestMovies as $index => $latestMovie)
                 @if ($index >= 2 && $index
-                <= 3) <img class="similar_emt_image" src="{{ Storage::url($latestMovie->image) }}" alt="" />
+                <= 3) <img class="similar_emt_image" src="{{ url($latestMovie->image) }}" alt="" />
                 @endif
                 @endforeach
             </div>
@@ -98,7 +98,7 @@
                 <h5>Directors</h5>
                 <div class="movie-sub-container">
                     @foreach ($movie->directors as $director)
-                    <img class="movie-sub-img" src="{{ Storage::url($director->image) }}" alt="Directors">
+                    <img class="movie-sub-img" src="{{ url($director->image) }}" alt="Directors">
                     <p class="movie-sub-name">{{$director->name}}</p>
                     <hr />
                     @endforeach
@@ -110,7 +110,7 @@
                 <h5>Top casts</h5>
                 <div class="movie-sub-container">
                     @foreach ($movie->top_casts as $top_cast)
-                    <img class="movie-sub-img" src="{{ Storage::url($top_cast->image) }}" alt="Top casts">
+                    <img class="movie-sub-img" src="{{ url($top_cast->image) }}" alt="Top casts">
                     <p class="movie-sub-name">{{$top_cast->name}}</p>
                     <hr />
                     @endforeach
