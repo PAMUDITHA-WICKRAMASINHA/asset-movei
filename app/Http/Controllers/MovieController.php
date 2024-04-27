@@ -10,7 +10,7 @@ class MovieController extends Controller
 {
     public function index($id)
     {
-        $movie = Movie::with('categories', 'top_casts', 'directors', 'formats')->findOrFail($id);
+        $movie = Movie::with('categories', 'top_casts', 'directors', 'formats', 'languages')->findOrFail($id);
         $latestMovies = Movie::orderBy('created_at', 'desc')
                              ->take(4)
                              ->get();

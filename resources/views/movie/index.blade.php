@@ -8,6 +8,7 @@
 
 
 @section('scripts')
+<script src="{{ asset('assets/js/movie.js') }}"></script>
 @stop
 
 @section('content')
@@ -17,28 +18,30 @@
             <img class="emt_image" src="{{ url($movie->image) }}" alt="" />
         </div>
         <div class="section">
-            <h2><b>{{ date('Y', strtotime($movie->release_date)) }}</b></h2>
-            <h1><b>{{$movie->title}}</b></h1>
-            <div class="icon_infor">
-                <div class="time">
-                    <i class="fa-solid fa-stopwatch"></i>
-                    <p>{{$movie->duration}}</p>
+            <div class="movie_detail">
+                <h2><b>{{ date('Y', strtotime($movie->release_date)) }}</b></h2>
+                <h1><b>{{$movie->title}}</b></h1>
+                <div class="icon_infor">
+                    <div class="time">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <p>{{$movie->duration}}</p>
+                    </div>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <p>6.3/10</p>
+                    </div>
                 </div>
-                <div class="star">
-                    <i class="fa-solid fa-star"></i>
-                    <p>6.3/10</p>
+                <div>
+                    @foreach ($movie->categories as $category)
+                    <span class="category-card">{{$category->categoty}}</span>
+                    @endforeach
                 </div>
+                <div class="button_trailer">
+                    <a href="{{ ($movie->trailer) }}" target="_blank" class="button">Watch Trailer</a>
+                    <button>Download</button>
+                </div>
+                <p class="movie_de">{{$movie->description}}</p>
             </div>
-            <div>
-                @foreach ($movie->categories as $category)
-                <span class="category-card">{{$category->categoty}}</span>
-                @endforeach
-            </div>
-            <div class="button_trailer">
-                <a href="{{ ($movie->trailer) }}" target="_blank" class="button">Watch Trailer</a>
-                <button>Download</button>
-            </div>
-            <p class="movie_de">{{$movie->description}}</p>
         </div>
         <div class="section similar-data">
             <h5>Similar Movies</h5>
@@ -64,33 +67,40 @@
     </div>
     <div class="container-next">
         <div class="section">
-            <div class="movie-table">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th>File Format</th>
-                            <th>Disk Space</th>
-                            <th>Resolution</th>
-                            <th>Aspect Ratio</th>
-                            <th>Duration</th>
-                            <th>Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($movie->formats as $format)
-                        <tr>
-                            <th scope="row">{{ $format->name }}</th>
-                            <td>{{ $format->pivot->disk_space }}</td>
-                            <td>{{ $format->resolution }}</td>
-                            <td>{{ $format->aspect_ratio }}</td>
-                            <td>{{ $movie->duration }}</td>
-                            <td><a href="{{ url('storage/' . $format->pivot->file) }}" class="movie-download"> Download
-                                    Now</a></td>
-
-                        </tr>
+            <div class="movie-spec-format">
+                <nav>
+                    <div class="nav nav-tabs nav-fill">
+                        @foreach ($movie->formats as $key => $format)
+                        <a class="nav-item nav-link {{ $key == 0 ? 'active' : '' }}" data-toggle="tab"
+                            href="#{{ $format->id }}">
+                            {{ $format->name }}
+                        </a>
                         @endforeach
-                    </tbody>
-                </table>
+                    </div>
+                </nav>
+                <div class="format_tab">
+                    <div class="tab-content py-3 px-3 px-sm-0">
+                        @foreach ($movie->formats as $key => $format)
+                        <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}" id="{{ $format->id }}">
+                            <div class="spec_row_format">
+                                <div class="format-spec"><i class="fa fa-folder-open" aria-hidden="true"></i></i>
+                                    {{ $format->pivot->disk_space }}</div>
+                                <div class="format-spec"><i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                                    {{ $format->resolution }}</div>
+                                <div class="format-spec"><i class="fa fa-desktop" aria-hidden="true"></i>
+                                    {{ $format->aspect_ratio }}</div>
+                                <div class="format-spec"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i>
+                                    {{ $movie->duration }}</div>
+                                <div class="format-spec"><a href="{{ url($format->pivot->file) }}"
+                                        class="movie-download">
+                                        <i class="fa fa-download" aria-hidden="true"></i> Download
+                                        Now</a></div>
+                            </div>
+                        </div>
+
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
         <div class="section">

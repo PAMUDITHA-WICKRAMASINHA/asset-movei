@@ -10,6 +10,10 @@
 
 -   php artisan make:migration create_users_table
 
+## get fersh DB
+
+-   php artisan migrate:fresh
+
 ## create routes
 
 -   use App\Http\Controllers\CategoryController;

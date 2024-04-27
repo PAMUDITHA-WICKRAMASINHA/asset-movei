@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('duration')->nullable();
             $table->text('description')->nullable();
-            // $table->integer('director')->nullable();
-            // $table->integer('top_cast')->nullable();
-            // $table->integer('category')->nullable();
             $table->date('release_date')->nullable();
             $table->string('short_description')->nullable();
             $table->string('trailer')->nullable();

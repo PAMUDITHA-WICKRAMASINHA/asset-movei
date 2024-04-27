@@ -2,10 +2,14 @@
     @foreach ($movies as $movie)
     <div class="card-frame">
         <div class="card">
-            <img src="{{ url($movie->image) }}" class="card-img-top" alt="Placeholder Image">
-            <button id="show-movie-button" class="show-movie-button" data-id="{{ $movie->id }}">Download</button>
-            <div class="card-body">
-                <div class="card-name">{{$movie->title}} ({{ date('Y', strtotime($movie->release_date)) }})</div>
+            <a href="/get-movie/{{ $movie->id }}">
+                <img src="{{ url($movie->image) }}" class="card-img-top" alt="Placeholder Image">
+            </a>
+            <div class="card-name">
+                {{ strlen($movie->title) > 23 ? substr($movie->title, 0, 23) . '...' : $movie->title }}
+            </div>
+            <div class="card-year">
+                {{ date('Y', strtotime($movie->release_date)) }}
             </div>
         </div>
     </div>

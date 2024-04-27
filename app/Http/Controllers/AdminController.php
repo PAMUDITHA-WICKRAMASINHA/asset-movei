@@ -44,6 +44,7 @@ class AdminController extends Controller
                 'release_date' => 'required|date',
                 'director' => 'required|string',
                 'category' => 'required|string',
+                'language' => 'required|string',
                 'top_cast' => 'required|string',
                 'trailer' => 'required|url',
                 'description' => 'required|string',
@@ -62,13 +63,14 @@ class AdminController extends Controller
             $movie->description = $request->input('description');
         
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('movie_images', 'public');
-                $movie->image = 'assets/img/' . $imagePath;
+                $imagePath = $request->file('image')->store('img/movie_images', 'public');
+                $movie->image = 'assets/' . $imagePath;
             }
             
             $movie->save();
             $movie->directors()->sync(json_decode($request->input('director'), true));
             $movie->categories()->sync(json_decode($request->input('category'), true));
+            $movie->languages()->sync(json_decode($request->input('language'), true));
             $movie->top_casts()->sync(json_decode($request->input('top_cast'), true));
 
             return response()->json(['message' => 'Movie created successfully', 'movie' => $movie], 201);
@@ -100,8 +102,8 @@ class AdminController extends Controller
             $movie->sub_seeds = $request->input('sub_seeds');
 
             if ($request->hasFile('file')) {
-                $filePath = $request->file('file')->store('movie_file', 'public');
-                $movie->file = 'assets/file/' . $filePath;
+                $filePath = $request->file('file')->store('file/movie_file', 'public');
+                $movie->file = 'assets/' . $filePath;
             }
             
             $syncData = [

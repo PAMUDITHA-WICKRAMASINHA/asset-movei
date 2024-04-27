@@ -22,6 +22,11 @@ class Movie extends Model
         return $this->belongsToMany(Category::class, 'movies_categories')->withTimestamps();;
     }
 
+    public function languages()
+    {
+        return $this->belongsToMany(language::class, 'movies_language')->withTimestamps();;
+    }
+
     public function top_casts()
     {
         return $this->belongsToMany(TopCast::class, 'movies_top_casts')->withTimestamps();;

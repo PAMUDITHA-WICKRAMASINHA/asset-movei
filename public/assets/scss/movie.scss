@@ -50,6 +50,10 @@
     justify-content: flex-start;
 }
 
+.movie_detail{
+    margin-left: 10px;
+}
+
 p{
     text-align: left;
 }
@@ -188,6 +192,51 @@ h1{
     border: 2px solid $red-color;
 }
 
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: $border-secound-color;
+    color: $white-color;
+    font-weight: bold;
+    border: none !important;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
+    border: none !important;
+    color: $white-color;
+    font-size: 17px;
+}
+
+.movie-spec-format{
+    width: 780px;
+}
+
+.format_tab{
+    padding: 10px;
+    background-color: $border-secound-color;
+    border-radius: 0 0 5px 5px;
+}
+
+.format-spec{
+    padding: 10px;
+    padding-right: 50px;
+    display: inline;
+    // border-right: 2px solid $body-color;
+}
+
+.format-spec:last-child{
+    padding: 10px;
+    display: inline;
+    border-right: none;
+}
+
+
+.spec_row_format{
+    padding-top: 10px;
+}
+
+.spec_row_format:last-child{
+    padding-top: 20px;
+}
+
 @media screen and (max-width: 980px) {
     .similar-data{
         display: none;
@@ -209,6 +258,26 @@ h1{
         margin: 0 auto;
         padding: 10px;
     }
+
+    .movie-spec-format{
+        width: 600px;
+    }
+
+    .format_tab{
+        padding: 0px;
+    }
+    
+    .format-spec{
+        padding: 10px;
+        padding-right: 10px;
+        display: inline;
+    }
+    
+    .format-spec:last-child{
+        padding: 10px;
+        display: inline;
+        border-right: none;
+    }
 }
 
 
@@ -228,3 +297,37 @@ h1{
         margin-bottom: 20px;
     }
 }
+
+@media screen and (max-width: 650px) {
+    .movie-spec-format{
+        width: 300px;
+    }
+
+    .format_tab{
+        padding: 0px;
+    }
+    
+    .format-spec{
+        padding: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: block;
+        // border-bottom: 2px solid $body-color;
+    }
+    
+    .format-spec:last-child{
+        padding: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: block;
+        border-right: none;
+    }
+
+    .format-spec:first-child{
+        padding: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+  
+  
