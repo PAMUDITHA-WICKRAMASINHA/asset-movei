@@ -52,7 +52,7 @@ class DirectorController extends Controller
 
             return response()->json(['message' => 'Director created successfully', 'director' => $director], 201);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create director: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'DirectorController >> store >> Failed to create director: ' . $e->getMessage()], 500);
         }
     }
 
@@ -90,7 +90,7 @@ class DirectorController extends Controller
 
             return response()->json(['message' => 'Director deleted successfully']);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to delete director: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'DirectorController >> destroy >> Failed to delete director: ' . $e->getMessage()], 500);
         }
     }
 }

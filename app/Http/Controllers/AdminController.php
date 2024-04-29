@@ -17,10 +17,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $directors = Director::all();
-        $top_casts = TopCast::all();
-        $categories = Category::all();
-        return view('admin.body.addMovie', compact('directors', 'top_casts', 'categories'));
+        try {
+            $directors = Director::all();
+            $top_casts = TopCast::all();
+            $categories = Category::all();
+            return view('admin.body.addMovie', compact('directors', 'top_casts', 'categories'));
+        } catch (Exception $e) {
+            return response()->json(['message' => 'AdminController >> index >> Failed to get movie: ' . $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -76,7 +80,7 @@ class AdminController extends Controller
             return response()->json(['message' => 'Movie created successfully', 'movie' => $movie], 201);
 
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create movie: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'AdminController >> store >> Failed to create movie: ' . $e->getMessage()], 500);
         }
     }
 
@@ -119,7 +123,7 @@ class AdminController extends Controller
             return response()->json(['message' => 'Movie file updated successfully', 'movie' => $movie], 201);
             
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to add format: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'AdminController >> addFormat >> Failed to add format: ' . $e->getMessage()], 500);
         }
         
     }

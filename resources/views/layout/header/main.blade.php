@@ -14,7 +14,7 @@
                 <button class="dropbtn">Languages <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                 <div class="dropdown-content">
                     @foreach ($languages as $language)
-                    <a href="">{{$language->language}}</a>
+                    <a href="{{ '/movie/language/' . $language->id }}">{{$language->language}}</a>
                     @endforeach
                 </div>
             </div>

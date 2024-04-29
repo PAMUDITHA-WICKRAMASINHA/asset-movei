@@ -10,28 +10,51 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $movies = Movie::all();
-        $languages = Language::all();
+        try {
+            $movies = Movie::all();
+            $languages = Language::all();
 
-        return view('home.index', compact('movies', 'languages'));
+            return view('home.index', compact('movies', 'languages'));
+        } catch (Exception $e) {
+            return response()->json(['message' => 'HomeController >> index >> Failed to get movies: ' . $e->getMessage()], 500);
+        }
     }
 
     public function search(Request $request)
     {
-        $query = $request->input('query');
-        
-        if (empty($query)) {
-            return redirect()->route('home');
-        }
+        try {
+            $query = $request->input('query');
+            
+            if (empty($query)) {
+                return redirect()->route('home');
+            }
 
-        $movies = Movie::where('title', 'like', '%' . $query . '%')->get();
-        if($movies->isEmpty()) { 
-            return redirect()->route('home');
-        }
+            $movies = Movie::where('title', 'like', '%' . $query . '%')->get();
+            if($movies->isEmpty()) { 
+                return redirect()->route('home');
+            }
 
-        $languages = Language::all();
-        
-        return view('home.index', compact('movies', 'languages'));
+            $languages = Language::all();
+            
+            return view('home.index', compact('movies', 'languages'));
+        } catch (Exception $e) {
+            return response()->json(['message' => 'HomeController >> search >> Failed to search movies: ' . $e->getMessage()], 500);
+        }
     }
+
+    public function language($id)
+    {
+        try {
+            $language = Language::findOrFail($id);
+            $movies = $language->movies()->get();
+            
+            $languages = Language::all();
+            
+            return view('home.index', compact('movies', 'languages'));
+        } catch (Exception $e) {
+            return response()->json(['message' => 'HomeController >> language >> Failed to filter movies: ' . $e->getMessage()], 500);
+        }
+    }
+    
 
 }

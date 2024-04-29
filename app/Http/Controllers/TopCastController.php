@@ -52,7 +52,7 @@ class TopCastController extends Controller
 
             return response()->json(['message' => 'Top cast created successfully', 'top_cast' => $top_cast], 201);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create top cast: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'TopCastController >> store >> Failed to create top cast: ' . $e->getMessage()], 500);
         }
     }
 
@@ -90,7 +90,7 @@ class TopCastController extends Controller
 
             return response()->json(['message' => 'Top cast deleted successfully']);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to delete top cast: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'TopCastController >> destroy >> Failed to delete top cast: ' . $e->getMessage()], 500);
         }
     }
 }

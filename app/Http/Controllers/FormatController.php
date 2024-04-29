@@ -50,7 +50,7 @@ class FormatController extends Controller
 
             return response()->json(['message' => 'Format created successfully', 'format' => $format], 201);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create format: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'FormatController >> store >> Failed to create format: ' . $e->getMessage()], 500);
         }
     }
 

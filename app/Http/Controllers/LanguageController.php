@@ -45,7 +45,7 @@ class LanguageController extends Controller
 
             return response()->json(['message' => 'Language created successfully', 'language' => $language], 201);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create language: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'LanguageController >> store >> Failed to create language: ' . $e->getMessage()], 500);
         }
     }
 
