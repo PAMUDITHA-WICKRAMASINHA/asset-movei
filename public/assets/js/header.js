@@ -1,6 +1,3 @@
-// var scene = document.getElementById("scene");
-// var parallaxInstance = new Parallax(scene);
-
 var slides = document.querySelectorAll(".slide");
 var currentSlide = 0;
 
@@ -17,7 +14,6 @@ function nextSlide(){
   slides[currentSlide].classList.remove("showing");
   currentSlide = (currentSlide+1)%slides.length;
   slides[currentSlide].classList.add("showing");
-  console.log("next slide");
 }
 
 function prevSlide(){
@@ -25,7 +21,19 @@ function prevSlide(){
   slides[currentSlide].classList.remove("showing");
   currentSlide = (currentSlide-1)%slides.length;
   slides[currentSlide].classList.add("showing");
-  console.log("prev slide");
   }
-  console.log("no previous slide")
 }
+
+var dropbtn = document.getElementById("dropbtn-nav");
+var dropdownContent = dropbtn.nextElementSibling;
+
+dropbtn.addEventListener("click", function() {
+    if (dropbtn.classList.contains("active")) {
+        dropbtn.classList.remove("active");
+         dropdownContent.style.display = "none";
+    } else {
+        dropbtn.classList.add("active");
+        dropdownContent.style.display = "block";
+    }
+});
+

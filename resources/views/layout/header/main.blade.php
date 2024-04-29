@@ -2,21 +2,23 @@
     <div class="mian_data">
         <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" />
         <div class="mainNav__links">
+            <div class="form">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form_input" placeholder="Search anything...">
+                <span class="left-pan"><i class="fa fa-microphone"></i></span>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Languages <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                <div class="dropdown-content">
+                    @foreach ($languages as $language)
+                    <a href="">{{$language->language}}</a>
+                    @endforeach
+                </div>
+            </div>
             <a href="" class="mainNav__link">Trending</a>
             <a href="" class="mainNav__link">Latest</a>
             <a href="" class="mainNav__link">Contacts</a>
         </div>
-        <!-- <div class="search">
-                <input type="text" placeholder="search" />
-                <div class="symbol">
-                    <svg class="cloud">
-                        <use xlink:href="#cloud" />
-                    </svg>
-                    <svg class="lens">
-                        <use xlink:href="#lens" />
-                    </svg>
-                </div>
-            </div> -->
         <div class="mainNav__icon" onclick="toggleSidebar()">
             <i class="fa-solid fa-bars"></i>
         </div>
@@ -30,8 +32,11 @@
                 </div>
                 <div class="hed_dics_col_right">
                     <p><b>{{ date('Y', strtotime($movie->release_date)) }}</b></p>
-                    <h1><b>{{$movie->title}}</b></h1>
-                    <p class="movie_de">{{$movie->description}}</p>
+                    <h1><b>{{ strlen($movie->title) > 25 ? substr($movie->title, 0, 25) . '...' : $movie->title }}</b>
+                    </h1>
+                    <p class="movie_de">
+                        {{ strlen($movie->description) > 100 ? substr($movie->description, 0, 100) . '...' : $movie->description }}
+                    </p>
                     <div class="icon_infor">
                         <div class="time">
                             <i class="fa-solid fa-stopwatch"></i>
@@ -44,15 +49,29 @@
                     </div>
                     <div class="button_trailer">
                         <a href="{{ ($movie->trailer) }}" target="_blank" class="button">Watch Trailer</a>
-                        <button id="more-movie-button" data-id="{{ $movie->id }}">More
-                            Details</button>
+                        <a href="{{ '/get-movie/' . $movie->id }}" class="button">More Details</a>
                     </div>
+
                 </div>
             </div>
         </div>
         @endforeach
     </div>
     <div class="sidebar" id="sidebar">
+        <div class="form_nav">
+            <i class="fa fa-search"></i>
+            <input type="text" class="form_input" placeholder="Search anything...">
+            <span class="left-pan"><i class="fa fa-microphone"></i></span>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn-nav" id="dropbtn-nav">Languages <i class="fa fa-caret-down"
+                    aria-hidden="true"></i></button>
+            <div class="dropdown-content-nav">
+                @foreach ($languages as $language)
+                <a href="">{{$language->language}}</a>
+                @endforeach
+            </div>
+        </div>
         <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
         <a href="#" class="sidebar_mainNav__link">Trending</a>
         <a href="#" class="sidebar_mainNav__link">Latest</a>
