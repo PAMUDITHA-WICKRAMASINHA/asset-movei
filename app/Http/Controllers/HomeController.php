@@ -15,4 +15,23 @@ class HomeController extends Controller
 
         return view('home.index', compact('movies', 'languages'));
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        
+        if (empty($query)) {
+            return redirect()->route('home');
+        }
+
+        $movies = Movie::where('title', 'like', '%' . $query . '%')->get();
+        if($movies->isEmpty()) { 
+            return redirect()->route('home');
+        }
+
+        $languages = Language::all();
+        
+        return view('home.index', compact('movies', 'languages'));
+    }
+
 }

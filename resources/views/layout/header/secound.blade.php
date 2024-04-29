@@ -1,12 +1,16 @@
 <div class="text-center main_hed_sec">
     <div class="mian_data">
-        <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" />
+        <a href="/"><img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" /></a>
         <div class="mainNav__links">
-            <div class="form">
-                <i class="fa fa-search"></i>
-                <input type="text" class="form_input" placeholder="Search anything...">
+            <form action="{{ route('search') }}" method="GET" class="form">
+                <button type="submit" class="hidden"><label for="search-input">
+                        <i class="fa fa-search"></i>
+                    </label></button>
+                <input id="search-input" type="text" name="query" class="form_input" placeholder="Search movies...">
+
                 <span class="left-pan"><i class="fa fa-microphone"></i></span>
-            </div>
+            </form>
+
             <div class="dropdown">
                 <button class="dropbtn">Languages <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                 <div class="dropdown-content">
@@ -24,6 +28,23 @@
         </div>
     </div>
     <div class="sidebar" id="sidebar">
+        <form action="{{ route('search') }}" method="GET" class="form_nav">
+            <button type="submit" class="hidden"><label for="search-input">
+                    <i class="fa fa-search"></i>
+                </label></button>
+            <input id="search-input" type="text" name="query" class="form_input" placeholder="Search movies...">
+            <button type="submit" class="hidden"></button>
+            <span class="left-pan"><i class="fa fa-microphone"></i></span>
+        </form>
+        <div class="dropdown">
+            <button class="dropbtn-nav" id="dropbtn-nav">Languages <i class="fa fa-caret-down"
+                    aria-hidden="true"></i></button>
+            <div class="dropdown-content-nav">
+                @foreach ($languages as $language)
+                <a href="">{{$language->language}}</a>
+                @endforeach
+            </div>
+        </div>
         <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
         <a href="#" class="sidebar_mainNav__link">Trending</a>
         <a href="#" class="sidebar_mainNav__link">Latest</a>

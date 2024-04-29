@@ -1,12 +1,15 @@
 <div class="text-center main_hed">
     <div class="mian_data">
-        <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" />
+        <a href="/"><img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" /></a>
         <div class="mainNav__links">
-            <div class="form">
-                <i class="fa fa-search"></i>
-                <input type="text" class="form_input" placeholder="Search anything...">
+            <form action="{{ route('search') }}" method="GET" class="form">
+                <button type="submit" class="hidden"><label for="search-input">
+                        <i class="fa fa-search"></i>
+                    </label></button>
+                <input id="search-input" type="text" name="query" class="form_input" placeholder="Search movies...">
+                <button type="submit" class="hidden"></button>
                 <span class="left-pan"><i class="fa fa-microphone"></i></span>
-            </div>
+            </form>
             <div class="dropdown">
                 <button class="dropbtn">Languages <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                 <div class="dropdown-content">
@@ -58,11 +61,14 @@
         @endforeach
     </div>
     <div class="sidebar" id="sidebar">
-        <div class="form_nav">
-            <i class="fa fa-search"></i>
-            <input type="text" class="form_input" placeholder="Search anything...">
+        <form action="{{ route('search') }}" method="GET" class="form_nav">
+            <button type="submit" class="hidden"><label for="search-input">
+                    <i class="fa fa-search"></i>
+                </label></button>
+            <input id="search-input" type="text" name="query" class="form_input" placeholder="Search movies...">
+            <button type="submit" class="hidden"></button>
             <span class="left-pan"><i class="fa fa-microphone"></i></span>
-        </div>
+        </form>
         <div class="dropdown">
             <button class="dropbtn-nav" id="dropbtn-nav">Languages <i class="fa fa-caret-down"
                     aria-hidden="true"></i></button>
