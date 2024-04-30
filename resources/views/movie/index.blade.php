@@ -40,7 +40,7 @@
                     <a href="{{ ($movie->trailer) }}" target="_blank" class="button">Watch Trailer</a>
                     <button>Download</button>
                 </div>
-                <p class="movie_de">{{$movie->description}}</p>
+                <p class="movie_des">{{$movie->description}}</p>
             </div>
         </div>
         <div class="section similar-data">

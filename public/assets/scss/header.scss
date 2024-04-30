@@ -138,6 +138,14 @@
     margin-right: 50px;
 }
 
+.main_row{
+    display: none;
+}
+
+.mobile_col_right{
+    display: none;
+}
+
 .hed_dics {
     color: $white-color;
     width: 60%;
@@ -188,6 +196,10 @@
     transform: translateY(10%);
 }
 
+.main_emt_image_right{
+    display: none;
+}
+
 .main_emt_image {
     width: 300px;
     height: 420px;
@@ -231,12 +243,13 @@
 .hed_dics_col_right h1{
     text-align: left;
 }
-  .hed_dics_col_right .button_trailer {
+
+.button_trailer {
     padding-top: 20px;
     text-align: left;
 }
 
-.hed_dics_col_right .button_trailer a {
+.button_trailer a {
     color: $white-color;
     text-decoration: none;
     padding: 15px 20px;
@@ -245,7 +258,7 @@
     display: inline;
 }
 
-.hed_dics_col_right .button_trailer a:last-child {
+.button_trailer a:last-child {
     color: $white-color;
     border: 1px solid $white-color;
     text-decoration: none;
@@ -254,45 +267,45 @@
     display: inline;
 }
 
-.hed_dics_col_right .button_trailer a:hover {
+.button_trailer a:hover {
     padding: 15px 20px;
     background-color: transparent;
     border: 1px solid $white-color;
 }
 
-.hed_dics_col_right .button_trailer a:last-child:hover {
+.button_trailer a:last-child:hover {
     padding: 15px 20px;
     background-color: $red-color;
     border: 1px solid $red-color;
 }
 
-.hed_dics_col_right .icon_infor {
+.icon_infor {
     text-align: left;
     display: flex;
 }
 
-.hed_dics_col_right .icon_infor .time {
+.icon_infor .time {
     display: flex;
 }
 
-.hed_dics_col_right .icon_infor .time i {
+.icon_infor .time i {
     font-size: 22px;
 }
 
-.hed_dics_col_right .icon_infor .time p {
+.icon_infor .time p {
     margin-left: 10px;
 }
 
-.hed_dics_col_right .icon_infor .star {
+.icon_infor .star {
     display: flex;
     margin-left: 50px;
 }
 
-.hed_dics_col_right .icon_infor .star i {
+.icon_infor .star i {
     font-size: 20px;
 }
 
-.hed_dics_col_right .icon_infor .star p {
+.icon_infor .star p {
     margin-left: 10px;
 }
 
@@ -321,7 +334,7 @@
 @media screen and (max-width: 920px) {
 
     .main_hed {
-        height: 300px;
+        height: 320px;
     }
 
     .mainNav__icon {
@@ -341,18 +354,104 @@
         font-size: 16px;
     }
 
-    .hed_dics_col_right .button_trailer a {
-        padding: 9px;
+    .button_trailer a {
+        padding: 10px 15px;
     }
+    
+    .button_trailer a:last-child {
+        padding: 10px 15px;
+    }
+
+    .button_trailer a:hover {
+        padding: 10px 15px;
+    }
+    
+    .button_trailer a:last-child:hover {
+        padding: 10px 15px;
+    }
+    
 }
 
 @media screen and (max-width: 450px) {
+
+    .main_hed {
+        height: 300px;
+    }
+
+    .container-data {
+        margin-left: 0px;
+        display: block;
+        grid-template-columns: 0;
+        gap: 0px;
+    }
+
+    .main_row{
+        display: block;
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    .main_row .col-8{
+        padding-left: 40px;
+    }
+
+    .hed_dics {
+        color: $white-color;
+        width: 90%;
+    }
+
     .hed_dics_col_right {
-        min-width: 100%;
+        display: none;
+    }
+
+    .main_emt_image_right{
+        display: inline-block;
+        height: 170px;
+        display: block;
+        border-radius: 10px;
+        border: 2px solid $white-color;
     }
 
     .container-data {
         margin-left: 20px;
+    }
+
+    .mobile_col_right{
+        display: block;
+        text-align: start;
+    }
+
+    .mobile_col_right p {
+        font-size: 16px;
+        margin-bottom: 0px;
+    }
+
+    .mobile_col_right .star {
+        display: none;
+    }
+    
+    .mobile_col_right h1 {
+        font-size: 18px;
+    }
+
+    .mobile_col_right .button_trailer a {
+        width: 65%;
+        padding: 2px 3px;
+        font-size: 13px;
+        display: block;
+    }
+    
+    .mobile_col_right .button_trailer a:last-child {
+        padding: 2px 3px;
+        margin-top: 3px;
+    }
+
+    .mobile_col_right .button_trailer a:hover {
+        padding: 2px 3px;
+    }
+    
+    .mobile_col_right .button_trailer a:last-child:hover {
+        padding: 2px 3px;
     }
 }
 

@@ -56,6 +56,33 @@
                     </div>
 
                 </div>
+                <div class="row main_row">
+                    <div class="col-4">
+                        <img class="main_emt_image_right" src="{{ url($movie->image) }}" alt="" />
+                    </div>
+                    <div class="col-8 mobile_col_right">
+                        <p><b>{{ date('Y', strtotime($movie->release_date)) }}</b></p>
+                        <h1><b>{{ strlen($movie->title) > 25 ? substr($movie->title, 0, 25) . '...' : $movie->title }}</b>
+                        </h1>
+                        <p class="movie_de">
+                            {{ strlen($movie->description) > 100 ? substr($movie->description, 0, 100) . '...' : $movie->description }}
+                        </p>
+                        <div class="icon_infor">
+                            <div class="time">
+                                <i class="fa-solid fa-stopwatch"></i>
+                                <p>{{$movie->duration}}</p>
+                            </div>
+                            <div class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <p>6.3/10</p>
+                            </div>
+                        </div>
+                        <div class="button_trailer">
+                            <a href="{{ ($movie->trailer) }}" target="_blank" class="button">Watch Trailer</a>
+                            <a href="{{ '/get-movie/' . $movie->id }}" class="button">More Details</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         @endforeach
@@ -74,7 +101,7 @@
                     aria-hidden="true"></i></button>
             <div class="dropdown-content-nav">
                 @foreach ($languages as $language)
-                <a href="">{{$language->language}}</a>
+                <a href="{{ '/movie/language/' . $language->id }}">{{$language->language}}</a>
                 @endforeach
             </div>
         </div>

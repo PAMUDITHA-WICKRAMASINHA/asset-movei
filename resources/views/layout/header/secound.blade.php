@@ -41,7 +41,7 @@
                     aria-hidden="true"></i></button>
             <div class="dropdown-content-nav">
                 @foreach ($languages as $language)
-                <a href="">{{$language->language}}</a>
+                <a href="{{ '/movie/language/' . $language->id }}">{{$language->language}}</a>
                 @endforeach
             </div>
         </div>
