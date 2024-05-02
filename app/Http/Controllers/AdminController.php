@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Director;
 use App\Models\TopCast;
+use App\Models\Format; 
 use Validator;
 use Exception;
 
@@ -67,7 +68,12 @@ class AdminController extends Controller
             $movie->description = $request->input('description');
         
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('img/movie_images', 'public');
+                $image = $request->file('image');
+                $imageName = $request->input('title') . '_movie';
+                $imageName = str_replace(' ', '_', $imageName);
+                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                
+                $imagePath = $image->storeAs('img/movie_images', $imageName, 'public');
                 $movie->image = 'assets/' . $imagePath;
             }
             
@@ -106,7 +112,13 @@ class AdminController extends Controller
             $movie->sub_seeds = $request->input('sub_seeds');
 
             if ($request->hasFile('file')) {
-                $filePath = $request->file('file')->store('file/movie_file', 'public');
+                $format = Format::findOrFail($request->input('format'));
+                $fileName = $request->input('movie') . '_' . 'movie_' . $format->name . '_' . $format->resolution;
+                $fileName = str_replace('.', '_', $fileName);
+                $fileName = str_replace('*', '_', $fileName);
+                $fileName = $fileName . '.' . $request->file('file')->getClientOriginalExtension();
+
+                $filePath = $request->file('file')->storeAs('file/movie_file', $fileName, 'public');
                 $movie->file = 'assets/' . $filePath;
             }
             

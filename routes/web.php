@@ -22,6 +22,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/movie/search', [HomeController::class, 'search'])->name('search');
 Route::get('/movie/language/{id}', [HomeController::class, 'language'])->name('language');
+Route::get('/movie/latest', [HomeController::class, 'latest'])->name('latest');
 
 Route::get('/get-movie/{id}', [MovieController::class, 'index']);
 

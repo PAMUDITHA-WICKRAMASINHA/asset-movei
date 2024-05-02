@@ -18,8 +18,8 @@
                     @endforeach
                 </div>
             </div>
-            <a href="" class="mainNav__link">Trending</a>
-            <a href="" class="mainNav__link">Latest</a>
+            <a href="{{ '/movie/latest }}" class="mainNav__link">Trending</a>
+            <a href="{{ '/movie/latest }}" class="mainNav__link">Latest</a>
             <a href="" class="mainNav__link">Contacts</a>
         </div>
         <div class="mainNav__icon" onclick="toggleSidebar()">
@@ -47,7 +47,7 @@
                         </div>
                         <div class="star">
                             <i class="fa-solid fa-star"></i>
-                            <p>6.3/10</p>
+                            <p>{{$movie->rate}}/10</p>
                         </div>
                     </div>
                     <div class="button_trailer">
@@ -74,7 +74,7 @@
                             </div>
                             <div class="star">
                                 <i class="fa-solid fa-star"></i>
-                                <p>6.3/10</p>
+                                <p>{{$movie->rate}}/10</p>
                             </div>
                         </div>
                         <div class="button_trailer">
@@ -106,8 +106,8 @@
             </div>
         </div>
         <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
-        <a href="#" class="sidebar_mainNav__link">Trending</a>
-        <a href="#" class="sidebar_mainNav__link">Latest</a>
+        <a href="{{ '/movie/latest }}" class="mainNav__link">Trending</a>
+        <a href="{{ '/movie/latest }}" class="mainNav__link">Latest</a>
         <a href="#" class="sidebar_mainNav__link">Contacts</a>
     </div>
 </div>

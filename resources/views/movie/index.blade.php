@@ -28,7 +28,7 @@
                     </div>
                     <div class="star">
                         <i class="fa-solid fa-star"></i>
-                        <p>6.3/10</p>
+                        <p>{{$movie->rate}}/10</p>
                     </div>
                 </div>
                 <div>
@@ -48,11 +48,13 @@
             <div>
                 @foreach ($latestMovies as $index => $latestMovie)
                 @if ($index
-                < 2) <img class="similar_emt_image" src="{{ url($latestMovie->image) }}" alt="" />
-                @else
-                @break
-                @endif
-                @endforeach
+                < 2) <a href="/get-movie/{{ $latestMovie->id }}">
+                    <img class="similar_emt_image" src="{{ url($latestMovie->image) }}" alt="" />
+                    </a>
+                    @else
+                    @break
+                    @endif
+                    @endforeach
             </div>
             <hr />
             <div>

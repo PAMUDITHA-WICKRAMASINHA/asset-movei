@@ -44,9 +44,15 @@ class DirectorController extends Controller
             $director->name = $request->input('name');
 
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('img/director_images', 'public');
-                $director->image = 'assets/' . $imagePath;
+                $image = $request->file('image');
+                $imageName = $request->input('name');
+                $imageName = str_replace(' ', '_', $imageName);
+                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                
+                $imagePath = $image->storeAs('img/director_images', $imageName, 'public');
+                $movie->image = 'assets/' . $imagePath;
             }
+
             $director->save();
 
 

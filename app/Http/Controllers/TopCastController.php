@@ -44,9 +44,15 @@ class TopCastController extends Controller
             $top_cast->name = $request->input('name');
 
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('img/top_cast_images', 'public');
-                $top_cast->image = 'assets/' . $imagePath;
+                $image = $request->file('image');
+                $imageName = $request->input('name');
+                $imageName = str_replace(' ', '_', $imageName);
+                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                
+                $imagePath = $image->storeAs('img/top_cast_images', $imageName, 'public');
+                $movie->image = 'assets/' . $imagePath;
             }
+
             $top_cast->save();
 
 

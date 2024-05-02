@@ -56,5 +56,15 @@ class HomeController extends Controller
         }
     }
     
-
+    public function latest()
+    {
+        try {;
+            $movies = Movie::orderBy('created_at', 'desc')->get();
+            $languages = Language::all();
+            
+            return view('home.index', compact('movies', 'languages'));
+        } catch (Exception $e) {
+            return response()->json(['message' => 'HomeController >> latest >> Failed to filter movies: ' . $e->getMessage()], 500);
+        }
+    }
 }

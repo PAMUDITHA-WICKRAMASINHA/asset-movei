@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('duration')->nullable();
             $table->text('description')->nullable();
             $table->date('release_date')->nullable();
+            $table->date('rate')->nullable();
             $table->string('short_description')->nullable();
             $table->string('trailer')->nullable();
             $table->integer('download_count')->nullable();
