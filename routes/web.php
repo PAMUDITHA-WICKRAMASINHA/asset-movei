@@ -19,8 +19,15 @@ use App\Http\Controllers\DirectorController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index']);
-Route::get('/get-movie', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/movie/search', [HomeController::class, 'search'])->name('search');
+Route::get('/movie/language/{id}', [HomeController::class, 'language'])->name('language');
+Route::get('/movie/latest', [HomeController::class, 'latest'])->name('latest');
+
+Route::get('/get-movie/{id}', [MovieController::class, 'index'])->name('get-movie');;
+Route::get('/movie/download/{id}', [MovieController::class, 'download'])->name('download');
+
 
 // Route::resource('admin', AdminController::class);
 // Route::resource('directors', DirectorController::class);

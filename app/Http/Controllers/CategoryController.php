@@ -45,7 +45,7 @@ class CategoryController extends Controller
 
             return response()->json(['message' => 'Category created successfully', 'category' => $category], 201);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create category: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'CategoryController >> store >> Failed to create category: ' . $e->getMessage()], 500);
         }
     }
 
@@ -83,7 +83,7 @@ class CategoryController extends Controller
 
             return response()->json(['message' => 'Category deleted successfully']);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to delete category: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'CategoryController >> destroy >> Failed to delete category: ' . $e->getMessage()], 500);
         }
     }
 }

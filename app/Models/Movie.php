@@ -14,17 +14,29 @@ class Movie extends Model
 
     public function directors()
     {
-        return $this->belongsToMany(Director::class, 'movies_directors');
+        return $this->belongsToMany(Director::class, 'movies_directors')->withTimestamps();;
     }
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'movies_categories');
+        return $this->belongsToMany(Category::class, 'movies_categories')->withTimestamps();;
+    }
+
+    public function languages()
+    {
+        return $this->belongsToMany(language::class, 'movies_language')->withTimestamps();;
     }
 
     public function top_casts()
     {
-        return $this->belongsToMany(TopCast::class, 'movies_top_casts');
+        return $this->belongsToMany(TopCast::class, 'movies_top_casts')->withTimestamps();;
+    }
+
+    public function formats()
+    {
+        return $this->belongsToMany(Format::class, 'movies_formats')
+                    ->withPivot('disk_space', 'sub_seeds', 'file')
+                    ->withTimestamps();
     }
 
 }

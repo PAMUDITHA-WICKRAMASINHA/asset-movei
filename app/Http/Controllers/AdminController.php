@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Director;
 use App\Models\TopCast;
+use App\Models\Format; 
 use Validator;
 use Exception;
 
@@ -17,10 +18,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $directors = Director::all();
-        $top_casts = TopCast::all();
-        $categories = Category::all();
-        return view('admin.body.addMovie', compact('directors', 'top_casts', 'categories'));
+        try {
+            $directors = Director::all();
+            $top_casts = TopCast::all();
+            $categories = Category::all();
+            return view('admin.body.addMovie', compact('directors', 'top_casts', 'categories'));
+        } catch (Exception $e) {
+            return response()->json(['message' => 'AdminController >> index >> Failed to get movie: ' . $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -44,6 +49,7 @@ class AdminController extends Controller
                 'release_date' => 'required|date',
                 'director' => 'required|string',
                 'category' => 'required|string',
+                'language' => 'required|string',
                 'top_cast' => 'required|string',
                 'trailer' => 'required|url',
                 'description' => 'required|string',
@@ -62,22 +68,78 @@ class AdminController extends Controller
             $movie->description = $request->input('description');
         
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('movie_images', 'public');
-                $movie->image = $imagePath;
+                $image = $request->file('image');
+                $imageName = $request->input('title') . '_movie';
+                $imageName = str_replace(' ', '_', $imageName);
+                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                
+                $imagePath = $image->storeAs('img/movie_images', $imageName, 'public');
+                $movie->image = 'assets/' . $imagePath;
             }
             
             $movie->save();
             $movie->directors()->sync(json_decode($request->input('director'), true));
             $movie->categories()->sync(json_decode($request->input('category'), true));
+            $movie->languages()->sync(json_decode($request->input('language'), true));
             $movie->top_casts()->sync(json_decode($request->input('top_cast'), true));
 
             return response()->json(['message' => 'Movie created successfully', 'movie' => $movie], 201);
 
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create movie: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'AdminController >> store >> Failed to create movie: ' . $e->getMessage()], 500);
         }
     }
 
+    public function addFormat(Request $request)
+    {
+        try{
+            $validator = Validator::make($request->all(), [
+                'movie' => 'required|string',
+                'format' => 'required|string',
+                'disk_space' => 'required|string',
+                'file' => 'nullable|file|mimes:torrent|max:2048',
+                'sub_seeds' => 'required|int',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
+            }
+
+            $movie = new Movie();
+
+            $movie->id = $request->input('movie');
+            $movie->disk_space = $request->input('disk_space');
+            $movie->sub_seeds = $request->input('sub_seeds');
+
+            if ($request->hasFile('file')) {
+                $format = Format::findOrFail($request->input('format'));
+                $fileName = $request->input('movie') . '_' . 'movie_' . $format->name . '_' . $format->resolution;
+                $fileName = str_replace('.', '_', $fileName);
+                $fileName = str_replace('*', '_', $fileName);
+                $fileName = $fileName . '.' . $request->file('file')->getClientOriginalExtension();
+
+                $filePath = $request->file('file')->storeAs('file/movie_file', $fileName, 'public');
+                $movie->file = 'assets/' . $filePath;
+            }
+            
+            $syncData = [
+                $request->input('format') => [
+                    'disk_space' => $movie->disk_space,
+                    'sub_seeds' => $movie->sub_seeds,
+                    'file' => $movie->file,
+                ]
+            ];
+            
+            $movie->formats()->syncWithoutDetaching($syncData);
+            
+            return response()->json(['message' => 'Movie file updated successfully', 'movie' => $movie], 201);
+            
+        } catch (Exception $e) {
+            return response()->json(['message' => 'AdminController >> addFormat >> Failed to add format: ' . $e->getMessage()], 500);
+        }
+        
+    }
+    
     /**
      * Display the specified resource.
      */

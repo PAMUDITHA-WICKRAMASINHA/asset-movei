@@ -44,15 +44,21 @@ class TopCastController extends Controller
             $top_cast->name = $request->input('name');
 
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('top_cast_images');
-                $top_cast->image = $imagePath;
+                $image = $request->file('image');
+                $imageName = $request->input('name');
+                $imageName = str_replace(' ', '_', $imageName);
+                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                
+                $imagePath = $image->storeAs('img/top_cast_images', $imageName, 'public');
+                $movie->image = 'assets/' . $imagePath;
             }
+
             $top_cast->save();
 
 
             return response()->json(['message' => 'Top cast created successfully', 'top_cast' => $top_cast], 201);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create top cast: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'TopCastController >> store >> Failed to create top cast: ' . $e->getMessage()], 500);
         }
     }
 
@@ -90,7 +96,7 @@ class TopCastController extends Controller
 
             return response()->json(['message' => 'Top cast deleted successfully']);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to delete top cast: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'TopCastController >> destroy >> Failed to delete top cast: ' . $e->getMessage()], 500);
         }
     }
 }

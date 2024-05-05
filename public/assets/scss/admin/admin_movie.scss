@@ -1,0 +1,16 @@
+@import "../index.scss";
+
+.main_frame{
+    border: 5px solid $border-color;
+    border-radius: 10px;
+    padding: 50px;
+    background-color: $white-background;
+}
+
+.input-form{
+    padding-bottom: 25px;
+}
+
+.name-input{
+    font-weight: bolder;
+}

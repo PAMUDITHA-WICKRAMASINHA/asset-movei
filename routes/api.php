@@ -6,8 +6,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TopCastController;
 use App\Http\Controllers\DirectorController;
+use App\Http\Controllers\FormatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('admin', AdminController::class);
+Route::post('admin/add-format', [AdminController::class, 'addFormat']);
+
 Route::resource('directors', DirectorController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('top_casts', TopCastController::class);
+Route::resource('languages', LanguageController::class);
+Route::resource('format', FormatController::class);

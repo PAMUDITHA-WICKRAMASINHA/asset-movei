@@ -14,6 +14,6 @@ class Category extends Model
 
     public function movies()
     {
-        return $this->belongsToMany(Movie::class, 'movies_categories');
+        return $this->belongsToMany(Movie::class, 'movies_categories')->withTimestamps();;
     }
 }

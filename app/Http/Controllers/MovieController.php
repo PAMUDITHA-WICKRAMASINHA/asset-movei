@@ -3,11 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Movie; 
+use App\Models\Language; 
+use App\Models\MoviesFormat; 
 
 class MovieController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('movie.index');
+        try {
+            $movie = Movie::with('categories', 'top_casts', 'directors', 'formats', 'languages')->findOrFail($id);
+            $languages = Language::all();
+            $latestMovies = Movie::latest()->limit(4)->get();
+                    
+            $metaKeywords = '';
+            foreach ($languages as $language) {
+                $metaKeywords .= ', ' . $language->language;
+            }
+
+            foreach ($movie->categories as $category) {
+                $metaKeywords .= ', ' . $category->category;
+            }
+
+            foreach ($movie->top_casts as $top_cast) {
+                $metaKeywords .= ', ' . $top_cast->name;
+            }
+
+            foreach ($movie->directors as $director) {
+                $metaKeywords .= ', ' . $director->name;
+            }
+            
+            $metaKeywords .= ', ' . $movie->title;
+            
+            return view('movie.index', compact('movie', 'latestMovies', 'languages', 'metaKeywords'));
+        } catch (Exception $e) {
+            return response()->json(['message' => 'MovieController >> index >> Failed to get movies: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function download($id)
+    {
+        try {
+            $movies_format = MoviesFormat::where('id', $id)->first();
+            if ($movies_format) {
+                $movies_format->increment('download_count');
+                $movies_format->save();
+                
+                $movie = $movies_format->movie;
+                $movie->increment('download_count');
+                $movie->save();
+                // dd($movie);
+                return response()->download(public_path($movies_format->file));
+            } else {
+                abort(404); // File not found
+            }
+        } catch (Exception $e) {
+            return response()->json(['message' => 'MovieController >> download >> Failed to get movies: ' . $e->getMessage()], 500);
+        }
     }
 }

@@ -14,6 +14,6 @@ class TopCast extends Model
 
     public function movies()
     {
-        return $this->belongsToMany(Movie::class, 'movies_top_casts');
+        return $this->belongsToMany(Movie::class, 'movies_top_casts')->withTimestamps();;
     }
 }

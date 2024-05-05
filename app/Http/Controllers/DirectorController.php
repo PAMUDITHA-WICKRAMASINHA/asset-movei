@@ -44,15 +44,21 @@ class DirectorController extends Controller
             $director->name = $request->input('name');
 
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('director_images');
-                $director->image = $imagePath;
+                $image = $request->file('image');
+                $imageName = $request->input('name');
+                $imageName = str_replace(' ', '_', $imageName);
+                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                
+                $imagePath = $image->storeAs('img/director_images', $imageName, 'public');
+                $movie->image = 'assets/' . $imagePath;
             }
+
             $director->save();
 
 
             return response()->json(['message' => 'Director created successfully', 'director' => $director], 201);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to create director: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'DirectorController >> store >> Failed to create director: ' . $e->getMessage()], 500);
         }
     }
 
@@ -90,7 +96,7 @@ class DirectorController extends Controller
 
             return response()->json(['message' => 'Director deleted successfully']);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to delete director: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'DirectorController >> destroy >> Failed to delete director: ' . $e->getMessage()], 500);
         }
     }
 }
