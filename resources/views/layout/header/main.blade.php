@@ -106,8 +106,8 @@
             </div>
         </div>
         <button href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</button>
-        <a href="{{ '/movie/latest' }}" class="mainNav__link">Trending</a>
-        <a href="{{ '/movie/latest' }}" class="mainNav__link">Latest</a>
+        <a href="{{ '/movie/latest' }}" class="sidebar_mainNav__link">Trending</a>
+        <a href="{{ '/movie/latest' }}" class="sidebar_mainNav__link">Latest</a>
         <a href="#" class="sidebar_mainNav__link">Contacts</a>
     </div>
 </div>

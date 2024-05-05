@@ -74,6 +74,11 @@
   text-align: left;
 }
 
+.sidebar button {
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+}
+
 .sidebar .dropdown {
   padding: 40px 10px 10px 15px;
   text-decoration: none;
