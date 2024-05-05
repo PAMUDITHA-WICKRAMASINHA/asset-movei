@@ -14,7 +14,16 @@ class HomeController extends Controller
             $movies = Movie::all();
             $languages = Language::all();
 
-            return view('home.index', compact('movies', 'languages'));
+            $metaKeywords = '';
+            foreach ($languages as $language) {
+                $metaKeywords .= ', ' . $language->language;
+            }
+
+            foreach ($movies as $movie) {
+                $metaKeywords .= ', ' . $movie->title;
+            }
+
+            return view('home.index', compact('movies', 'languages', 'metaKeywords'));
         } catch (Exception $e) {
             return response()->json(['message' => 'HomeController >> index >> Failed to get movies: ' . $e->getMessage()], 500);
         }

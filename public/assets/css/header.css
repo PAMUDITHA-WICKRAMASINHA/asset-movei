@@ -392,11 +392,15 @@
   .mobile_col_right h1 {
     font-size: 18px;
   }
+  .mobile_col_right .button_trailer {
+    padding-top: 5px;
+  }
   .mobile_col_right .button_trailer a {
     width: 65%;
     padding: 2px 3px;
     font-size: 13px;
     display: block;
+    margin-bottom: 15px;
   }
   .mobile_col_right .button_trailer a:last-child {
     padding: 2px 3px;
