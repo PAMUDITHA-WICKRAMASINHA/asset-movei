@@ -78,7 +78,8 @@
                                 {{ $format->aspect_ratio }}</div>
                             <div class="format-spec"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i>
                                 {{ $movie->duration }}</div>
-                            <div class="format-spec"><a href="{{ url($format->pivot->file) }}" class="movie-download">
+                            <div class="format-spec"><a href="{{ route('download', $format->pivot->format_id) }}"
+                                    class="movie-download">
                                     <i class="fa fa-download" aria-hidden="true"></i> Download
                                     Now</a></div>
                         </div>

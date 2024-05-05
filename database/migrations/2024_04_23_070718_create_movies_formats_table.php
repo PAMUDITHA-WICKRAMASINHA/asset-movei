@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('format_id')->constrained()->onDelete('cascade');
             $table->string('disk_space')->nullable();
             $table->string('file')->nullable();
+            $table->integer('download_count')->default(0);
             $table->integer('sub_seeds')->nullable();
             $table->timestamps();
         });

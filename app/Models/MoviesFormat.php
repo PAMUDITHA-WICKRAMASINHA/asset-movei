@@ -11,4 +11,10 @@ class MoviesFormat extends Model
     
     // Define the table associated with the model
     protected $table = 'movies_formats';
+
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class);
+    }
+    
 }
