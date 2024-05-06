@@ -18,7 +18,7 @@
     max-width: 100%;
     border-bottom: 1px solid $white-color;
     background-color: $header-footer-color;
-    height: 65px;
+    height: 75px;
     background-image: linear-gradient(
             to left,
             rgba(245, 246, 252, 0),
@@ -33,12 +33,44 @@
     justify-content: space-between;
     width: 100%;
     background-color: transparent;
-    transform: translateY(50%);
+    transform: translateY(20%);
     padding: 0 30px 0 20px;
+}
+
+.mian_data .main_logo_div .logo_name{
+    text-decoration: none;
+    font-size: 40px;
+    color: $white-color;
+    margin-left: 20px;
+    font-style: italic;
+    letter-spacing: 0.0015em;
+}
+
+.mian_data .main_logo_div .logo_name_secound{
+    text-decoration: none;
+    font-size: 30px;
+    color: $white-color;
+    margin-left: 20px;
+    font-style: italic;
+}
+
+.mian_data .main_logo{
+    width: 80px;
+}
+
+.mian_data .main_logo_secound{
+    width: 55px;
 }
 
 .mian_data .mainNav__links {
     display: inline;
+}
+
+.mian_data .mainNav__links_sec {
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 50%;
 }
 
 .mainNav__link {
@@ -221,7 +253,7 @@
 }
 
 .slide{
-    margin-top: 60px;
+    margin-top: 65px;
     position:absolute;
     left: 0;
     top: 0;
@@ -321,7 +353,21 @@
     gap: 50px;
 }
 
+@media screen and (max-width: 1130px) {
+    .mian_data .main_logo_div .logo_name{
+        display: none;
+    }
+
+    .mian_data .main_logo_div .logo_name_secound{
+        display: none;
+    }
+}
+
 @media screen and (max-width: 980px) {
+    .mian_data .main_logo{
+        width: 60px;
+    }
+
     .hed_dics_col_left {
         display: none;
     }
@@ -355,6 +401,10 @@
         display: none;
     }
 
+    .mian_data .mainNav__links_sec {
+        display: none;
+    }
+
     .sidebar a {
         font-size: 16px;
     }
@@ -375,6 +425,14 @@
         padding: 10px 15px;
     }
     
+    .mian_data .main_logo_div .logo_name{
+        display: inline-block;
+        font-size: 30px;
+    }
+
+    .mian_data .main_logo_div .logo_name_secound{
+        display: inline-block;
+    }
 }
 
 @media screen and (max-width: 450px) {
