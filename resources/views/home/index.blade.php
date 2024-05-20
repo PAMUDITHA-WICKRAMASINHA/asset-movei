@@ -8,7 +8,8 @@ download torrents directly. Whether you are a cinephile or casual viewer, Asset 
 cinematic exploration. Discover a world of movies on Asset Movie. Browse films from various countries and
 languages, and download torrents for your favorite picks.')
 
-@section('meta_keywords', $metaKeywords . ', international cinema, Asset Movie, torrents downloads, free movies,
+@section('meta_keywords', ($metaKeywords ?? "") . ', international cinema, Asset Movie, torrents downloads,
+free movies,
 streaming, new releases, Hollywood, Bollywood, action, comedy, drama, thriller, romance, sci-fi, horror, documentary,
 foreign films')
 

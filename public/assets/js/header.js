@@ -11,9 +11,11 @@ nextSlide()
 var slideInterval = setInterval(nextSlide,5000);
   
 function nextSlide(){
-  slides[currentSlide].classList.remove("showing");
-  currentSlide = (currentSlide+1)%slides.length;
-  slides[currentSlide].classList.add("showing");
+  if(slides.length > 0){
+    slides[currentSlide].classList.remove("showing");
+    currentSlide = (currentSlide+1)%slides.length;
+    slides[currentSlide].classList.add("showing");
+  }
 }
 
 function prevSlide(){

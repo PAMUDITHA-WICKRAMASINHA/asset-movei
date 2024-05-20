@@ -1,6 +1,10 @@
 <div class="text-center main_hed">
     <div class="mian_data">
-        <a href="/"><img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="" /></a>
+        <div class="main_logo_div">
+            <a href="/"><img class="main_logo" src="{{ url('assets/img/logo.png') }}" alt="" /></a>
+            <a href="/" class="logo_name">Asset Movies</a>
+        </div>
+
         <div class="mainNav__links">
             <form action="{{ route('search') }}" method="GET" class="form">
                 <button type="submit" class="hidden"><label for="search-input">
@@ -106,8 +110,8 @@
             </div>
         </div>
         <button href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</button>
-        <a href="{{ '/movie/latest' }}" class="mainNav__link">Trending</a>
-        <a href="{{ '/movie/latest' }}" class="mainNav__link">Latest</a>
+        <a href="{{ '/movie/latest' }}" class="sidebar_mainNav__link">Trending</a>
+        <a href="{{ '/movie/latest' }}" class="sidebar_mainNav__link">Latest</a>
         <a href="#" class="sidebar_mainNav__link">Contacts</a>
     </div>
 </div>

@@ -10,11 +10,12 @@ cinematic exploration. Discover a world of movies on Asset Movie. Browse films f
 languages, and download torrents for your favorite picks.')
 
 @section('meta_keywords', 'watch' . $movie->title . 'download' . $movie->title . 'torrents download' . $movie->title .
-$metaKeywords . ',international cinema,
+($metaKeywords ?? "") . ',international cinema,
 Asset Movie, torrents
 downloads, free movies,
 streaming, new releases, Hollywood, Bollywood, action, comedy, drama, thriller, romance, sci-fi, horror, documentary,
 foreign films')
+
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}">
