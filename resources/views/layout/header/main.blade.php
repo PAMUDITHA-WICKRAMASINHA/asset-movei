@@ -1,7 +1,7 @@
 <div class="text-center main_hed">
     <div class="mian_data">
         <div class="main_logo_div">
-            <a href="/"><img class="main_logo" src="{{ url('assets/img/logo.png') }}" alt="" /></a>
+            <a href="/"><img class="main_logo" src="{{ url('assets/img/logo.webp') }}" alt="" /></a>
             <a href="/" class="logo_name">Asset Movies</a>
         </div>
 
