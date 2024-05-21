@@ -11,10 +11,10 @@
 
     <!-- Meta Description -->
     <meta name="description"
-        content="@yield('meta_description', 'Asset Movie offers an extensive library of movies spanning multiple genres and languages. Discover blockbuster hits, indie gems, and cult classics. Dive into detailed movie descriptions, watch trailers, and download torrents directly. Whether you are a cinephile or casual viewer, Asset Movie is your go-to destination for cinematic exploration.')">
+        content="@yield('meta_description', 'asset movies offers an extensive library of movies spanning multiple genres and languages. Discover blockbuster hits, indie gems, and cult classics. Dive into detailed movie descriptions, watch trailers, and download torrents directly. Whether you are a cinephile or casual viewer, asset movies is your go-to destination for cinematic exploration.')">
     <!-- Meta Keywords -->
     <meta name="keywords"
-        content="@yield('meta_keywords', 'Asset Movie, movies, torrents, movie downloads, torrents downloads, free movies, movie torrents, streaming, cinema, film, new releases, Hollywood, Bollywood, action, comedy, drama, thriller, romance, sci-fi, horror, documentary, foreign films')">
+        content="@yield('meta_keywords', 'asset movie, asset movies, asset movie store, movies, movie, asset, movie store, movies store, stores, torrents, movie downloads, torrents downloads, free movies, movie torrents, streaming, cinema, film, new releases, Hollywood, Bollywood, action, comedy, drama, thriller, romance, sci-fi, horror, documentary, foreign films')">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
