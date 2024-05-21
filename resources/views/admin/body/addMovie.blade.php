@@ -1,7 +1,11 @@
 @extends('admin.master') @section('title', 'Asset Movie | Admin')
 @section('admin_styles')
 <!-- cards style -->
-<link rel="stylesheet" href="{{ asset('assets/css/admin_movie.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/admin_movie.css') }}" media="print" onload="this.media='all'" />
+<noscript>
+    <link rel="stylesheet" href="{{ asset('assets/css/admin_movie.css') }}">
+</noscript>
+
 @stop @section('admin_scripts')
 <!-- cards js -->
 <script src="{{ asset('assets/js/admin_movie.js') }}"></script>

@@ -18,7 +18,10 @@ foreign films')
 
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}" media="print" onload="this.media='all'">
+<noscript>
+    <link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}">
+</noscript>
 @stop
 
 @section('scripts')

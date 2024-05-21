@@ -11,6 +11,44 @@
     <!-- Meta Keywords -->
     <meta name="keywords"
         content="@yield('meta_keywords', 'Asset Movie, movies, torrents, movie downloads, torrents downloads, free movies, movie torrents, streaming, cinema, film, new releases, Hollywood, Bollywood, action, comedy, drama, thriller, romance, sci-fi, horror, documentary, foreign films')">
+    <style>
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $header-footer-color;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $red-color;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(220, 0, 0);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border: 0;
+        outline: 0;
+        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        color: inherit;
+        box-sizing: border-box;
+    }
+
+    *:focus {
+        outline: 0;
+    }
+
+    body {
+        font-family: "Raleway", sans-serif;
+    }
+    </style>
     @include('layout.style')
 </head>
 

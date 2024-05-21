@@ -14,8 +14,15 @@ streaming, new releases, Hollywood, Bollywood, action, comedy, drama, thriller, 
 foreign films')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}" media="print" onload="this.media='all'">
+<noscript>
+    <link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
+</noscript>
+
+<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}" media="print" onload="this.media='all'">
+<noscript>
+    <link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
+</noscript>
 @stop
 
 @section('scripts')
