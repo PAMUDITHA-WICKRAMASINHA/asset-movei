@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Asset Movie - Explore Movies and Downloads')</title>
+
+    <link rel="icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
+    <link rel="shortcut icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
+
     <!-- Meta Description -->
     <meta name="description"
         content="@yield('meta_description', 'Asset Movie offers an extensive library of movies spanning multiple genres and languages. Discover blockbuster hits, indie gems, and cult classics. Dive into detailed movie descriptions, watch trailers, and download torrents directly. Whether you are a cinephile or casual viewer, Asset Movie is your go-to destination for cinematic exploration.')">
