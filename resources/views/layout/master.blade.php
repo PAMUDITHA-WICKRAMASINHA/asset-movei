@@ -18,7 +18,7 @@
     <meta name="keywords"
         content="@yield('meta_keywords', 'asset movie, asset movies, asset movie store, movies, movie, asset, movie store, movies store, stores, torrents, movie downloads, torrents downloads, free movies, movie torrents, streaming, cinema, film, new releases, Hollywood, Bollywood, action, comedy, drama, thriller, romance, sci-fi, horror, documentary, foreign films')">
 
-    <meta name="google-site-verification" content="google2fb9dfdafd584d79">
+    <meta name="google-site-verification" content="zUWs5NmnYms_HumIJsjqijEWCiE_0yxGldLLvq3ZNVc" />
 
     <link rel="icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
     <link rel="shortcut icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
