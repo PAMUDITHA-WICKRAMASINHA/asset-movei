@@ -39,7 +39,7 @@ class TopCastController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'nullable|image|mimes:webp|max:2048',
             ]);
 
             if ($validator->fails()) {
