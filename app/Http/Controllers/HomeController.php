@@ -8,22 +8,35 @@ use App\Models\Language;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $movies = Movie::all();
+            $perPage = 10;
+            $page = $request->input('page', 1);
+            $offset = ($page - 1) * $perPage;
+    
+            $movies = Movie::offset($offset)->limit($perPage)->get();
+            $totalMovies = Movie::count();
+    
             $languages = Language::all();
-
+    
             $metaKeywords = '';
             foreach ($languages as $language) {
                 $metaKeywords .= ', ' . $language->language;
             }
-
+    
             foreach ($movies as $movie) {
                 $metaKeywords .= ', ' . $movie->title;
             }
-
-            return view('home.index', compact('movies', 'languages', 'metaKeywords'));
+    
+            return view('home.index', [
+                'movies' => $movies,
+                'languages' => $languages,
+                'metaKeywords' => $metaKeywords,
+                'totalMovies' => $totalMovies,
+                'perPage' => $perPage,
+                'currentPage' => $page
+            ]);
         } catch (Exception $e) {
             return response()->json(['message' => 'HomeController >> index >> Failed to get movies: ' . $e->getMessage()], 500);
         }

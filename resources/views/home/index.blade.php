@@ -31,7 +31,6 @@ documentary, foreign films')
 
 @section('content')
 <div class="main_body">
-    <h2>Movie List</h2>
     @include('cards.index')
 </div>
 @stop
