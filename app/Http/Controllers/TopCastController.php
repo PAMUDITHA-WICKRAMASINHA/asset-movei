@@ -50,7 +50,7 @@ class TopCastController extends Controller
                 $imageName = $imageName . '.' . $image->getClientOriginalExtension();
                 
                 $imagePath = $image->storeAs('img/top_cast_images', $imageName, 'public');
-                $movie->image = 'assets/' . $imagePath;
+                $top_cast->image = 'assets/' . $imagePath;
             }
 
             $top_cast->save();

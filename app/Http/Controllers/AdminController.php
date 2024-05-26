@@ -71,6 +71,7 @@ class AdminController extends Controller
                 $image = $request->file('image');
                 $imageName = $request->input('title') . '_movie';
                 $imageName = str_replace(' ', '_', $imageName);
+                $imageName = str_replace(':', '_', $imageName);
                 $imageName = $imageName . '.' . $image->getClientOriginalExtension();
                 
                 $imagePath = $image->storeAs('img/movie_images', $imageName, 'public');

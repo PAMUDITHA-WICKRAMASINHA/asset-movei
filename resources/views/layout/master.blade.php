@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Asset Movie - Explore Movies and Downloads')</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta https-equiv="content-language" content="en">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 
-    <link rel="icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
-    <link rel="shortcut icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+
+    <title>@yield('title', 'Asset Movies - Download Latest Movie Torrents')</title>
 
     <!-- Meta Description -->
     <meta name="description"
@@ -15,8 +17,12 @@
     <!-- Meta Keywords -->
     <meta name="keywords"
         content="@yield('meta_keywords', 'asset movie, asset movies, asset movie store, movies, movie, asset, movie store, movies store, stores, torrents, movie downloads, torrents downloads, free movies, movie torrents, streaming, cinema, film, new releases, Hollywood, Bollywood, action, comedy, drama, thriller, romance, sci-fi, horror, documentary, foreign films')">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta name="google-site-verification" content="google2fb9dfdafd584d79">
+
+    <link rel="icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
+    <link rel="shortcut icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
+
     <style>
     ::-webkit-scrollbar {
         width: 6px;

@@ -50,7 +50,7 @@ class DirectorController extends Controller
                 $imageName = $imageName . '.' . $image->getClientOriginalExtension();
                 
                 $imagePath = $image->storeAs('img/director_images', $imageName, 'public');
-                $movie->image = 'assets/' . $imagePath;
+                $director->image = 'assets/' . $imagePath;
             }
 
             $director->save();

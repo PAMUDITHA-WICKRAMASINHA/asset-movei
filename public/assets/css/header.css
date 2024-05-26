@@ -25,9 +25,12 @@
   padding: 0 30px 0 20px;
 }
 
+.mian_data .main_logo_div .logo_name_head {
+  display: inline;
+}
+
 .mian_data .main_logo_div .logo_name {
-  text-decoration: none;
-  font-size: 40px;
+  display: inline;
   color: rgb(255, 255, 255);
   margin-left: 20px;
   font-style: italic;
@@ -35,11 +38,11 @@
 }
 
 .mian_data .main_logo_div .logo_name_secound {
-  text-decoration: none;
-  font-size: 30px;
+  display: inline;
   color: rgb(255, 255, 255);
   margin-left: 20px;
   font-style: italic;
+  letter-spacing: 0.0015em;
 }
 
 .mian_data .main_logo {
@@ -264,8 +267,9 @@
   text-align: left;
 }
 
-.hed_dics_col_right h1 {
+.hed_dics_col_right .movie_title_name {
   text-align: left;
+  font-size: 32px;
 }
 
 .button_trailer {
@@ -341,6 +345,9 @@
 }
 
 @media screen and (max-width: 1130px) {
+  .mian_data .main_logo_div .logo_name_head {
+    display: none;
+  }
   .mian_data .main_logo_div .logo_name {
     display: none;
   }
@@ -393,6 +400,10 @@
   }
   .button_trailer a:last-child:hover {
     padding: 10px 15px;
+  }
+  .mian_data .main_logo_div .logo_name_head {
+    display: inline-block;
+    font-size: 30px;
   }
   .mian_data .main_logo_div .logo_name {
     display: inline-block;
