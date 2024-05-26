@@ -2,7 +2,9 @@
     <div class="mian_data">
         <div class="main_logo_div">
             <a href="/"><img class="main_logo_secound" src="{{ url('assets/img/logo.webp') }}" alt="" /></a>
-            <a href="/" class="logo_name_secound">Asset Movies</a>
+            <header class="logo_name_head">
+                <h1 href="/" class="logo_name_secound">Asset Movies</h1>
+            </header>
         </div>
         <div class="mainNav__links_sec">
             <form action="{{ route('search') }}" method="GET" class="form">

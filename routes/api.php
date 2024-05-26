@@ -26,8 +26,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('admin', AdminController::class);
+Route::get('admin/get-all-movie', [AdminController::class, 'get_all']);
 Route::post('admin/add-format', [AdminController::class, 'addFormat']);
+Route::resource('admin', AdminController::class);
 
 Route::resource('directors', DirectorController::class);
 Route::resource('categories', CategoryController::class);

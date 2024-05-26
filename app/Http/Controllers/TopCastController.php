@@ -14,7 +14,13 @@ class TopCastController extends Controller
      */
     public function index()
     {
-        //
+        $top_casts = TopCast::all();
+
+        foreach ($top_casts as $top_casts) {
+            $top_casts->image = url($top_casts->image);
+        }
+        
+        return response()->json(['message' => 'Top Cast get successfully', 'top_casts' => $top_casts], 200);
     }
 
     /**
@@ -50,7 +56,7 @@ class TopCastController extends Controller
                 $imageName = $imageName . '.' . $image->getClientOriginalExtension();
                 
                 $imagePath = $image->storeAs('img/top_cast_images', $imageName, 'public');
-                $movie->image = 'assets/' . $imagePath;
+                $top_cast->image = 'assets/' . $imagePath;
             }
 
             $top_cast->save();
