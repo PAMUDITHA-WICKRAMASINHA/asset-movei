@@ -16,12 +16,12 @@ streaming, cinema, film, new releases, Hollywood, Bollywood, action, comedy, dra
 documentary, foreign films')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
 <noscript>
     <link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
 </noscript>
 
-<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
 <noscript>
     <link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
 </noscript>
