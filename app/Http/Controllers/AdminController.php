@@ -64,7 +64,7 @@ class AdminController extends Controller
             $validator = Validator::make($request->all(), [
                 'title' => 'required|string|max:255',
                 'duration' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'nullable|image|mimes:webp|max:2048',
                 'release_date' => 'required|date',
                 'director' => 'required|string',
                 'category' => 'required|string',

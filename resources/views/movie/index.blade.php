@@ -19,7 +19,7 @@ releases, Hollywood, Bollywood, action, comedy, drama, thriller, romance, sci-fi
 
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}">
 <noscript>
     <link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}">
 </noscript>
