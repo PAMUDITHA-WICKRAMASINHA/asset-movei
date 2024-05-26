@@ -14,7 +14,8 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        //
+        $Languages = Language::all();
+        return response()->json(['message' => 'Language get successfully', 'Languages' => $Languages], 200);
     }
 
     /**

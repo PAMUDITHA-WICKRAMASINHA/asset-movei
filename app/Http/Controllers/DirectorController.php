@@ -14,7 +14,13 @@ class DirectorController extends Controller
      */
     public function index()
     {
-        //
+        $directors = Director::all();
+
+        foreach ($directors as $director) {
+            $director->image = url($director->image);
+        }
+        
+        return response()->json(['message' => 'Director get successfully', 'directors' => $directors], 200);
     }
 
     /**

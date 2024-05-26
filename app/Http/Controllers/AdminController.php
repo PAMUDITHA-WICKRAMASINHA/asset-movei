@@ -28,6 +28,25 @@ class AdminController extends Controller
         }
     }
 
+    public function get_all()
+    {
+        try {
+            $movies = Movie::with('categories', 'top_casts', 'directors', 'formats', 'languages')->get();
+
+            foreach ($movies as $movie) {
+                $movie->image = url($movie->image);
+            }
+
+            return response()->json([
+                'message' => 'Movies retrieved successfully', 
+                'movies' => $movies,
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'MovieController >> get_all >> Failed to get movies: ' . $e->getMessage()], 500);
+        }
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

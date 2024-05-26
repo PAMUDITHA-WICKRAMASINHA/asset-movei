@@ -14,7 +14,8 @@ class FormatController extends Controller
      */
     public function index()
     {
-        //
+        $formats = Format::all();
+        return response()->json(['message' => 'Format get successfully', 'formats' => $formats], 200);
     }
 
     /**
