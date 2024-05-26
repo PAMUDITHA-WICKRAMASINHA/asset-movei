@@ -2,7 +2,9 @@
     <div class="mian_data">
         <div class="main_logo_div">
             <a href="/"><img class="main_logo" src="{{ url('assets/img/logo.webp') }}" alt="" /></a>
-            <a href="/" class="logo_name">Asset Movies</a>
+            <header class="logo_name_head">
+                <h1 href="/" class="logo_name">Asset Movies</h1>
+            </header>
         </div>
 
         <div class="mainNav__links">
@@ -39,8 +41,9 @@
                 </div>
                 <div class="hed_dics_col_right">
                     <p><b>{{ date('Y', strtotime($movie->release_date)) }}</b></p>
-                    <h1><b>{{ strlen($movie->title) > 25 ? substr($movie->title, 0, 25) . '...' : $movie->title }}</b>
-                    </h1>
+                    <p class="movie_title_name">
+                        <b>{{ strlen($movie->title) > 25 ? substr($movie->title, 0, 25) . '...' : $movie->title }}</b>
+                    </p>
                     <p class="movie_de">
                         {{ strlen($movie->description) > 100 ? substr($movie->description, 0, 100) . '...' : $movie->description }}
                     </p>
@@ -66,8 +69,9 @@
                     </div>
                     <div class="col-8 mobile_col_right">
                         <p><b>{{ date('Y', strtotime($movie->release_date)) }}</b></p>
-                        <h1><b>{{ strlen($movie->title) > 25 ? substr($movie->title, 0, 25) . '...' : $movie->title }}</b>
-                        </h1>
+                        <p class="movie_title_name">
+                            <b>{{ strlen($movie->title) > 25 ? substr($movie->title, 0, 25) . '...' : $movie->title }}</b>
+                        </p>
                         <p class="movie_de">
                             {{ strlen($movie->description) > 100 ? substr($movie->description, 0, 100) . '...' : $movie->description }}
                         </p>
