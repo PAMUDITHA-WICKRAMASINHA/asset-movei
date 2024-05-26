@@ -12,6 +12,6 @@
             <li class="list-inline-item"><a href="{{ '/movie/latest' }}">Latest</a></li>
             <li class="list-inline-item"><a href="#">Contact</a></li>
         </ul>
-        <p class="copyright">Asset Movie | Powered By Asset Tec &copy; {{ date('Y') }}</p>
+        <p class="copyright">Asset Movies | Powered By Asset Tec &copy; {{ date('Y') }}</p>
     </footer>
 </div>

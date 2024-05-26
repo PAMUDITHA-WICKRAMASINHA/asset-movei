@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
 
-    <title>@yield('title', 'Asset Movie - Explore Movies and Downloads')</title>
+    <title>@yield('title', 'Asset Movies - Explore Movies and Downloads')</title>
 
     <meta name="description"
         content="@yield('meta_description', 'asset movies offers an extensive library of movies spanning multiple genres and languages. Discover blockbuster hits, indie gems, and cult classics. Dive into detailed movie descriptions, watch trailers, and download torrents directly. Whether you are a cinephile or casual viewer, asset movies is your go-to destination for cinematic exploration.')">

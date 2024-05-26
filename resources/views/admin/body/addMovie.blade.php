@@ -1,4 +1,4 @@
-@extends('admin.master') @section('title', 'Asset Movie | Admin')
+@extends('admin.master') @section('title', 'Asset Movies | Admin')
 @section('admin_styles')
 <!-- cards style -->
 <link rel="stylesheet" href="{{ asset('assets/css/admin_movie.css') }}" media="print" onload="this.media='all'" />
