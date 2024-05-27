@@ -18,7 +18,7 @@
             </div>
             <div>
                 @foreach ($movie->categories as $category)
-                <span class="category-card">{{$category->categoty}}</span>
+                <span class="category-card">{{$category->category}}</span>
                 @endforeach
             </div>
             <div class="button_trailer">

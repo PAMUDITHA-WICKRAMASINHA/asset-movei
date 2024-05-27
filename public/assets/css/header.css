@@ -455,6 +455,17 @@
   .container-data {
     margin-left: 20px;
   }
+  .mian_data .main_logo_div .logo_name_head {
+    display: inline-block;
+  }
+  .mian_data .main_logo_div .logo_name {
+    display: inline-block;
+    font-size: 25px;
+  }
+  .mian_data .main_logo_div .logo_name_secound {
+    display: inline-block;
+    font-size: 25px;
+  }
   .mobile_col_right {
     display: block;
     text-align: start;
