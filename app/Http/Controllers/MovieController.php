@@ -19,19 +19,19 @@ class MovieController extends Controller
                     
             $metaKeywords = '';
             foreach ($languages as $language) {
-                $metaKeywords .= ', ' . $language->language;
+                $metaKeywords .= ', ' . $language->language . ' movies';
             }
 
             foreach ($movie->categories as $category) {
-                $metaKeywords .= ', ' . $category->category;
+                $metaKeywords .= ', ' . $category->category . ' movies';
             }
 
             foreach ($movie->top_casts as $top_cast) {
-                $metaKeywords .= ', ' . $top_cast->name;
+                $metaKeywords .= ', ' . $top_cast->name . ' movies';
             }
 
             foreach ($movie->directors as $director) {
-                $metaKeywords .= ', ' . $director->name;
+                $metaKeywords .= ', ' . $director->name . ' movies';
             }
             
             $metaKeywords .= ', ' . $movie->title;
