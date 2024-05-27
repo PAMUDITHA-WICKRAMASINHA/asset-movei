@@ -89,10 +89,16 @@ class HomeController extends Controller
             $totalMovies = Movie::count();
     
             $languages = Language::all();
+
+            $categories = Category::all();
     
             $metaKeywords = '';
             foreach ($languages as $language) {
-                $metaKeywords .= ', ' . $language->language;
+                $metaKeywords .= ', ' . $language->language . ' movies';
+            }
+
+            foreach ($categories as $category) {
+                $metaKeywords .= ', ' . $category->category . ' movies';
             }
     
             foreach ($movies as $movie) {
