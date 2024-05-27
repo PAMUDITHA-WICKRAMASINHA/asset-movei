@@ -179,8 +179,8 @@ h1{
 }
 
 .movie-download{
-    text-decoration: none;
-    color: $white-color;
+    text-decoration: none !important;
+    color: $white-color !important;
     border: 2px solid $white-color;
     font-size: 13px;
     padding: 0 5px 3px 5px;
