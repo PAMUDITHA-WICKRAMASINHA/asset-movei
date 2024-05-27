@@ -71,13 +71,14 @@
   font-size: 14px;
   margin-left: 30px;
   font-weight: 500;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255) !important;
   transform: translateY(0px);
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .mainNav__link:hover {
   border-bottom: 3px solid rgb(255, 0, 0);
+  text-decoration: none;
 }
 
 .mainNav__icon {

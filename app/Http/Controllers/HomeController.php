@@ -78,13 +78,35 @@ class HomeController extends Controller
         }
     }
     
-    public function latest()
+    public function latest(Request $request)
     {
         try {;
-            $movies = Movie::orderBy('created_at', 'desc')->get();
+            $perPage = 10;
+            $page = $request->input('page', 1);
+            $offset = ($page - 1) * $perPage;
+    
+            $movies = Movie::orderBy('created_at', 'desc')->offset($offset)->limit($perPage)->get();
+            $totalMovies = Movie::count();
+    
             $languages = Language::all();
-            
-            return view('home.index', compact('movies', 'languages'));
+    
+            $metaKeywords = '';
+            foreach ($languages as $language) {
+                $metaKeywords .= ', ' . $language->language;
+            }
+    
+            foreach ($movies as $movie) {
+                $metaKeywords .= ', ' . $movie->title;
+            }
+    
+            return view('home.index', [
+                'movies' => $movies,
+                'languages' => $languages,
+                'metaKeywords' => $metaKeywords,
+                'totalMovies' => $totalMovies,
+                'perPage' => $perPage,
+                'currentPage' => $page
+            ]);
         } catch (Exception $e) {
             return response()->json(['message' => 'HomeController >> latest >> Failed to filter movies: ' . $e->getMessage()], 500);
         }
