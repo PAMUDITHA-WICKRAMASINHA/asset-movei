@@ -70,6 +70,7 @@ class AdminController extends Controller
                 'category' => 'required|string',
                 'language' => 'required|string',
                 'top_cast' => 'required|string',
+                'rate' => 'required|string',
                 'trailer' => 'required|url',
                 'description' => 'required|string',
             ]);
@@ -83,6 +84,7 @@ class AdminController extends Controller
             $movie->title = $request->input('title');
             $movie->duration = $request->input('duration');
             $movie->release_date = $request->input('release_date');
+            $movie->rate = $request->input('rate');
             $movie->trailer = $request->input('trailer');
             $movie->description = $request->input('description');
         
