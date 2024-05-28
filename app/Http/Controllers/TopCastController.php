@@ -16,8 +16,8 @@ class TopCastController extends Controller
     {
         $top_casts = TopCast::all();
 
-        foreach ($top_casts as $top_casts) {
-            $top_casts->image = url($top_casts->image);
+        foreach ($top_casts as $top_cast) {
+            $top_cast->image = url($top_cast->image);
         }
         
         return response()->json(['message' => 'Top Cast get successfully', 'top_casts' => $top_casts], 200);
