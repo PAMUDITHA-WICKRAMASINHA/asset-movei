@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('title', 'Asset Movies - Explore International Cinema And Torrents Download Movies')
 
@@ -16,19 +16,16 @@ film, new releases, Hollywood, Bollywood')
 
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
-<noscript>
-    <link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
-</noscript>
-
-<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
-<noscript>
-    <link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
-</noscript>
+@vite([
+'resources/css/cards.css',
+'resources/css/home.css'
+])
 @stop
 
 @section('scripts')
-<script src="{{ asset('assets/js/cards.js') }}"></script>
+@vite([
+'resources/js/cards.js'
+])
 @stop
 
 @section('content')

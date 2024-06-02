@@ -1,16 +1,21 @@
 <!-- public css -->
-<!-- <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}"> -->
-<link rel="stylesheet" href="{{ asset('assets/css/header.css') }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ asset('assets/css/header.css') }}">
 <noscript>
     <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}">
 </noscript>
 
-<link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}" media="print" onload="this.media='all'">
-<noscript>
-    <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
-</noscript>
+@vite([
+'resources/css/header.css',
+'resources/css/footer.css'
+])
 
 <!-- bootstrap -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"
+    media="print" onload="this.media='all'">
+<noscript>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</noscript>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"
     media="print" onload="this.media='all'">

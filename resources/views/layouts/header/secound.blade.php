@@ -1,7 +1,8 @@
 <div class="text-center main_hed_sec">
     <div class="mian_data">
         <div class="main_logo_div">
-            <a href="/"><img class="main_logo_secound" src="{{ url('assets/img/logo.webp') }}" alt="" /></a>
+            <a href="/"><img class="main_logo_secound" src="{{ route('showMainImage', ['filename' => 'logo.webp']) }}"
+                    alt="" /></a>
             <header class="logo_name_head">
                 <h1 href="/" class="logo_name_secound">Asset Movies</h1>
             </header>
@@ -20,7 +21,7 @@
                 <button class="dropbtn">Languages <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                 <div class="dropdown-content">
                     @foreach ($languages as $language)
-                    <a href="{{ '/movie/language/' . $language->id }}">{{$language->language}}</a>
+                    <a href="{{ '/movie/language/?id=' . $language->id }}">{{$language->language}}</a>
                     @endforeach
                 </div>
             </div>
@@ -46,7 +47,7 @@
                     aria-hidden="true"></i></button>
             <div class="dropdown-content-nav">
                 @foreach ($languages as $language)
-                <a href="{{ '/movie/language/' . $language->id }}">{{$language->language}}</a>
+                <a href="{{ '/movie/language/?id=' . $language->id }}">{{$language->language}}</a>
                 @endforeach
             </div>
         </div>

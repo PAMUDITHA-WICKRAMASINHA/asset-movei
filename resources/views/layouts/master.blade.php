@@ -20,8 +20,8 @@
 
     <meta name="google-site-verification" content="zUWs5NmnYms_HumIJsjqijEWCiE_0yxGldLLvq3ZNVc" />
 
-    <link rel="icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
-    <link rel="shortcut icon" type="image/webp" href="{{ url('assets/img/logo.webp') }}">
+    <link rel="icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo.webp']) }}">
+    <link rel="shortcut icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo.webp']) }}">
 
     <style>
     ::-webkit-scrollbar {
@@ -29,11 +29,11 @@
     }
 
     ::-webkit-scrollbar-track {
-        background: $header-footer-color;
+        background: rgb(0, 0, 0);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: $red-color;
+        background: rgb(255, 255, 255);
         border-radius: 5px;
     }
 
@@ -61,16 +61,16 @@
         font-family: "Raleway", sans-serif;
     }
     </style>
-    @include('layout.style')
+    @include('layouts.style')
 </head>
 
 <body>
-    @include('layout.header.main')
+    @include('layouts.header.main')
     <div id="main">
         @yield('content')
     </div>
-    @include('layout.footer.index')
-    @include('layout.script')
+    @include('layouts.footer.index')
+    @include('layouts.script')
 </body>
 
 </html>

@@ -39,7 +39,6 @@ class DirectorController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:webp|max:2048',
             ]);
 
             if ($validator->fails()) {
@@ -60,7 +59,7 @@ class DirectorController extends Controller
             }
 
             $director->save();
-
+            $director->image =  base64_encode($director->image);
 
             return response()->json(['message' => 'Director created successfully', 'director' => $director], 201);
         } catch (Exception $e) {

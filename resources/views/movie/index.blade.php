@@ -1,4 +1,4 @@
-@extends('layout.secound')
+@extends('layouts.secound')
 
 @section('title', $movie->title . ' - Watch on Asset Movies And Download Torrents Movies')
 
@@ -27,14 +27,15 @@ film, new releases, Hollywood, Bollywood'
 
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}">
-<noscript>
-    <link rel="stylesheet" href="{{ asset('assets/css/movie.css') }}">
-</noscript>
+@vite([
+'resources/css/movie.css'
+])
 @stop
 
 @section('scripts')
-<script src="{{ asset('assets/js/movie.js') }}"></script>
+@vite([
+'resources/js/movie.js'
+])
 @stop
 
 @section('content')

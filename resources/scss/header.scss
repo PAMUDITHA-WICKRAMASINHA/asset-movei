@@ -5,13 +5,6 @@
     border-bottom: 1px solid $white-color;
     background-color: $header-footer-color;
     height: 500px;
-    background-image: linear-gradient(
-            to left,
-            rgba(245, 246, 252, 0),
-            rgb(0, 0, 0)
-        ),
-        url(../img/m_logo.webp);
-    background-size: cover;
 }
 
 .main_hed_sec {
@@ -19,13 +12,6 @@
     border-bottom: 1px solid $white-color;
     background-color: $header-footer-color;
     height: 75px;
-    background-image: linear-gradient(
-            to left,
-            rgba(245, 246, 252, 0),
-            rgb(0, 0, 0)
-        ),
-        url(../img/m_logo.webp);
-    background-size: cover;
 }
 
 .mian_data {
@@ -452,22 +438,7 @@
 
 @media screen and (max-width: 450px) {
     .main_hed {
-        background-image: linear-gradient(
-                to left,
-                rgba(245, 246, 252, 0),
-                rgb(0, 0, 0)
-            ),
-            url(../img/s_logo.webp);
         height: 300px;
-    }
-
-    .main_hed_sec {
-        background-image: linear-gradient(
-                to left,
-                rgba(245, 246, 252, 0),
-                rgb(0, 0, 0)
-            ),
-            url(../img/s_logo.webp);
     }
 
     .container-data {
