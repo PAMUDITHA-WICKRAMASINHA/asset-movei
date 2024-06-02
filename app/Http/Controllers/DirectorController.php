@@ -6,6 +6,8 @@ use App\Models\Director;
 use Illuminate\Http\Request;
 use Validator;
 use Exception;
+use App\Services\CurlService;
+use Illuminate\Support\Facades\Storage;
 
 class DirectorController extends Controller
 {
@@ -52,14 +54,24 @@ class DirectorController extends Controller
                 $image = $request->file('image');
                 $imageName = $request->input('name');
                 $imageName = str_replace(' ', '_', $imageName);
-                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                // $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+
+                $curlService = new CurlService();
+                $response = $curlService->getWebpImage($image, $imageName);
+  
+                if(!$response['success']){
+                    return response()->json(['message' => "Can't convert image to webp", 'response' => $response], 400);
+                }
                 
-                $imagePath = $image->storeAs('img/director_images', $imageName, 'public');
+                $image = file_get_contents($response['optimized_image_url']);
+                $imagePath = 'img/director_images/' . $imageName . '.webp';
+                
+                Storage::disk('public')->put($imagePath, $image);
+                
                 $director->image = 'assets/' . $imagePath;
             }
 
             $director->save();
-            $director->image =  base64_encode($director->image);
 
             return response()->json(['message' => 'Director created successfully', 'director' => $director], 201);
         } catch (Exception $e) {
