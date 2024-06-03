@@ -10,6 +10,8 @@ use App\Models\TopCast;
 use App\Models\Format; 
 use Validator;
 use Exception;
+use App\Services\CurlService;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -64,7 +66,7 @@ class AdminController extends Controller
             $validator = Validator::make($request->all(), [
                 'title' => 'required|string|max:255',
                 'duration' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:webp|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'release_date' => 'required|date',
                 'director' => 'required|string',
                 'category' => 'required|string',
@@ -93,9 +95,19 @@ class AdminController extends Controller
                 $imageName = $request->input('title') . '_movie';
                 $imageName = str_replace(' ', '_', $imageName);
                 $imageName = str_replace(':', '_', $imageName);
-                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                // $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                $curlService = new CurlService();
+                $response = $curlService->getWebpImage($image, $imageName);
+  
+                if(!$response['success']){
+                    return response()->json(['message' => "Can't convert image to webp", 'response' => $response], 400);
+                }
                 
-                $imagePath = $image->storeAs('img/movie_images', $imageName, 'public');
+                $image = file_get_contents($response['optimized_image_url']);
+                $imagePath = 'img/movie_images/' . $imageName . '.webp';
+                
+                Storage::disk('public')->put($imagePath, $image);
+
                 $movie->image = 'assets/' . $imagePath;
             }
             

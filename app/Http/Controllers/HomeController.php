@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         try {
-            $perPage = 10;
+            $perPage = (int) env('MOVIES_PAGE_PAGINATION', 20);
             $page = $request->input('page', 1);
             $offset = ($page - 1) * $perPage;
     
@@ -49,7 +49,7 @@ class HomeController extends Controller
         try {
             $query = $request->input('query');
             
-            $perPage = 10;
+            $perPage = (int) env('MOVIES_PAGE_PAGINATION', 20);;
             $page = $request->input('page', 1);
             $offset = ($page - 1) * $perPage;
     
@@ -88,7 +88,7 @@ class HomeController extends Controller
     public function language(Request $request)
     {
         try {
-            $perPage = 10;
+            $perPage = (int) env('MOVIES_PAGE_PAGINATION', 20);;
             $page = $request->input('page', 1);
             $offset = ($page - 1) * $perPage;
     
@@ -133,7 +133,7 @@ class HomeController extends Controller
     public function latest(Request $request)
     {
         try {;
-            $perPage = 10;
+            $perPage = (int) env('MOVIES_PAGE_PAGINATION', 20);;
             $page = $request->input('page', 1);
             $offset = ($page - 1) * $perPage;
     

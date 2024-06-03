@@ -6,6 +6,8 @@ use App\Models\TopCast;
 use Illuminate\Http\Request;
 use Validator;
 use Exception;
+use App\Services\CurlService;
+use Illuminate\Support\Facades\Storage;
 
 class TopCastController extends Controller
 {
@@ -53,9 +55,20 @@ class TopCastController extends Controller
                 $image = $request->file('image');
                 $imageName = $request->input('name');
                 $imageName = str_replace(' ', '_', $imageName);
-                $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                // $imageName = $imageName . '.' . $image->getClientOriginalExtension();
                 
-                $imagePath = $image->storeAs('img/top_cast_images', $imageName, 'public');
+                $curlService = new CurlService();
+                $response = $curlService->getWebpImage($image, $imageName);
+  
+                if(!$response['success']){
+                    return response()->json(['message' => "Can't convert image to webp", 'response' => $response], 400);
+                }
+                
+                $image = file_get_contents($response['optimized_image_url']);
+                $imagePath = 'img/top_cast_images/' . $imageName . '.webp';
+                
+                Storage::disk('public')->put($imagePath, $image);
+
                 $top_cast->image = 'assets/' . $imagePath;
             }
 
