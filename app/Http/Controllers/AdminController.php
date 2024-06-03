@@ -21,10 +21,10 @@ class AdminController extends Controller
     public function index()
     {
         try {
-            $directors = Director::all();
-            $top_casts = TopCast::all();
-            $categories = Category::all();
-            return view('admin.body.addMovie', compact('directors', 'top_casts', 'categories'));
+            // $directors = Director::all();
+            // $top_casts = TopCast::all();
+            // $categories = Category::all();
+            return view('admin.layouts.master');
         } catch (Exception $e) {
             return response()->json(['message' => 'AdminController >> index >> Failed to get movie: ' . $e->getMessage()], 500);
         }

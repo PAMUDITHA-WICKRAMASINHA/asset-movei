@@ -1,41 +1,48 @@
-var slides = document.querySelectorAll(".slide");
-var currentSlide = 0;
-
-function toggleSidebar() {
-    var sidebar = document.getElementById("sidebar");
-    sidebar.style.width = sidebar.style.width === "320px" ? "0" : "320px";
-}
-
-nextSlide()
-
-var slideInterval = setInterval(nextSlide,5000);
-  
-function nextSlide(){
-  if(slides.length > 0){
-    slides[currentSlide].classList.remove("showing");
-    currentSlide = (currentSlide+1)%slides.length;
-    slides[currentSlide].classList.add("showing");
-  }
-}
-
-function prevSlide(){
-  if(currentSlide > 0){
-  slides[currentSlide].classList.remove("showing");
-  currentSlide = (currentSlide-1)%slides.length;
-  slides[currentSlide].classList.add("showing");
-  }
-}
-
-var dropbtn = document.getElementById("dropbtn-nav");
-var dropdownContent = dropbtn.nextElementSibling;
-
-dropbtn.addEventListener("click", function() {
-    if (dropbtn.classList.contains("active")) {
-        dropbtn.classList.remove("active");
-         dropdownContent.style.display = "none";
-    } else {
-        dropbtn.classList.add("active");
-        dropdownContent.style.display = "block";
-    }
+$(document).ready(function() {
+    $('#openSidebar').click(function() {
+        toggleSidebar();
+    });
+    $('.closebtn').click(function() {
+        toggleSidebar();
+    });
 });
 
+$(document).ready(function() {
+  var slides = $(".slide");
+  var currentSlide = 0;
+  nextSlide()
+  var slideInterval = setInterval(nextSlide, 5000);
+
+  function nextSlide() {
+    slides.eq(currentSlide).removeClass("showing");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides.eq(currentSlide).addClass("showing");
+  }
+
+  function prevSlide() {
+    slides.eq(currentSlide).removeClass("showing");
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    slides.eq(currentSlide).addClass("showing");
+  }
+
+  $("#prevBtn").click(function() {
+    prevSlide();
+  });
+
+  $("#nextBtn").click(function() {
+    nextSlide();
+  });
+
+  $("#dropbtn-nav").click(function() {
+    $(".dropdown-content").toggle();
+  });
+});
+
+
+$(document).ready(function() {
+  $("#dropbtn-nav").click(function() {
+    var dropdownContent = $(this).next();
+    dropdownContent.toggle();
+    $(this).toggleClass("active", dropdownContent.is(":visible"));
+  });
+});

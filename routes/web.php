@@ -20,7 +20,7 @@ use App\Http\Controllers\ImageController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('logout');;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/movie/search', [HomeController::class, 'search'])->name('search');
@@ -36,7 +36,7 @@ Route::get('image/directors/{filename}', [ImageController::class, 'showDirectors
 Route::get('image/topcasts/{filename}', [ImageController::class, 'showTopCastsImage'])->name('showTopCastsImage');
 
 
-// Route::resource('admin', AdminController::class);
+Route::resource('admin', AdminController::class);
 // Route::resource('directors', DirectorController::class);
 // Route::resource('categories', CategoryController::class);
 // Route::resource('top_casts', TopCastController::class);

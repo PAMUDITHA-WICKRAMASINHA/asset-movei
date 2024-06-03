@@ -5,8 +5,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css', 
-                'resources/css/admin_movie.css',
+                'resources/css/app.css',
                 'resources/css/cards.css', 
                 'resources/css/footer.css', 
                 'resources/css/header.css', 
@@ -16,10 +15,14 @@ export default defineConfig({
                 'resources/css/movie.css',
 
                 'resources/js/app.js',
-                'resources/js/admin_movie.js',
                 'resources/js/cards.js',
                 'resources/js/header.js',
                 'resources/js/movie.js',
+
+                //admin
+                'resources/views/admin/assets/css/app.css',
+
+                'resources/views/admin/assets/js/app.js'
             ],
             refresh: true,
         }),
