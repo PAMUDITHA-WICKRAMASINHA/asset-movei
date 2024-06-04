@@ -18,11 +18,6 @@ export default defineConfig({
                 'resources/js/cards.js',
                 'resources/js/header.js',
                 'resources/js/movie.js',
-
-                //admin
-                'resources/views/admin/assets/css/app.css',
-
-                'resources/views/admin/assets/js/app.js'
             ],
             refresh: true,
         }),

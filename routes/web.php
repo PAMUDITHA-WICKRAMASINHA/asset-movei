@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\Admin\MoviesController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TopCastController;
@@ -36,6 +37,7 @@ Route::get('image/movies/{filename}', [ImageController::class, 'showMoviesImage'
 Route::get('image/directors/{filename}', [ImageController::class, 'showDirectorsImage'])->name('showDirectorsImage');
 Route::get('image/topcasts/{filename}', [ImageController::class, 'showTopCastsImage'])->name('showTopCastsImage');
 
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/movies-list', [MoviesController::class, 'index'])->name('admin.moviesList');
 
 
