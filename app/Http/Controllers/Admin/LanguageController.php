@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Language;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use Exception;
+use App\Models\Language;
 
 class LanguageController extends Controller
 {

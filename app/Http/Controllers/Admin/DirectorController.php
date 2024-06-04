@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Director;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use Exception;
+use App\Models\Director;
 use App\Services\CurlService;
 use Illuminate\Support\Facades\Storage;
 

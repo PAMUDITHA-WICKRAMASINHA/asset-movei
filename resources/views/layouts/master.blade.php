@@ -65,11 +65,11 @@
 </head>
 
 <body>
-    @include('layouts.header.main')
+    @include('layouts.headers.main')
     <div id="main">
         @yield('content')
     </div>
-    @include('layouts.footer.index')
+    @include('layouts.footers.index')
     @include('layouts.script')
 </body>
 

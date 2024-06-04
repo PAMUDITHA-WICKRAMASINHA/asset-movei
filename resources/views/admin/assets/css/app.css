@@ -44,6 +44,10 @@ body {
     margin-right: 10px;
 }
 
+.dropdown-item {
+    font-size: 15px;
+}
+
 .sidebar .submenu {
     display: none;
 }

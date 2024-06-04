@@ -40,6 +40,6 @@ film, new releases, Hollywood, Bollywood'
 
 @section('content')
 <div class="main_tag_movie">
-    @include('movie.showMovie', ['movie' => $movie])
+    @include('movies.showMovie', ['movie' => $movie])
 </div>
 @stop

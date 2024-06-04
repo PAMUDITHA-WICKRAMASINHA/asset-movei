@@ -11,11 +11,15 @@
 
 <body>
 
-    @include('admin.layouts.header.index')
+    @include('admin.layouts.headers.index')
 
-    @include('admin.layouts.sideMenu.index')
-
-    @include('admin.layouts.footer.index')
+    <div class="wrapper">
+        @include('admin.layouts.sideMenu.index')
+        <div class="content">
+            @yield('content')
+        </div>
+    </div>
+    @include('admin.layouts.footers.index')
 
     @include('admin.layouts.script')
 </body>

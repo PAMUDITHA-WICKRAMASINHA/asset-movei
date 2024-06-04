@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Movie; 
@@ -44,7 +45,7 @@ class MovieController extends Controller
 
             $metaKeywords .= ', ' . $movie->title;
             
-            return view('movie.index', compact('movie', 'latestMovies', 'languages', 'metaKeywords'));
+            return view('movies.index', compact('movie', 'latestMovies', 'languages', 'metaKeywords'));
         } catch (Exception $e) {
             return response()->json(['message' => 'MovieController >> index >> Failed to get movies: ' . $e->getMessage()], 500);
         }

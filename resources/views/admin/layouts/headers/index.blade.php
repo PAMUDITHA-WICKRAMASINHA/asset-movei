@@ -1,11 +1,4 @@
 <header class="navbar navbar-dark bg-dark">
-    <div>
-        <a class="navbar-brand" href="#">Admin Dashboard</a>
-        <span class="minimize-btn">
-            <i class="fas fa-bars"></i>
-        </span>
-    </div>
-
     <div class="dropdown ml-auto">
         <button class="btn btn-secondary" type="button">
             <i class="fas fa-bell"></i>

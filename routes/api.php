@@ -4,12 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\TopCastController;
-use App\Http\Controllers\DirectorController;
-use App\Http\Controllers\FormatController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\TopCastController;
+use App\Http\Controllers\Admin\DirectorController;
+use App\Http\Controllers\Admin\FormatController;
 
 /*
 |--------------------------------------------------------------------------
