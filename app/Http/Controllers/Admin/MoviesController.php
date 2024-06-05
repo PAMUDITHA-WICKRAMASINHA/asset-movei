@@ -88,4 +88,15 @@ class MoviesController extends Controller
         }
     }
     
+    public function addMovie()
+    {
+        try {
+            return view('admin.movies.addMovie');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'MoviesController >> addMovie >> Failed to get addMovie: ' . $e->getMessage()
+            ], 500);
+        }
+    }
 }

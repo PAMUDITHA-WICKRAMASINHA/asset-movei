@@ -3,29 +3,9 @@
 @section('title', 'Movies List')
 
 @section('styles')
-<style>
-table.dataTable td {
-    text-align: left;
-}
-
-.movie-image {
-    width: 50px;
-    height: auto;
-}
-
-#movies-list th {
-    font-weight: bold;
-}
-
-.chip {
-    display: inline-block;
-    padding: 2px 5px;
-    margin: 3px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-</style>
-@vite([])
+@vite([
+'resources/views/admin/assets/css/moviesList.css'
+])
 @stop
 
 @section('content')
@@ -218,24 +198,5 @@ $(document).ready(function() {
     }
 });
 </script>
-<!-- <script>
-$(function() {
-    $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
-});
-</script> -->
 @vite([])
 @stop
