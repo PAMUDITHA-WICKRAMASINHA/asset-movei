@@ -98,8 +98,6 @@ table.dataTable td {
 @section('scripts')
 <script>
 $(document).ready(function() {
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
     $('#movies-list').DataTable({
         paging: true,
         lengthChange: true,
@@ -109,9 +107,9 @@ $(document).ready(function() {
         serverSide: true,
         ajax: {
             url: '{{ env("APP_URL") }}/admin/get-all-movies',
-            type: 'GET',
+            type: 'POST',
             headers: {
-                'X-CSRF-TOKEN': csrfToken
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             dataSrc: function(json) {
                 if (json.data) {

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\MoviesController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
@@ -37,8 +38,15 @@ Route::get('image/movies/{filename}', [ImageController::class, 'showMoviesImage'
 Route::get('image/directors/{filename}', [ImageController::class, 'showDirectorsImage'])->name('showDirectorsImage');
 Route::get('image/topcasts/{filename}', [ImageController::class, 'showTopCastsImage'])->name('showTopCastsImage');
 
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/movies-list', [MoviesController::class, 'index'])->name('admin.moviesList');
 
+Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
+Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login');
 
-Route::get('/admin/get-all-movies', [MoviesController::class, 'get_all_movies']);
+Route::get('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
+Route::middleware('adminLogin')->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/movies-list', [MoviesController::class, 'index'])->name('admin.moviesList');
+    
+    Route::post('/admin/get-all-movies', [MoviesController::class, 'get_all_movies']);
+});

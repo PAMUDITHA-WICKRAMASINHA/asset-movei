@@ -1,8 +1,4 @@
-/*!
- * AdminLTE v3.2.0 (https://adminlte.io)
- * Copyright 2014-2022 Colorlib <https://colorlib.com>
- * Licensed under MIT (https://github.com/ColorlibHQ/AdminLTE/blob/master/LICENSE)
- */
+
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery')) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery'], factory) :
@@ -13,12 +9,6 @@
 
   var $__default = /*#__PURE__*/_interopDefaultLegacy($);
 
-  /**
-   * --------------------------------------------
-   * AdminLTE CardRefresh.js
-   * License MIT
-   * --------------------------------------------
-   */
   /**
    * Constants
    * ====================================================
@@ -179,13 +169,6 @@
     $__default["default"].fn[NAME$e] = JQUERY_NO_CONFLICT$e;
     return CardRefresh._jQueryInterface;
   };
-
-  /**
-   * --------------------------------------------
-   * AdminLTE CardWidget.js
-   * License MIT
-   * --------------------------------------------
-   */
   /**
    * Constants
    * ====================================================
@@ -406,12 +389,6 @@
     return CardWidget._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE ControlSidebar.js
-   * License MIT
-   * --------------------------------------------
-   */
   /**
    * Constants
    * ====================================================
@@ -722,12 +699,7 @@
     return ControlSidebar._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE DirectChat.js
-   * License MIT
-   * --------------------------------------------
-   */
+
   /**
    * Constants
    * ====================================================
@@ -801,12 +773,7 @@
     return DirectChat._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE Dropdown.js
-   * License MIT
-   * --------------------------------------------
-   */
+
   /**
    * Constants
    * ====================================================
@@ -941,12 +908,7 @@
     return Dropdown._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE ExpandableTable.js
-   * License MIT
-   * --------------------------------------------
-   */
+
   /**
     * Constants
     * ====================================================
@@ -1064,12 +1026,6 @@
   };
 
   /**
-   * --------------------------------------------
-   * AdminLTE Fullscreen.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
    * Constants
    * ====================================================
    */
@@ -1181,12 +1137,6 @@
     return Fullscreen._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE IFrame.js
-   * License MIT
-   * --------------------------------------------
-   */
   /**
    * Constants
    * ====================================================
@@ -1630,27 +1580,27 @@
     } // Static
     ;
 
-    IFrame._jQueryInterface = function _jQueryInterface(config) {
-      if ($__default["default"](SELECTOR_DATA_TOGGLE$1).length > 0) {
-        var data = $__default["default"](this).data(DATA_KEY$7);
+    // IFrame._jQueryInterface = function _jQueryInterface(config) {
+    //   if ($__default["default"](SELECTOR_DATA_TOGGLE$1).length > 0) {
+    //     var data = $__default["default"](this).data(DATA_KEY$7);
 
-        if (!data) {
-          data = $__default["default"](this).data();
-        }
+    //     if (!data) {
+    //       data = $__default["default"](this).data();
+    //     }
 
-        var _options = $__default["default"].extend({}, Default$7, typeof config === 'object' ? config : data);
+    //     var _options = $__default["default"].extend({}, Default$7, typeof config === 'object' ? config : data);
 
-        localStorage.setItem('AdminLTE:IFrame:Options', JSON.stringify(_options));
-        var plugin = new IFrame($__default["default"](this), _options);
-        $__default["default"](this).data(DATA_KEY$7, typeof config === 'object' ? config : data);
+    //     localStorage.setItem('AdminLTE:IFrame:Options', JSON.stringify(_options));
+    //     var plugin = new IFrame($__default["default"](this), _options);
+    //     $__default["default"](this).data(DATA_KEY$7, typeof config === 'object' ? config : data);
 
-        if (typeof config === 'string' && /createTab|openTabSidebar|switchTab|removeActiveTab/.test(config)) {
-          plugin[config]();
-        }
-      } else {
-        new IFrame($__default["default"](this), JSON.parse(localStorage.getItem('AdminLTE:IFrame:Options')))._initFrameElement();
-      }
-    };
+    //     if (typeof config === 'string' && /createTab|openTabSidebar|switchTab|removeActiveTab/.test(config)) {
+    //       plugin[config]();
+    //     }
+    //   } else {
+    //     new IFrame($__default["default"](this), JSON.parse(localStorage.getItem('AdminLTE:IFrame:Options')))._initFrameElement();
+    //   }
+    // };
 
     return IFrame;
   }();
@@ -1676,12 +1626,6 @@
     return IFrame._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE Layout.js
-   * License MIT
-   * --------------------------------------------
-   */
   /**
    * Constants
    * ====================================================
@@ -1929,12 +1873,6 @@
   };
 
   /**
-   * --------------------------------------------
-   * AdminLTE PushMenu.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
    * Constants
    * ====================================================
    */
@@ -2154,12 +2092,6 @@
     return PushMenu._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE SidebarSearch.js
-   * License MIT
-   * --------------------------------------------
-   */
   /**
    * Constants
    * ====================================================
@@ -2451,12 +2383,6 @@
   };
 
   /**
-   * --------------------------------------------
-   * AdminLTE NavbarSearch.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
    * Constants
    * ====================================================
    */
@@ -2558,12 +2484,6 @@
     return NavbarSearch._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE Toasts.js
-   * License MIT
-   * --------------------------------------------
-   */
   /**
    * Constants
    * ====================================================
@@ -2761,12 +2681,6 @@
   };
 
   /**
-   * --------------------------------------------
-   * AdminLTE TodoList.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
    * Constants
    * ====================================================
    */
@@ -2874,12 +2788,6 @@
     return TodoList._jQueryInterface;
   };
 
-  /**
-   * --------------------------------------------
-   * AdminLTE Treeview.js
-   * License MIT
-   * --------------------------------------------
-   */
   /**
    * Constants
    * ====================================================
