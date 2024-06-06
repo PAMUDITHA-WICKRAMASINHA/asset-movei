@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Models\Category;
+use App\Models\Director;
+use App\Models\TopCast;
+use App\Models\Language;
+use Validator;
+use Exception;
 
 class MoviesController extends Controller
 {
@@ -91,7 +97,79 @@ class MoviesController extends Controller
     public function addMovie()
     {
         try {
-            return view('admin.movies.addMovie');
+            $directors = Director::all();
+            $top_casts = TopCast::all();
+            $categories = Category::all();
+            $languages = Language::all();
+
+            return view('admin.movies.addMovie', compact('directors', 'top_casts', 'categories', 'languages'));
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'MoviesController >> addMovie >> Failed to get addMovie: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function add_new_movie(Request $request)
+    {
+        try {
+            
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|string|max:255',
+                'duration' => 'required|string|max:255',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'release_date' => 'required|date',
+                'director' => 'required|array',
+                'category' => 'required|array',
+                'language' => 'required|array',
+                'top_cast' => 'required|array',
+                'rate' => 'required|string',
+                'trailer' => 'required|url',
+                'description' => 'required|string',
+            ]);
+   
+            if ($validator->fails()) {
+                return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
+            }
+
+            $movie = new Movie();
+
+            $movie->title = $request->input('title');
+            $movie->duration = $request->input('duration');
+            $movie->release_date = $request->input('release_date');
+            $movie->rate = $request->input('rate');
+            $movie->trailer = $request->input('trailer');
+            $movie->description = $request->input('description');
+        
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = $request->input('title') . '_movie';
+                $imageName = str_replace(' ', '_', $imageName);
+                $imageName = str_replace(':', '_', $imageName);
+                // $imageName = $imageName . '.' . $image->getClientOriginalExtension();
+                $curlService = new CurlService();
+                $response = $curlService->getWebpImage($image, $imageName);
+  
+                if(!$response['success']){
+                    return response()->json(['message' => "Can't convert image to webp", 'response' => $response], 400);
+                }
+                
+                $image = file_get_contents($response['optimized_image_url']);
+                $imagePath = 'img/movie_images/' . $imageName . '.webp';
+                
+                Storage::disk('public')->put($imagePath, $image);
+
+                $movie->image = 'assets/' . $imagePath;
+            }
+            
+            $movie->save();
+            $movie->directors()->sync(json_decode($request->input('director'), true));
+            $movie->categories()->sync(json_decode($request->input('category'), true));
+            $movie->languages()->sync(json_decode($request->input('language'), true));
+            $movie->top_casts()->sync(json_decode($request->input('top_cast'), true));
+
+            return redirect()->back()->with('success', 'Movie Added successfully!');
         } catch (Exception $e) {
             return response()->json([
                 'error' => true,

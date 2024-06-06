@@ -50,5 +50,6 @@ Route::middleware('adminLogin')->group(function () {
     Route::get('/admin/movies-list', [MoviesController::class, 'index'])->name('admin.moviesList');
     Route::get('/admin/movies-add', [MoviesController::class, 'addMovie'])->name('admin.addMovie');
     
-    Route::post('/admin/get-all-movies', [MoviesController::class, 'get_all_movies']);
+    Route::post('/admin/get-all-movies', [MoviesController::class, 'get_all_movies'])->name('admin.get.movie');
+    Route::post('/admin/add-new-movie', [MoviesController::class, 'add_new_movie'])->name('admin.add.movie');
 });

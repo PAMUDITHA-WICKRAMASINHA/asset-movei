@@ -20,11 +20,7 @@ export default defineConfig({
                 'resources/js/movie.js',
 
                 //admin
-                'resources/views/admin/assets/css/moviesList.css',
-                'resources/views/admin/assets/css/addMovie.css',
-
-                // 'resources/views/admin/assets/js/addMovie.js',
-                // 'resources/views/admin/assets/js/addMovie.min.js',
+                'resources/views/admin/assets/css/moviesList.css'
 
             ],
             refresh: true,
