@@ -45,6 +45,7 @@ Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.logi
 Route::get('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 Route::middleware('adminLogin')->group(function () {
+    Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/movies-list', [MoviesController::class, 'index'])->name('admin.moviesList');
     Route::get('/admin/movies-add', [MoviesController::class, 'addMovie'])->name('admin.addMovie');

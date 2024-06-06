@@ -1610,21 +1610,21 @@
    */
 
 
-  $__default["default"](window).on('load', function () {
-    IFrame._jQueryInterface.call($__default["default"](SELECTOR_DATA_TOGGLE$1));
-  });
+  // $__default["default"](window).on('load', function () {
+  //   IFrame._jQueryInterface.call($__default["default"](SELECTOR_DATA_TOGGLE$1));
+  // });
   /**
    * jQuery API
    * ====================================================
    */
 
   $__default["default"].fn[NAME$7] = IFrame._jQueryInterface;
-  $__default["default"].fn[NAME$7].Constructor = IFrame;
+  // $__default["default"].fn[NAME$7].Constructor = IFrame;
 
-  $__default["default"].fn[NAME$7].noConflict = function () {
-    $__default["default"].fn[NAME$7] = JQUERY_NO_CONFLICT$7;
-    return IFrame._jQueryInterface;
-  };
+  // $__default["default"].fn[NAME$7].noConflict = function () {
+  //   $__default["default"].fn[NAME$7] = JQUERY_NO_CONFLICT$7;
+  //   return IFrame._jQueryInterface;
+  // };
 
   /**
    * Constants

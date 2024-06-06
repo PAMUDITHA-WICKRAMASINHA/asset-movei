@@ -14,7 +14,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/2.1.1/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.2.9/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="css/adminlte.min.css">
+    <link rel="stylesheet" href="/assets/css/adminlte.min.css">
     @vite([
     ])
     @yield('styles')
