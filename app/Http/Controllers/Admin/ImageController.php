@@ -21,7 +21,7 @@ class ImageController extends Controller
     
             return response($file, 200)->header('Content-Type', $type);
         } catch (Exception $e) {
-            return response()->json(['message' => 'MovieController >> showMainImage >> Failed to get Images: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'ImageController >> showMainImage >> Failed to get Images: ' . $e->getMessage()], 500);
         }
     }
 
@@ -39,7 +39,7 @@ class ImageController extends Controller
     
             return response($file, 200)->header('Content-Type', $type);
         } catch (Exception $e) {
-            return response()->json(['message' => 'MovieController >> showMoviesImage >> Failed to get Images: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'ImageController >> showMoviesImage >> Failed to get Images: ' . $e->getMessage()], 500);
         }
     }
 
@@ -57,7 +57,7 @@ class ImageController extends Controller
     
             return response($file, 200)->header('Content-Type', $type);
         } catch (Exception $e) {
-            return response()->json(['message' => 'MovieController >> showDirectorsImage >> Failed to get Images: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'ImageController >> showDirectorsImage >> Failed to get Images: ' . $e->getMessage()], 500);
         }
     }
 
@@ -75,7 +75,7 @@ class ImageController extends Controller
     
             return response($file, 200)->header('Content-Type', $type);
         } catch (Exception $e) {
-            return response()->json(['message' => 'MovieController >> showTopCastsImage >> Failed to get Images: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'ImageController >> showTopCastsImage >> Failed to get Images: ' . $e->getMessage()], 500);
         }
     }
 }

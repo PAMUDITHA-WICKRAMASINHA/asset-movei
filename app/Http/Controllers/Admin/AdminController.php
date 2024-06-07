@@ -45,7 +45,7 @@ class AdminController extends Controller
                 'movies' => $movies,
             ], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => 'MovieController >> get_all >> Failed to get movies: ' . $e->getMessage()], 500);
+            return response()->json(['message' => 'AdminController >> get_all >> Failed to get movies: ' . $e->getMessage()], 500);
         }
     }
 

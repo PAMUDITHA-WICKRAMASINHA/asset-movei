@@ -3,8 +3,11 @@
 @section('title', 'Movies List')
 
 @section('styles')
-<!-- Bootstrap CSS -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+.required {
+    color: red;
+}
+</style>
 <!-- Duallistbox CSS -->
 <link href="https://cdn.rawgit.com/istvan-ujjmeszaros/bootstrap-duallistbox/master/src/bootstrap-duallistbox.css"
     rel="stylesheet">
@@ -93,32 +96,34 @@
                                             aria-labelledby="stepper1trigger1">
                                             <div class="form-group row">
                                                 <div class="col-md-6 col-12">
-                                                    <label for="title">Title</label>
+                                                    <label for="title">Title<span class="required">*</span></label>
                                                     <input type="text" class="form-control" id="title" name="title"
                                                         placeholder="Enter Movie Title">
                                                 </div>
                                                 <div class="col-md-6 col-12">
-                                                    <label for="duration">Duration</label>
+                                                    <label for="duration">Duration<span
+                                                            class="required">*</span></label>
                                                     <input type="text" class="form-control" id="duration"
                                                         name="duration" placeholder="Enter Movie Duration">
                                                 </div>
                                                 <div class="col-md-6 col-12">
-                                                    <label for="release_date">Release Date</label>
+                                                    <label for="release_date">Release Date<span
+                                                            class="required">*</span></label>
                                                     <input type="text" class="form-control" id="release_date"
                                                         name="release_date" placeholder="Enter Movie Relese Date">
                                                 </div>
                                                 <div class="col-md-6 col-12">
-                                                    <label for="rate">Rate</label>
+                                                    <label for="rate">Rate<span class="required">*</span></label>
                                                     <input type="text" class="form-control" id="rate" name="rate"
                                                         placeholder="Enter Movie Rate">
                                                 </div>
                                                 <div class="col-md-6 col-12">
-                                                    <label for="trailer">Trailer</label>
+                                                    <label for="trailer">Trailer<span class="required">*</span></label>
                                                     <input type="text" class="form-control" id="trailer" name="trailer"
                                                         placeholder="Enter Movie Trailer">
                                                 </div>
                                                 <div class="col-md-6 col-12">
-                                                    <label for="image">Image</label>
+                                                    <label for="image">Image<span class="required">*</span></label>
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="image"
                                                             name="image">
@@ -127,7 +132,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
-                                                    <label>Description</label>
+                                                    <label>Description<span class="required">*</span></label>
                                                     <textarea class="form-control" rows="3" id="description"
                                                         name="description"
                                                         placeholder="Enter Movie Description ..."></textarea>
@@ -226,10 +231,6 @@
 
 @section('scripts')
 <script src="/assets/js/addMovie.js"></script>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Duallistbox JS -->
 <script
     src="https://cdn.rawgit.com/istvan-ujjmeszaros/bootstrap-duallistbox/master/src/jquery.bootstrap-duallistbox.js">
