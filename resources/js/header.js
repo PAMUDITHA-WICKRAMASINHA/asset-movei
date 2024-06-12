@@ -1,11 +1,14 @@
 $(document).ready(function() {
     $('#openSidebar').click(function() {
-        toggleSidebar();
+      var $sidebar = $("#sidebar");
+      $sidebar.width($sidebar.width() === 320 ? 0 : 320);
     });
     $('.closebtn').click(function() {
-        toggleSidebar();
+      var $sidebar = $("#sidebar");
+      $sidebar.width($sidebar.width() === 320 ? 0 : 320);
     });
 });
+
 
 $(document).ready(function() {
   var slides = $(".slide");
