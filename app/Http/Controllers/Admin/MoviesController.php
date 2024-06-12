@@ -202,7 +202,7 @@ class MoviesController extends Controller
                 'format' => 'required|string',
                 'disk_space' => 'required|string',
                 'file' => 'nullable|file|mimes:torrent|max:2048',
-                'sub_seeds' => 'required|int',
+                'sub_seeds' => 'required|string',
             ]);
 
             if ($validator->fails()) {
