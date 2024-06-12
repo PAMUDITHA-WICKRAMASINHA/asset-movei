@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Movies List')
+@section('title', 'Add Movie')
 
 @section('styles')
 <style>
@@ -128,7 +128,7 @@
                                                         <input type="file" class="custom-file-input" id="image"
                                                             name="image">
                                                         <label class="custom-file-label" for="image">Choose
-                                                            file</label>
+                                                            Movie Image</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">

@@ -77,7 +77,19 @@ class FormatController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function addFormat()
+    {
+        try {
+            return view('admin.formats.addFormats');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'FormatController >> addFormat >> Failed to get addFormat: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function add_new_formats(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
@@ -97,7 +109,7 @@ class FormatController extends Controller
 
             $format->save();
 
-            return response()->json(['message' => 'Format created successfully', 'format' => $format], 201);
+            return redirect()->back()->with('success', 'Format Added successfully!');
         } catch (Exception $e) {
             return response()->json(['message' => 'FormatController >> store >> Failed to create format: ' . $e->getMessage()], 500);
         }

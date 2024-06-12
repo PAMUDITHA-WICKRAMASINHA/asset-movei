@@ -18,7 +18,7 @@ class DirectorController extends Controller
     public function index()
     {
         try {
-            return view('admin.directores.directoresList');
+            return view('admin.directors.directorsList');
         } catch (Exception $e) {
             return response()->json([
                 'error' => true,
@@ -27,7 +27,7 @@ class DirectorController extends Controller
         }
     }
 
-    public function get_all_directores(Request $request)
+    public function get_all_directors(Request $request)
     {
         try {
             // Read the request parameters for DataTables
@@ -81,12 +81,24 @@ class DirectorController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'error' => true,
-                'message' => 'DirectorController >> get_all_directores >> Failed to get directores: ' . $e->getMessage()
+                'message' => 'DirectorController >> get_all_directors >> Failed to get directors: ' . $e->getMessage()
             ], 500);
         }
     }
     
-    public function store(Request $request)
+    public function addDirector()
+    {
+        try {
+            return view('admin.directors.addDirector');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'DirectorController >> addDirector >> Failed to get addDirector: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function add_new_director(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
@@ -123,7 +135,7 @@ class DirectorController extends Controller
 
             $director->save();
 
-            return response()->json(['message' => 'Director created successfully', 'director' => $director], 201);
+            return redirect()->back()->with('success', 'Director Added successfully!');
         } catch (Exception $e) {
             return response()->json(['message' => 'DirectorController >> store >> Failed to create director: ' . $e->getMessage()], 500);
         }

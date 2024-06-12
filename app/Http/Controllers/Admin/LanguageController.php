@@ -77,7 +77,19 @@ class LanguageController extends Controller
         }
     }
     
-    public function store(Request $request)
+    public function addLanguage()
+    {
+        try {
+            return view('admin.languages.addLanguage');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'LanguageController >> addLanguage >> Failed to get addLanguage: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function add_new_languages(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
@@ -92,7 +104,7 @@ class LanguageController extends Controller
             $language->language = $request->input('language');
             $language->save();
 
-            return response()->json(['message' => 'Language created successfully', 'language' => $language], 201);
+            return redirect()->back()->with('success', 'Language Added successfully!');
         } catch (Exception $e) {
             return response()->json(['message' => 'LanguageController >> store >> Failed to create language: ' . $e->getMessage()], 500);
         }

@@ -86,12 +86,23 @@ class TopCastController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function addTopCast()
+    {
+        try {
+            return view('admin.topCasts.addTopCast');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'DirectorController >> addTopCast >> Failed to get addTopCast: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function add_new_topCasts(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:webp|max:2048',
+                'name' => 'required|string|max:255'
             ]);
 
             if ($validator->fails()) {
@@ -125,7 +136,7 @@ class TopCastController extends Controller
             $top_cast->save();
 
 
-            return response()->json(['message' => 'Top cast created successfully', 'top_cast' => $top_cast], 201);
+            return redirect()->back()->with('success', 'Top Cast Added successfully!');
         } catch (Exception $e) {
             return response()->json(['message' => 'TopCastController >> store >> Failed to create top cast: ' . $e->getMessage()], 500);
         }

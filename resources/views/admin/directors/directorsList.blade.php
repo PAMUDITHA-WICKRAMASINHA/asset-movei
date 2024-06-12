@@ -1,10 +1,10 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Directores List')
+@section('title', 'Directors List')
 
 @section('styles')
 @vite([
-'resources/views/admin/assets/css/directoresList.css'
+'resources/views/admin/assets/css/directorsList.css'
 ])
 @stop
 
@@ -15,12 +15,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Directores List</h1>
+                    <h1 class="m-0">Directors List</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Directores</a></li>
-                        <li class="breadcrumb-item active">Directores List</li>
+                        <li class="breadcrumb-item"><a href="#">Directors</a></li>
+                        <li class="breadcrumb-item active">Directors List</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -39,7 +39,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="directores-list" class="table table-bordered table-striped">
+                            <table id="directors-list" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -69,7 +69,7 @@
 @section('scripts')
 <script>
 $(document).ready(function() {
-    $('#directores-list').DataTable({
+    $('#directors-list').DataTable({
         paging: true,
         lengthChange: true,
         autoWidth: true,
@@ -77,7 +77,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '{{ env("APP_URL") }}/admin/get-all-directores',
+            url: '{{ env("APP_URL") }}/admin/get-all-directors',
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"

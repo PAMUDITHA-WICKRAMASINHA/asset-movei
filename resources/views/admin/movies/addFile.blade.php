@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Movies List')
+@section('title', 'Add Movie File')
 
 @section('styles')
 <style>

@@ -77,7 +77,19 @@ class CategoryController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function addCategory()
+    {
+        try {
+            return view('admin.categories.addCategorie');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'CategoryController >> addCategory >> Failed to get addCategory: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function add_new_category(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
@@ -92,7 +104,7 @@ class CategoryController extends Controller
             $category->category = $request->input('category');
             $category->save();
 
-            return response()->json(['message' => 'Category created successfully', 'category' => $category], 201);
+            return redirect()->back()->with('success', 'Category Added successfully!');
         } catch (Exception $e) {
             return response()->json(['message' => 'CategoryController >> store >> Failed to create category: ' . $e->getMessage()], 500);
         }

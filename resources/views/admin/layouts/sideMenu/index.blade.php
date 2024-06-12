@@ -79,13 +79,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.directoresList') }}" class="nav-link">
+                            <a href="{{ route('admin.directorsList') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Directors List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.addDirector') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Director</p>
                             </a>
@@ -108,7 +108,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.addTopCast') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Top Cast</p>
                             </a>
@@ -131,7 +131,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.addCategory') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Category</p>
                             </a>
@@ -154,7 +154,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.addLanguage') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Language</p>
                             </a>
@@ -177,7 +177,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.addFormat') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Format</p>
                             </a>
