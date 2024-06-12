@@ -1,0 +1,91 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-B_SY1GJM.css",
+    "src": "resources/css/index.css",
+    "isEntry": true
+  },
+  "resources/css/cards.css": {
+    "file": "assets/cards-DYg4Rk6C.css",
+    "src": "resources/css/cards.css",
+    "isEntry": true
+  },
+  "resources/css/footer.css": {
+    "file": "assets/footer-SujtxFvC.css",
+    "src": "resources/css/footer.css",
+    "isEntry": true
+  },
+  "resources/css/header.css": {
+    "file": "assets/header-CifBhPp4.css",
+    "src": "resources/css/header.css",
+    "isEntry": true
+  },
+  "resources/css/home.css": {
+    "file": "assets/home-CxTqRzy9.css",
+    "src": "resources/css/home.css",
+    "isEntry": true
+  },
+  "resources/css/index.css": {
+    "file": "assets/app-B_SY1GJM.css",
+    "src": "resources/css/index.css",
+    "isEntry": true
+  },
+  "resources/css/movie.css": {
+    "file": "assets/movie-BwF8nQFb.css",
+    "src": "resources/css/movie.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-C1-XIpUa.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/cards.js": {
+    "file": "assets/cards-C6szPSqa.js",
+    "name": "cards",
+    "src": "resources/js/cards.js",
+    "isEntry": true
+  },
+  "resources/js/header.js": {
+    "file": "assets/header-Bx7MJWmM.js",
+    "name": "header",
+    "src": "resources/js/header.js",
+    "isEntry": true
+  },
+  "resources/js/movie.js": {
+    "file": "assets/movie-l0sNRNKZ.js",
+    "name": "movie",
+    "src": "resources/js/movie.js",
+    "isEntry": true
+  },
+  "resources/views/admin/assets/css/categoriesList.css": {
+    "file": "assets/categoriesList-3YeUPTts.css",
+    "src": "resources/views/admin/assets/css/categoriesList.css",
+    "isEntry": true
+  },
+  "resources/views/admin/assets/css/directorsList.css": {
+    "file": "assets/directorsList-QR13V8b4.css",
+    "src": "resources/views/admin/assets/css/directorsList.css",
+    "isEntry": true
+  },
+  "resources/views/admin/assets/css/formatsList.css": {
+    "file": "assets/formatsList-BfDtxT5n.css",
+    "src": "resources/views/admin/assets/css/formatsList.css",
+    "isEntry": true
+  },
+  "resources/views/admin/assets/css/languagesList.css": {
+    "file": "assets/languagesList-5hEoIeBz.css",
+    "src": "resources/views/admin/assets/css/languagesList.css",
+    "isEntry": true
+  },
+  "resources/views/admin/assets/css/moviesList.css": {
+    "file": "assets/moviesList-0Wf5Qatv.css",
+    "src": "resources/views/admin/assets/css/moviesList.css",
+    "isEntry": true
+  },
+  "resources/views/admin/assets/css/topCastsList.css": {
+    "file": "assets/topCastsList-Ykks9Bjy.css",
+    "src": "resources/views/admin/assets/css/topCastsList.css",
+    "isEntry": true
+  }
+}
