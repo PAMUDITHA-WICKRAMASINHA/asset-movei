@@ -103,6 +103,7 @@ class DirectorController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
+                'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
             if ($validator->fails()) {

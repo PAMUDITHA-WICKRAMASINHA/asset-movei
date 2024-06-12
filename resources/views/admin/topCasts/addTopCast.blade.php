@@ -54,10 +54,12 @@
                                     <div class="col-md-6 col-12">
                                         <label for="image">Top Casts Image<span class="required">*</span></label>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="image" name="image">
+                                            <input type="file" class="custom-file-input" id="image" name="image"
+                                                accept="image/*">
                                             <label class="custom-file-label" for="image">Choose
                                                 Top Casts Image</label>
                                         </div>
+                                        <p id="image-name" class="mt-3"></p>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add New Top Casts</button>
@@ -77,5 +79,14 @@
 @stop
 
 @section('scripts')
+<script>
+$(document).ready(function() {
+    $('#image').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName);
+        $('#image-name').text('Selected Image: ' + fileName);
+    });
+});
+</script>
 @vite([])
 @stop

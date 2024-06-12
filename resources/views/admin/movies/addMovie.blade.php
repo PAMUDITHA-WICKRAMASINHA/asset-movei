@@ -104,13 +104,15 @@
                                                     <label for="duration">Duration<span
                                                             class="required">*</span></label>
                                                     <input type="text" class="form-control" id="duration"
-                                                        name="duration" placeholder="Enter Movie Duration">
+                                                        name="duration"
+                                                        placeholder="Enter Movie Duration (1 hr 10 min)">
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <label for="release_date">Release Date<span
                                                             class="required">*</span></label>
                                                     <input type="text" class="form-control" id="release_date"
-                                                        name="release_date" placeholder="Enter Movie Relese Date">
+                                                        name="release_date"
+                                                        placeholder="Enter Movie Relese Date (2024-01-01)">
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <label for="rate">Rate<span class="required">*</span></label>
@@ -126,9 +128,10 @@
                                                     <label for="image">Image<span class="required">*</span></label>
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="image"
-                                                            name="image">
+                                                            name="image" accept="image/*">
                                                         <label class="custom-file-label" for="image">Choose
                                                             Movie Image</label>
+                                                        <p id="image-name" class="mt-3"></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
@@ -296,6 +299,13 @@ $(document).ready(function() {
         moveAllLabel: 'Move all',
         removeSelectedLabel: 'Remove selected',
         removeAllLabel: 'Remove all'
+    });
+});
+$(document).ready(function() {
+    $('#image').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName);
+        $('#image-name').text('Selected Image: ' + fileName);
     });
 });
 </script>

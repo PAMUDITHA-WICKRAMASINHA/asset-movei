@@ -12,6 +12,8 @@ use App\Models\Language;
 use App\Models\Format;
 use Validator;
 use Exception;
+use App\Services\CurlService;
+use Illuminate\Support\Facades\Storage;
 
 class MoviesController extends Controller
 {
@@ -118,7 +120,7 @@ class MoviesController extends Controller
             $validator = Validator::make($request->all(), [
                 'title' => 'required|string|max:255',
                 'duration' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
                 'release_date' => 'required|date',
                 'director' => 'required|array',
                 'category' => 'required|array',

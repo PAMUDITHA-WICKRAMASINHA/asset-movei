@@ -85,10 +85,12 @@
                                         <div class="col-md-6 col-12">
                                             <label for="file">Torrent File<span class="required">*</span></label>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="file" name="file">
+                                                <input type="file" class="custom-file-input" id="file" name="file"
+                                                    accept=".torrent">
                                                 <label class="custom-file-label" for="file">Choose
                                                     file</span></label>
                                             </div>
+                                            <p id="file-name" class="mt-3"></p>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add Torrent File</button>
@@ -110,5 +112,14 @@
 @stop
 
 @section('scripts')
+<script>
+$(document).ready(function() {
+    $('#file').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName);
+        $('#file-name').text('Selected file: ' + fileName);
+    });
+});
+</script>
 @vite([])
 @stop
