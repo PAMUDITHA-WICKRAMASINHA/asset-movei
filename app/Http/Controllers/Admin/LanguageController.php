@@ -10,26 +10,73 @@ use App\Models\Language;
 
 class LanguageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $Languages = Language::all();
-        return response()->json(['message' => 'Language get successfully', 'Languages' => $Languages], 200);
+        try {
+            return view('admin.languages.languagesList');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'LanguageController >> index >> Failed to get languages: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function get_all_languages(Request $request)
     {
-        //
-    }
+        try {
+            // Read the request parameters for DataTables
+            $draw = $request->input('draw');
+            $start = $request->input('start');
+            $length = $request->input('length');
+            $searchValue = $request->input('search')['value'];
+            $order = $request->input('order')[0] ?? null;
+            
+            // Total records
+            $totalRecords = Language::count();
+            
+            // Query for filtered records
+            $languagesQuery = Language::query();
+            
+            // Filter by search value
+            if (!empty($searchValue)) {
+                $languagesQuery->where(function ($query) use ($searchValue) {
+                    $query->where('language', 'like', '%' . $searchValue . '%');
+                });
+            }
+            
+            // Check if $order is not null before accessing its elements
+            if ($order !== null) {
+                $orderByColumnIndex = $order['column'] ?? null;
+                $orderByDirection = $order['dir'] ?? 'asc';
+                if ($orderByColumnIndex !== null) {
+                    $orderByColumnName = $request->input('columns')[$orderByColumnIndex]['data'] ?? null;
+                    if ($orderByColumnName !== null) {
+                        $orderByColumnName = $columnMappings[$orderByColumnIndex] ?? 'id';
+                        $languagesQuery->orderBy($orderByColumnName, $orderByDirection);
+                    }
+                }
+            }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+            
+            // Get filtered and paginated records
+            $filteredRecords = $languagesQuery->count();
+            $languages = $languagesQuery->skip($start)->take($length)->get();
+            
+            return response()->json([
+                'draw' => intval($draw),
+                'recordsTotal' => intval($totalRecords),
+                'recordsFiltered' => intval($filteredRecords),
+                'data' => $languages,
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'LanguageController >> get_all_languages >> Failed to get languages: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+    
     public function store(Request $request)
     {
         try {
@@ -49,37 +96,5 @@ class LanguageController extends Controller
         } catch (Exception $e) {
             return response()->json(['message' => 'LanguageController >> store >> Failed to create language: ' . $e->getMessage()], 500);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Language $language)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Language $language)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Language $language)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Language $language)
-    {
-        //
     }
 }

@@ -1,0 +1,7 @@
+table.dataTable td {
+    text-align: left;
+}
+
+#languages-list th {
+    font-weight: bold;
+}

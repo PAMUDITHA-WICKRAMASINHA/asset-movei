@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TopCastController;
 use App\Http\Controllers\Admin\DirectorController;
+use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\FormatController;
 use App\Http\Controllers\Admin\ImageController;
 
 /*
@@ -50,8 +52,18 @@ Route::middleware('adminLogin')->group(function () {
     Route::get('/admin/movies-list', [MoviesController::class, 'index'])->name('admin.moviesList');
     Route::get('/admin/movies-add', [MoviesController::class, 'addMovie'])->name('admin.addMovie');
     Route::get('/admin/movies-file-add', [MoviesController::class, 'addFile'])->name('admin.addFile');
-    
+    Route::get('/admin/directores-list', [DirectorController::class, 'index'])->name('admin.directoresList');
+    Route::get('/admin/topCasts-list', [TopCastController::class, 'index'])->name('admin.topCastsList');
+    Route::get('/admin/categories-list', [CategoryController::class, 'index'])->name('admin.categoriesList');
+    Route::get('/admin/languages-list', [LanguageController::class, 'index'])->name('admin.languagesList');
+    Route::get('/admin/formats-list', [FormatController::class, 'index'])->name('admin.formatsList');
+
     Route::post('/admin/get-all-movies', [MoviesController::class, 'get_all_movies'])->name('admin.get.movie');
     Route::post('/admin/add-new-movie', [MoviesController::class, 'add_new_movie'])->name('admin.add.movie');
     Route::post('/admin/add-movie-file', [MoviesController::class, 'add_movie_file'])->name('admin.movie.file');
+    Route::post('/admin/get-all-directores', [DirectorController::class, 'get_all_directores'])->name('admin.get.directores');
+    Route::post('/admin/get-all-topCasts', [TopCastController::class, 'get_all_topCasts'])->name('admin.get.topCasts');
+    Route::post('/admin/get-all-categories', [CategoryController::class, 'get_all_categories'])->name('admin.get.categories');
+    Route::post('/admin/get-all-languages', [LanguageController::class, 'get_all_languages'])->name('admin.get.languages');
+    Route::post('/admin/get-all-formats', [FormatController::class, 'get_all_formats'])->name('admin.get.formats');
 });

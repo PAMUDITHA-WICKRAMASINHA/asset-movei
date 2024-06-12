@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\TopCast;
 use Illuminate\Http\Request;
 use Validator;
@@ -16,26 +17,75 @@ class TopCastController extends Controller
      */
     public function index()
     {
-        $top_casts = TopCast::all();
-
-        foreach ($top_casts as $top_cast) {
-            $top_cast->image = url($top_cast->image);
+        try {
+            return view('admin.topCasts.topCastsList');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'TopCastController >> index >> Failed to get top casts: ' . $e->getMessage()
+            ], 500);
         }
-        
-        return response()->json(['message' => 'Top Cast get successfully', 'top_casts' => $top_casts], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function get_all_topCasts(Request $request)
     {
-        //
+        try {
+            // Read the request parameters for DataTables
+            $draw = $request->input('draw');
+            $start = $request->input('start');
+            $length = $request->input('length');
+            $searchValue = $request->input('search')['value'];
+            $order = $request->input('order')[0] ?? null;
+            
+            // Total records
+            $totalRecords = TopCast::count();
+            
+            // Query for filtered records
+            $topCastsQuery = TopCast::query();
+            
+            // Filter by search value
+            if (!empty($searchValue)) {
+                $topCastsQuery->where(function ($query) use ($searchValue) {
+                    $query->where('name', 'like', '%' . $searchValue . '%');
+                });
+            }
+            
+            // Check if $order is not null before accessing its elements
+            if ($order !== null) {
+                $orderByColumnIndex = $order['column'] ?? null;
+                $orderByDirection = $order['dir'] ?? 'asc';
+                if ($orderByColumnIndex !== null) {
+                    $orderByColumnName = $request->input('columns')[$orderByColumnIndex]['data'] ?? null;
+                    if ($orderByColumnName !== null) {
+                        $orderByColumnName = $columnMappings[$orderByColumnIndex] ?? 'id';
+                        $topCastsQuery->orderBy($orderByColumnName, $orderByDirection);
+                    }
+                }
+            }
+
+            
+            // Get filtered and paginated records
+            $filteredRecords = $topCastsQuery->count();
+            $topCasts = $topCastsQuery->skip($start)->take($length)->get();
+
+            foreach ($topCasts as $topCast) {
+                $topCast->image = route('showTopCastsImage', ['filename' => basename($topCast->image)]);
+            }
+            
+            return response()->json([
+                'draw' => intval($draw),
+                'recordsTotal' => intval($totalRecords),
+                'recordsFiltered' => intval($filteredRecords),
+                'data' => $topCasts,
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'TopCastController >> get_all_topCasts >> Failed to get topCasts: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         try {
@@ -81,41 +131,5 @@ class TopCastController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(TopCast $topCast)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TopCast $topCast)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, TopCast $topCast)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(TopCast $topCast)
-    {
-        try {
-            $topCast->delete();
-
-            return response()->json(['message' => 'Top cast deleted successfully']);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'TopCastController >> destroy >> Failed to delete top cast: ' . $e->getMessage()], 500);
-        }
-    }
+    
 }

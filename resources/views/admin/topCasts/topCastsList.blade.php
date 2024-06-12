@@ -1,10 +1,10 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Movies List')
+@section('title', 'Top Casts List')
 
 @section('styles')
 @vite([
-'resources/views/admin/assets/css/moviesList.css'
+'resources/views/admin/assets/css/topCastsList.css'
 ])
 @stop
 
@@ -15,12 +15,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Movies List</h1>
+                    <h1 class="m-0">Top Casts List</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Movies</a></li>
-                        <li class="breadcrumb-item active">Movies List</li>
+                        <li class="breadcrumb-item"><a href="#">Top Casts</a></li>
+                        <li class="breadcrumb-item active">Top Casts List</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -39,22 +39,12 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="movies-list" class="table table-bordered table-striped">
+                            <table id="topCasts-list" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Title</th>
+                                        <th>Name</th>
                                         <th>Image</th>
-                                        <th>Trailer</th>
-                                        <th>Duration</th>
-                                        <th>Rate</th>
-                                        <th>Download Count</th>
-                                        <th>Movie Release Date</th>
-                                        <th>Categories</th>
-                                        <th>Top Casts</th>
-                                        <th>Directors</th>
-                                        <th>Languages</th>
-                                        <th>Format</th>
                                         <th>Created At</th>
                                     </tr>
                                 </thead>
@@ -79,7 +69,7 @@
 @section('scripts')
 <script>
 $(document).ready(function() {
-    $('#movies-list').DataTable({
+    $('#topCasts-list').DataTable({
         paging: true,
         lengthChange: true,
         autoWidth: true,
@@ -87,7 +77,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '{{ env("APP_URL") }}/admin/get-all-movies',
+            url: '{{ env("APP_URL") }}/admin/get-all-topCasts',
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -106,77 +96,14 @@ $(document).ready(function() {
                 data: "id"
             },
             {
-                title: "Title",
-                data: "title"
+                title: "Name",
+                data: "name"
             },
             {
                 title: "Image",
                 data: "image",
                 render: function(data) {
-                    return `<img src="${data}" class="movie-image" />`;
-                }
-            },
-            {
-                title: "Trailer",
-                data: "trailer",
-                render: function(data) {
-                    return `<a href="${data}" target="_blank">Watch Trailer</a>`;
-                }
-            },
-            {
-                title: "Duration",
-                data: "duration",
-            },
-            {
-                title: "Rate",
-                data: "rate",
-            },
-            {
-                title: "Download Count",
-                data: "download_count",
-            },
-            {
-                title: "Movie Release Date",
-                data: "release_date",
-            },
-            {
-                title: "Categories",
-                data: function(row) {
-                    return row.categories.map(category =>
-                            `<span class="chip chip-category">${category.category}</span>`)
-                        .join(' ');
-                }
-            },
-            {
-                title: "Top Casts",
-                data: function(row) {
-                    return row.top_casts.map(cast =>
-                        `<span class="chip chip-cast">${cast.name}</span>`).join(' ');
-                }
-            },
-            {
-                title: "Directors",
-                data: function(row) {
-                    return row.directors.map(director =>
-                        `<span class="chip chip-director">${director.name}</span>`).join(
-                        ' ');
-                }
-            },
-            {
-                title: "Languages",
-                data: function(row) {
-                    return row.languages.map(language =>
-                            `<span class="chip chip-language">${language.language}</span>`)
-                        .join(' ');
-                }
-            },
-            {
-                title: "Format",
-                data: function(row) {
-                    return row.formats.map(format =>
-                            `<span class="chip chip-language">${format.name} (${format.pivot.disk_space})</span>`
-                            )
-                        .join(' ');
+                    return `<img src="${data}" class="topCasts-image" />`;
                 }
             },
             {

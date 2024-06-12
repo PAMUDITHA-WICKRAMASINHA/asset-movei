@@ -79,7 +79,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.directoresList') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Directors List</p>
                             </a>
@@ -102,7 +102,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.topCastsList') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Top Casts List</p>
                             </a>
@@ -125,7 +125,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.categoriesList') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Categories List</p>
                             </a>
@@ -148,7 +148,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.languagesList') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Languages List</p>
                             </a>
@@ -171,7 +171,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.formatsList') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Formats List</p>
                             </a>

@@ -10,26 +10,73 @@ use App\Models\Format;
 
 class FormatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $formats = Format::all();
-        return response()->json(['message' => 'Format get successfully', 'formats' => $formats], 200);
+        try {
+            return view('admin.formats.formatsList');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'FormatController >> index >> Failed to get formats: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function get_all_formats(Request $request)
     {
-        //
+        try {
+            // Read the request parameters for DataTables
+            $draw = $request->input('draw');
+            $start = $request->input('start');
+            $length = $request->input('length');
+            $searchValue = $request->input('search')['value'];
+            $order = $request->input('order')[0] ?? null;
+            
+            // Total records
+            $totalRecords = Format::count();
+            
+            // Query for filtered records
+            $formatsQuery = Format::query();
+            
+            // Filter by search value
+            if (!empty($searchValue)) {
+                $formatsQuery->where(function ($query) use ($searchValue) {
+                    $query->where('name', 'like', '%' . $searchValue . '%');
+                });
+            }
+            
+            // Check if $order is not null before accessing its elements
+            if ($order !== null) {
+                $orderByColumnIndex = $order['column'] ?? null;
+                $orderByDirection = $order['dir'] ?? 'asc';
+                if ($orderByColumnIndex !== null) {
+                    $orderByColumnName = $request->input('columns')[$orderByColumnIndex]['data'] ?? null;
+                    if ($orderByColumnName !== null) {
+                        $orderByColumnName = $columnMappings[$orderByColumnIndex] ?? 'id';
+                        $formatsQuery->orderBy($orderByColumnName, $orderByDirection);
+                    }
+                }
+            }
+
+            
+            // Get filtered and paginated records
+            $filteredRecords = $formatsQuery->count();
+            $formats = $formatsQuery->skip($start)->take($length)->get();
+            
+            return response()->json([
+                'draw' => intval($draw),
+                'recordsTotal' => intval($totalRecords),
+                'recordsFiltered' => intval($filteredRecords),
+                'data' => $formats,
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'FormatController >> get_all_formats >> Failed to get formats: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         try {
@@ -54,37 +101,5 @@ class FormatController extends Controller
         } catch (Exception $e) {
             return response()->json(['message' => 'FormatController >> store >> Failed to create format: ' . $e->getMessage()], 500);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Format $format)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Format $format)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Format $format)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Format $format)
-    {
-        //
     }
 }

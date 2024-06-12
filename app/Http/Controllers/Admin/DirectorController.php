@@ -17,26 +17,75 @@ class DirectorController extends Controller
      */
     public function index()
     {
-        $directors = Director::all();
-
-        foreach ($directors as $director) {
-            $director->image = url($director->image);
+        try {
+            return view('admin.directores.directoresList');
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'DirectorController >> index >> Failed to get director: ' . $e->getMessage()
+            ], 500);
         }
-        
-        return response()->json(['message' => 'Director get successfully', 'directors' => $directors], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function get_all_directores(Request $request)
     {
-        //
-    }
+        try {
+            // Read the request parameters for DataTables
+            $draw = $request->input('draw');
+            $start = $request->input('start');
+            $length = $request->input('length');
+            $searchValue = $request->input('search')['value'];
+            $order = $request->input('order')[0] ?? null;
+            
+            // Total records
+            $totalRecords = Director::count();
+            
+            // Query for filtered records
+            $directorsQuery = Director::query();
+            
+            // Filter by search value
+            if (!empty($searchValue)) {
+                $directorsQuery->where(function ($query) use ($searchValue) {
+                    $query->where('name', 'like', '%' . $searchValue . '%');
+                });
+            }
+            
+            // Check if $order is not null before accessing its elements
+            if ($order !== null) {
+                $orderByColumnIndex = $order['column'] ?? null;
+                $orderByDirection = $order['dir'] ?? 'asc';
+                if ($orderByColumnIndex !== null) {
+                    $orderByColumnName = $request->input('columns')[$orderByColumnIndex]['data'] ?? null;
+                    if ($orderByColumnName !== null) {
+                        $orderByColumnName = $columnMappings[$orderByColumnIndex] ?? 'id';
+                        $directorsQuery->orderBy($orderByColumnName, $orderByDirection);
+                    }
+                }
+            }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+            
+            // Get filtered and paginated records
+            $filteredRecords = $directorsQuery->count();
+            $directors = $directorsQuery->skip($start)->take($length)->get();
+
+            foreach ($directors as $director) {
+                $director->image = route('showDirectorsImage', ['filename' => basename($director->image)]);
+            }
+            
+            return response()->json([
+                'draw' => intval($draw),
+                'recordsTotal' => intval($totalRecords),
+                'recordsFiltered' => intval($filteredRecords),
+                'data' => $directors,
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'DirectorController >> get_all_directores >> Failed to get directores: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+    
     public function store(Request $request)
     {
         try {
@@ -77,44 +126,6 @@ class DirectorController extends Controller
             return response()->json(['message' => 'Director created successfully', 'director' => $director], 201);
         } catch (Exception $e) {
             return response()->json(['message' => 'DirectorController >> store >> Failed to create director: ' . $e->getMessage()], 500);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Director $director)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Director $director)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Director $director)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Director $director)
-    {
-        try {
-            $director->delete();
-
-            return response()->json(['message' => 'Director deleted successfully']);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'DirectorController >> destroy >> Failed to delete director: ' . $e->getMessage()], 500);
         }
     }
 }
