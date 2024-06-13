@@ -24,7 +24,9 @@ movies store, stores, torrents, movie downloads, torrents downloads, free movies
 film, new releases, Hollywood, Bollywood'
 )
 
-
+@section('meta_title', $movie->title . ' - Download Movie TORRENT' . ' - Asset-Movies')
+@section('meta_image', $movie->image)
+@section('meta_url', url()->current())
 
 @section('styles')
 @vite([
