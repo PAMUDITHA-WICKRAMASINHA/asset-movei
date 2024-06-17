@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\DirectorController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\FormatController;
 use App\Http\Controllers\Admin\ImageController;
-
+use App\Http\Controllers\SitemapController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,4 +76,6 @@ Route::middleware('adminLogin')->group(function () {
     Route::post('/admin/add-new-languages', [LanguageController::class, 'add_new_languages'])->name('admin.add.languages');
     Route::post('/admin/get-all-formats', [FormatController::class, 'get_all_formats'])->name('admin.get.formats');
     Route::post('/admin/add-new-formats', [FormatController::class, 'add_new_formats'])->name('admin.add.formats');
+
+    Route::get('/admin/sitemap.xml', [SitemapController::class, 'index']);
 });
