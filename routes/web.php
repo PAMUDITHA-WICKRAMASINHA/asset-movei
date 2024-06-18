@@ -14,6 +14,11 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\FormatController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\TermsOfServiceController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +50,11 @@ Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login');
 
 Route::get('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
+Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
+Route::get('/terms-of-service', [TermsOfServiceController::class, 'index'])->name('terms-of-service');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::middleware('adminLogin')->group(function () {
     Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');

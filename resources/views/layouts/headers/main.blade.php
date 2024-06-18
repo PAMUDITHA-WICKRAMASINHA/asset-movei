@@ -27,7 +27,7 @@
             </div>
             <a href="{{ '/movie/latest' }}" class="mainNav__link">Trending</a>
             <a href="{{ '/movie/latest' }}" class="mainNav__link">Latest</a>
-            <a href="" class="mainNav__link">Contacts</a>
+            <a href="{{ '/contact' }}" class="mainNav__link">Contacts</a>
         </div>
         <div class="mainNav__icon" id="openSidebar">
             <i class="fa-solid fa-bars"></i>
@@ -117,6 +117,6 @@
         <button href="javascript:void(0)" class="closebtn">×</button>
         <a href="{{ '/movie/latest' }}" class="sidebar_mainNav__link">Trending</a>
         <a href="{{ '/movie/latest' }}" class="sidebar_mainNav__link">Latest</a>
-        <a href="#" class="sidebar_mainNav__link">Contacts</a>
+        <a href="{{ '/contact' }}" class="sidebar_mainNav__link">Contacts</a>
     </div>
 </div>

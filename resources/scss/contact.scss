@@ -1,0 +1,19 @@
+@import "../scss/index.scss";
+
+.main_tag{
+    background-color: $body-color;
+    color: $white-color;
+    padding: 10px;
+}
+
+h1{
+    margin-bottom: 40px;
+}
+
+p{
+    font-size: 16px;
+}
+
+.con-form{
+    max-width: 500px;
+}

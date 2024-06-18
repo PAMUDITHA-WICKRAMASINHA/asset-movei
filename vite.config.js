@@ -13,6 +13,10 @@ export default defineConfig({
                 'resources/css/header.css', 
                 'resources/css/index.css', 
                 'resources/css/movie.css',
+                'resources/css/privacyPolicy.css',
+                'resources/css/termsOfService.css',
+                'resources/css/about.css',
+                'resources/css/contact.css',
 
                 'resources/js/app.js',
                 'resources/js/cards.js',
