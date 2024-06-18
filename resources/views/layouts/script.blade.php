@@ -3,7 +3,9 @@
 'resources/js/app.js',
 'resources/js/header.js'
 ])
-
+<!-- google add -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2586065313548794"
+    crossorigin="anonymous"></script>
 <!-- j-quary -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- bootstrap -->
