@@ -23,8 +23,8 @@
     <meta property="og:image" content="@yield('meta_image')">
     <meta property="og:url" content="@yield('meta_url')">
 
-    <link rel="icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo.webp']) }}">
-    <link rel="shortcut icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo.webp']) }}">
+    <link rel="icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo_back.webp']) }}">
+    <link rel="shortcut icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo_back.webp']) }}">
 
     <style>
     ::-webkit-scrollbar {

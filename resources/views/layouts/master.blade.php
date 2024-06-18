@@ -20,8 +20,12 @@
 
     <meta name="google-site-verification" content="zUWs5NmnYms_HumIJsjqijEWCiE_0yxGldLLvq3ZNVc" />
 
-    <link rel="icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo.webp']) }}">
-    <link rel="shortcut icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo.webp']) }}">
+    <meta property="og:title" content="Download Movie Torrent - Asset-Movies">
+    <meta property="og:image" content="{{ route('showMainImage', ['filename' => 'logo_back.webp']) }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+
+    <link rel="icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo_back.webp']) }}">
+    <link rel="shortcut icon" type="image/webp" href="{{ route('showMainImage', ['filename' => 'logo_back.webp']) }}">
 
     <style>
     ::-webkit-scrollbar {
