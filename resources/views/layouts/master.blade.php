@@ -19,6 +19,7 @@
         content="@yield('meta_keywords', 'asset movie, asset movies, asset movie store, asset movies store, asset store, movies, movie, asset, movie store, movies store, stores, torrents, movie downloads, torrents downloads, free movies, movie torrents, cinema, film, new releases, Hollywood, Bollywood')">
 
     <meta name="google-site-verification" content="zUWs5NmnYms_HumIJsjqijEWCiE_0yxGldLLvq3ZNVc" />
+    <meta name="google-adsense-account" content="ca-pub-2586065313548794">
 
     <meta property="og:title" content="Download Movie Torrent - Asset-Movies">
     <meta property="og:image" content="{{ route('showMainImage', ['filename' => 'logo_back.webp']) }}">
