@@ -5,7 +5,7 @@
 @section('meta_description', $movie->description)
 
 @section('meta_keywords',
-'watch ' . ', ' .
+'watch ' . $movie->title . ', ' .
 'download ' . $movie->title . ', ' .
 'torrents download ' . $movie->title . ', ' .
 $movie->title . ' watch' . ', ' .

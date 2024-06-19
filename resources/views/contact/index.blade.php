@@ -24,20 +24,20 @@
 
         <h2>Contact Form</h2>
         <div class="con-form">
-            <form>
+            <form method="POST" action="{{ route('contact.send') }}">
+                @csrf
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Name</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Jonh Bear"
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Jonh Bear" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
                         required>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput2">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput2"
-                        placeholder="name@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mb-2">Send Message</button>
             </form>

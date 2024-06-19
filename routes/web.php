@@ -56,6 +56,8 @@ Route::get('/terms-of-service', [TermsOfServiceController::class, 'index'])->nam
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
+Route::post('/contact', [ContactController::class, 'send_message'])->name('contact.send');
+
 Route::middleware('adminLogin')->group(function () {
     Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
