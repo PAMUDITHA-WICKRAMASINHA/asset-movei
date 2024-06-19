@@ -96,18 +96,18 @@ $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ';
         $xml .= ' xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">' . PHP_EOL;
 
     foreach ($sitemap->getTags() as $tag) {
-    $xml .= ' <url>' . PHP_EOL;
-        $xml .= ' <loc>' . htmlspecialchars($tag->url) . '</loc>' . PHP_EOL;
+    $xml .= '	<url>' . PHP_EOL;
+        $xml .= '		<loc>' . htmlspecialchars($tag->url) . '</loc>' . PHP_EOL;
         if ($tag->lastModificationDate) {
-        $xml .= ' <lastmod>' . $tag->lastModificationDate->toAtomString() . '</lastmod>' . PHP_EOL;
+        $xml .= '		<lastmod>' . $tag->lastModificationDate->toAtomString() . '</lastmod>' . PHP_EOL;
         }
         if ($tag->changeFrequency) {
-        $xml .= ' <changefreq>' . $tag->changeFrequency . '</changefreq>' . PHP_EOL;
+        $xml .= '		<changefreq>' . $tag->changeFrequency . '</changefreq>' . PHP_EOL;
         }
         if ($tag->priority) {
-        $xml .= ' <priority>' . $tag->priority . '</priority>' . PHP_EOL;
+        $xml .= '		<priority>' . $tag->priority . '</priority>' . PHP_EOL;
         }
-        $xml .= ' </url>' . PHP_EOL;
+        $xml .= '	</url>' . PHP_EOL;
     }
 
     $xml .= '</urlset>';
