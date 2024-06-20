@@ -62,6 +62,11 @@
                                         <p id="image-name" class="mt-3"></p>
                                     </div>
                                 </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="no-image" name="no-image">
+                                    <label class="form-check-label" for="no-image">Director Image Not
+                                        Available</label>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Add New Top Casts</button>
                             </form>
                             <!-- /.card-body -->

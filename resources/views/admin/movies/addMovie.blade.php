@@ -157,6 +157,13 @@
                                                 </select>
                                             </div>
 
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="no-director"
+                                                    name="no-director">
+                                                <label class="form-check-label" for="no-director">Directors Not
+                                                    Available</label>
+                                            </div>
+
                                             <button type="button" class="btn btn-primary"
                                                 onclick="stepper1.previous()">Previous</button>
                                             <button type="button" class="btn btn-primary"
@@ -172,6 +179,13 @@
                                                     <option value="{{ $top_cast->id }}">{{ $top_cast->name }}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="no-top-casts"
+                                                    name="no-top-casts">
+                                                <label class="form-check-label" for="no-top-casts">Top Casts Not
+                                                    Available</label>
                                             </div>
 
                                             <button type="button" class="btn btn-primary"

@@ -103,8 +103,12 @@ class TopCastController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
-                'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+                // 'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             ]);
+
+            $validator->sometimes('image', 'required|image|mimes:jpeg,png,jpg|max:2048', function ($input) {
+                return !$input->has('no-image') || !$input->get('no-image');
+            });
 
             if ($validator->fails()) {
                 return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
@@ -132,6 +136,8 @@ class TopCastController extends Controller
                 Storage::disk('public')->put($imagePath, $image);
 
                 $top_cast->image = 'assets/' . $imagePath;
+            }else{
+                $top_cast->image = 'assets/img/top_cast_images/profile.webp';
             }
 
             $top_cast->save();

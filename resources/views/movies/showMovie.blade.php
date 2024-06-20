@@ -54,6 +54,7 @@
 </div>
 <div class="container-next">
     <div class="section">
+        <p>Release Date: {{$movie->release_date}}</p>
         <div class="movie-spec-format">
             <nav>
                 <div class="nav nav-tabs nav-fill">

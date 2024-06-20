@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Movie; 
 use App\Models\Language; 
 use App\Models\MoviesFormat; 
+use Carbon\Carbon;
 
 class MovieController extends Controller
 {
@@ -19,6 +20,7 @@ class MovieController extends Controller
             $latestMovies = Movie::latest()->limit(4)->get();
                     
             $movie->image = route('showMoviesImage', ['filename' => basename($movie->image)]);
+            $movie->release_date = Carbon::parse($movie->release_date)->format('d F Y');
             
             $metaKeywords = '';
             foreach ($languages as $language) {

@@ -122,15 +122,23 @@ class MoviesController extends Controller
                 'duration' => 'required|string|max:255',
                 'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
                 'release_date' => 'required|date',
-                'director' => 'required|array',
+                // 'director' => 'required|array',
                 'category' => 'required|array',
                 'language' => 'required|array',
-                'top_cast' => 'required|array',
+                // 'top_cast' => 'required|array',
                 'rate' => 'required|string',
                 'trailer' => 'required|url',
                 'description' => 'required|string',
             ]);
    
+            $validator->sometimes('director', 'required|array', function ($input) {
+                return !$input->has('no-director') || !$input->get('no-director');
+            });
+
+            $validator->sometimes('top_cast', 'required|array', function ($input) {
+                return !$input->has('no-top-casts') || !$input->get('no-top-casts');
+            });
+
             if ($validator->fails()) {
                 return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
             }
@@ -166,10 +174,16 @@ class MoviesController extends Controller
             }
             
             $movie->save();
-            $movie->directors()->sync($request->input('director'));
             $movie->categories()->sync($request->input('category'));
             $movie->languages()->sync($request->input('language'));
-            $movie->top_casts()->sync($request->input('top_cast'));
+
+            if ($request->has('director') && is_array($request->input('director'))) {
+                $movie->top_casts()->sync($request->input('top_cast'));
+            }
+
+            if ($request->has('top_cast') && is_array($request->input('top_cast'))) {
+                $movie->top_casts()->sync($request->input('top_cast'));
+            }
 
             return redirect()->back()->with('success', 'Movie Added successfully!');
         } catch (Exception $e) {

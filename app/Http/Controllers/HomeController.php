@@ -16,7 +16,7 @@ class HomeController extends Controller
             $page = $request->input('page', 1);
             $offset = ($page - 1) * $perPage;
     
-            $movies = Movie::offset($offset)->limit($perPage)->get();
+            $movies = Movie::inRandomOrder()->offset($offset)->limit($perPage)->get();
             $totalMovies = Movie::count();
     
             $languages = Language::all();
