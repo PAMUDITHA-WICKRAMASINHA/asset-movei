@@ -55,7 +55,9 @@
                                         <th>Directors</th>
                                         <th>Languages</th>
                                         <th>Format</th>
+                                        <th>Status</th>
                                         <th>Created At</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -129,7 +131,9 @@ $(document).ready(function() {
             },
             {
                 title: "Rate",
-                data: "rate",
+                data: function(data) {
+                    return `<span class="badge bg-primary">${data.rate}/10</span>`;
+                }
             },
             {
                 title: "Download Count",
@@ -175,8 +179,17 @@ $(document).ready(function() {
                 data: function(row) {
                     return row.formats.map(format =>
                             `<span class="chip chip-language">${format.name} (${format.pivot.disk_space})</span>`
-                            )
+                        )
                         .join(' ');
+                }
+            },
+            {
+                title: "Status",
+                data: 'status',
+                render: function(data) {
+                    let badgeClass = data ? 'badge-success' : 'badge-danger';
+                    let statusText = data ? 'Active' : 'Inactive';
+                    return `<span class="badge ${badgeClass}">${statusText}</span>`;
                 }
             },
             {
@@ -184,6 +197,18 @@ $(document).ready(function() {
                 data: "created_at",
                 render: function(data) {
                     return formatDateTime(data);
+                }
+            },
+            {
+                title: "Action",
+                data: null,
+                orderable: false,
+                searchable: false,
+                render: function(data) {
+                    return `<div class="btn-group btn-group-sm">
+                    <a href="/admin/movies-edit/${data.id}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </div>`;
                 }
             },
         ],

@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-check mb-2">
                                     <input class="form-check-input" type="checkbox" id="no-image" name="no-image">
-                                    <label class="form-check-label" for="no-image">Director Image Not
+                                    <label class="form-check-label" for="no-image">Top Casts Image Not
                                         Available</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add New Top Casts</button>

@@ -63,6 +63,7 @@ Route::middleware('adminLogin')->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/movies-list', [MoviesController::class, 'index'])->name('admin.moviesList');
     Route::get('/admin/movies-add', [MoviesController::class, 'addMovie'])->name('admin.addMovie');
+    Route::get('/admin/movies-edit/{id}', [MoviesController::class, 'editMovie'])->name('admin.editMovie');
     Route::get('/admin/movies-file-add', [MoviesController::class, 'addFile'])->name('admin.addFile');
     Route::get('/admin/directors-list', [DirectorController::class, 'index'])->name('admin.directorsList');
     Route::get('/admin/directors-add', [DirectorController::class, 'addDirector'])->name('admin.addDirector');
@@ -77,6 +78,7 @@ Route::middleware('adminLogin')->group(function () {
 
     Route::post('/admin/get-all-movies', [MoviesController::class, 'get_all_movies'])->name('admin.get.movie');
     Route::post('/admin/add-new-movie', [MoviesController::class, 'add_new_movie'])->name('admin.add.movie');
+    Route::post('/admin/edit-movie/{id}', [MoviesController::class, 'edit_movie'])->name('admin.edit.movie');
     Route::post('/admin/add-movie-file', [MoviesController::class, 'add_movie_file'])->name('admin.movie.file');
     Route::post('/admin/get-all-directors', [DirectorController::class, 'get_all_directors'])->name('admin.get.directors');
     Route::post('/admin/add-new-director', [DirectorController::class, 'add_new_director'])->name('admin.add.director');

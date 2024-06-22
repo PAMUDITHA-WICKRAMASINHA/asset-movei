@@ -258,4 +258,125 @@ class MoviesController extends Controller
             ], 500);
         }
     }
+
+    public function editMovie($id)
+    {
+        try {
+            $movie = Movie::with('categories', 'top_casts', 'directors', 'formats', 'languages')->findOrFail($id);
+            $movie->image = route('showMoviesImage', ['filename' => basename($movie->image)]);
+            
+            $directors = Director::select('id', 'name')->get();
+            $top_casts = TopCast::select('id', 'name')->get();
+            $categories = Category::select('id', 'category')->get();
+            $languages = Language::select('id', 'language')->get();
+            // dd($movie->directors);
+            return view('admin.movies.editMovie', compact('movie', 'directors', 'top_casts', 'categories', 'languages'));
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'MoviesController >> editMovie >> Failed to get editMovie: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function edit_movie(Request $request, $id)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|string|max:255',
+                'duration' => 'required|string|max:255',
+                'release_date' => 'required|date',
+                'category' => 'required|array',
+                'language' => 'required|array',
+                'rate' => 'required|string',
+                'trailer' => 'required|url',
+                'description' => 'required|string',
+            ]);
+
+            $validator->sometimes('director', 'required|array', function ($input) {
+                return !$input->has('no-director') || !$input->get('no-director');
+            });
+
+            $validator->sometimes('top_cast', 'required|array', function ($input) {
+                return !$input->has('no-top-casts') || !$input->get('no-top-casts');
+            });
+
+            if ($validator->fails()) {
+                return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
+            }
+
+            $movie = Movie::findOrFail($id);
+            
+            $movie->title = $request->input('title');
+            $movie->duration = $request->input('duration');
+            $movie->release_date = $request->input('release_date');
+            $movie->rate = $request->input('rate');
+            $movie->trailer = $request->input('trailer');
+            $movie->description = $request->input('description');
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = $request->input('title') . '_movie';
+                $imageName = str_replace([' ', ':'], '_', $imageName);
+                $curlService = new CurlService();
+                $response = $curlService->getWebpImage($image, $imageName);
+
+                if (!$response['success']) {
+                    return response()->json(['message' => "Can't convert image to webp", 'response' => $response], 400);
+                }
+
+                $image = file_get_contents($response['optimized_image_url']);
+                $imagePath = 'img/movie_images/' . $imageName . '.webp';
+
+                Storage::disk('public')->put($imagePath, $image);
+
+                $movie->image = 'assets/' . $imagePath;
+            }
+
+            $movie->save();
+
+            $formats = Format::all(); 
+            foreach ($formats as $format) {
+                if ($request->hasFile("file.{$format->id}")) {
+                    $torrentFile = $request->file("file.{$format->id}");
+                    $fileName = $movie->id . '_' . 'movie_' . $format->name . '_' . $format->resolution;
+                    $fileName = str_replace('.', '_', $fileName);
+                    $fileName = str_replace('*', '_', $fileName);
+                    $fileName = $fileName . '.' .$request->file("file.{$format->id}")->getClientOriginalExtension();
+                    $fileName = 'file/movie_file/' . $fileName;
+
+                    Storage::disk('public')->put($fileName, file_get_contents($torrentFile));
+                }
+            }
+            $movie->categories()->sync($request->input('category'));
+            $movie->languages()->sync($request->input('language'));
+
+            if ($request->has('director') && is_array($request->input('director'))) {
+                $movie->directors()->sync($request->input('director'));
+            }
+            // elseif ($request->has('no-director') && $request->get('no-director')) {
+            //     $movie->directors()->detach();
+            // }
+
+            if ($request->has('top_cast') && is_array($request->input('top_cast'))) {
+                $movie->top_casts()->sync($request->input('top_cast'));
+            }
+            // elseif ($request->has('no-top-casts') && $request->get('no-top-casts')) {
+            //     $movie->top_casts()->detach();
+            // }
+
+            return redirect('/admin/movies-list')->with('success', 'Movie updated successfully!');
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Movie not found'
+            ], 404);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'MoviesController >> update_movie >> Failed to update movie: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
 }

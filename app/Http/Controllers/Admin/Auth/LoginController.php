@@ -36,7 +36,7 @@ class LoginController extends Controller
         
             Auth::login($admin);
         
-            $expirationTime = now()->addHour();
+            $expirationTime = now()->addHours(5);
             $token = $admin->createToken('adminToken', ['*'], $expirationTime)->plainTextToken;
 
             Session::put('token', $token);
