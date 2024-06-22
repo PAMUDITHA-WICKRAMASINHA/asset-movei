@@ -15,8 +15,13 @@ class HomeController extends Controller
             $perPage = (int) env('MOVIES_PAGE_PAGINATION', 20);
             $page = $request->input('page', 1);
             $offset = ($page - 1) * $perPage;
-    
-            $movies = Movie::inRandomOrder()->offset($offset)->limit($perPage)->get();
+
+            $seed = $request->session()->get('random_seed', mt_rand());
+
+            $movies = Movie::inRandomOrder($seed)->offset($offset)->limit($perPage)->get();
+
+            $request->session()->put('random_seed', $seed);
+            
             $totalMovies = Movie::count();
     
             $languages = Language::all();

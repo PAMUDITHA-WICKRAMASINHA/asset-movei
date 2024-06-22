@@ -55,7 +55,19 @@ class MoviesController extends Controller
                         ->orWhere('download_count', 'like', '%' . $searchValue . '%')
                         ->orWhere('duration', 'like', '%' . $searchValue . '%')
                         ->orWhere('release_date', 'like', '%' . $searchValue . '%')
-                        ->orWhere('rate', 'like', '%' . $searchValue . '%');
+                        ->orWhere('rate', 'like', '%' . $searchValue . '%')
+                        ->orWhereHas('directors', function ($query) use ($searchValue) {
+                            $query->where('name', 'like', '%' . $searchValue . '%');
+                        })
+                        ->orWhereHas('top_casts', function ($query) use ($searchValue) {
+                            $query->where('name', 'like', '%' . $searchValue . '%');
+                        })
+                        ->orWhereHas('languages', function ($query) use ($searchValue) {
+                            $query->where('language', 'like', '%' . $searchValue . '%');
+                        })
+                        ->orWhereHas('categories', function ($query) use ($searchValue) {
+                            $query->where('category', 'like', '%' . $searchValue . '%');
+                        });
                 });
             }
 
