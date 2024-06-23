@@ -80,10 +80,10 @@
                             <div class="format-spec"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i>
                                 {{ $movie->duration }}</div>
                             <div class="format-spec">
-                                <a href="{{ route('download', ['format_id' => $format->pivot->format_id, 'movie_id' => $movie->id]) }}"
-                                    class="movie-download">
-                                    <i class="fa fa-download" aria-hidden="true"></i> Download
-                                    Now</a>
+                                <a href="#" class="movie-download download-link"
+                                    data-format-id="{{ $format->pivot->format_id }}" data-movie-id="{{ $movie->id }}">
+                                    <i class="fa fa-download" aria-hidden="true"></i> Download Now
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -117,5 +117,20 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="status">Connecting to server ...</p>
+        <div id="progress">
+            <div id="progress-bar">1%</div>
+        </div>
+        <a href="#" class="movie-download" id="download-button">
+            <i class="fa fa-download" aria-hidden="true"></i> Download Now
+        </a>
     </div>
 </div>

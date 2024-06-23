@@ -60,7 +60,7 @@ class MovieController extends Controller
                                          ->first();
             if ($movies_format) {
                 $file_path = storage_path('app/' . $movies_format->file);
-    
+        
                 if (file_exists($file_path)) {
                     $movies_format->increment('download_count');
                     $movies_format->save();
@@ -68,7 +68,13 @@ class MovieController extends Controller
                     $movie = $movies_format->movie;
                     $movie->increment('download_count');
                     $movie->save();
-                    return response()->download($file_path);
+
+                    $file_name = pathinfo($file_path, PATHINFO_FILENAME);
+                    $file_extension = pathinfo($file_path, PATHINFO_EXTENSION);
+                    
+                    $download_name = $movie->title . ' [' . $file_name . '].' . $file_extension;
+    
+                    return response()->download($file_path, $download_name);
                 } else {
                     return redirect()->back()->with('error', 'File not found.');
                 }
@@ -78,5 +84,5 @@ class MovieController extends Controller
         } catch (Exception $e) {
             return response()->json(['message' => 'MovieController >> download >> Failed to get movies: ' . $e->getMessage()], 500);
         }
-    }
+    }    
 }
