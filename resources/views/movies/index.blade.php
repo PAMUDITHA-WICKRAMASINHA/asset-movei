@@ -39,45 +39,6 @@ film, new releases, Hollywood, Bollywood'
 @stop
 
 @section('scripts')
-<script>
-$(document).ready(function() {
-    $(document).on('click', '.download-link', function(event) {
-        event.preventDefault();
-        var formatId = $(this).data('format-id');
-        var movieId = $(this).data('movie-id');
-
-        $('#download-button').attr('href', '/movie/download/' + formatId + '/' + movieId);
-        $('#myModal').show();
-        var progress = 1;
-        var interval = setInterval(function() {
-            if (progress >= 100) {
-                clearInterval(interval);
-                $('#status').text('File Loading ...');
-                setTimeout(function() {
-                    $('#status').text('File loaded successfully !');
-                    $('#download-button').show();
-                }, 500);
-            } else {
-                progress++;
-                $('#progress-bar').css('width', progress + '%').text(progress + '%');
-                if (progress === 50) {
-                    $('#status').text('File Loading ...');
-                }
-            }
-        }, 100);
-    });
-
-    $('.close').on('click', function() {
-        $('#myModal').hide();
-    });
-
-    $(window).on('click', function(event) {
-        if ($(event.target).is('#myModal')) {
-            $('#myModal').hide();
-        }
-    });
-});
-</script>
 @vite([
 'resources/js/movie.js'
 ])
