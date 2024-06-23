@@ -38,7 +38,7 @@ Route::get('/movie/language', [HomeController::class, 'language'])->name('langua
 Route::get('/movie/latest', [HomeController::class, 'latest'])->name('latest');
 
 Route::get('/get-movie/{id}', [MovieController::class, 'index'])->name('get-movie');
-Route::get('/movie/download/{id}', [MovieController::class, 'download'])->name('download');
+Route::get('/movie/download/{format_id}/{movie_id}', [MovieController::class, 'download'])->name('download');
 
 Route::get('image/main/{filename}', [ImageController::class, 'showMainImage'])->name('showMainImage');
 Route::get('image/movies/{filename}', [ImageController::class, 'showMoviesImage'])->name('showMoviesImage');

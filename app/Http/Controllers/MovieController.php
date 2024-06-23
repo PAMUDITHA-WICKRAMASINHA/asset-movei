@@ -46,28 +46,34 @@ class MovieController extends Controller
             }
 
             $metaKeywords .= ', ' . $movie->title;
-            
             return view('movies.index', compact('movie', 'latestMovies', 'languages', 'metaKeywords'));
         } catch (Exception $e) {
             return response()->json(['message' => 'MovieController >> index >> Failed to get movies: ' . $e->getMessage()], 500);
         }
     }
 
-    public function download($id)
+    public function download($format_id, $movie_id)
     {
         try {
-            $movies_format = MoviesFormat::where('id', $id)->first();
+            $movies_format = MoviesFormat::where('format_id', $format_id)
+                                         ->where('movie_id', $movie_id)
+                                         ->first();
             if ($movies_format) {
-                $movies_format->increment('download_count');
-                $movies_format->save();
-                
-                $movie = $movies_format->movie;
-                $movie->increment('download_count');
-                $movie->save();
-                // dd($movie);
-                return response()->download(storage_path('app/' . $movies_format->file));
+                $file_path = storage_path('app/' . $movies_format->file);
+    
+                if (file_exists($file_path)) {
+                    $movies_format->increment('download_count');
+                    $movies_format->save();
+                    
+                    $movie = $movies_format->movie;
+                    $movie->increment('download_count');
+                    $movie->save();
+                    return response()->download($file_path);
+                } else {
+                    return redirect()->back()->with('error', 'File not found.');
+                }
             } else {
-                abort(404); // File not found
+                return redirect()->back()->with('error', 'Movie format not found.');
             }
         } catch (Exception $e) {
             return response()->json(['message' => 'MovieController >> download >> Failed to get movies: ' . $e->getMessage()], 500);
