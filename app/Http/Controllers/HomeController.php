@@ -27,13 +27,13 @@ class HomeController extends Controller
             $languages = Language::all();
     
             $metaKeywords = '';
-            foreach ($languages as $language) {
-                $metaKeywords .= ', ' . $language->language;
-            }
-    
             foreach ($movies as $movie) {
                 $metaKeywords .= ', ' . $movie->title;
                 $movie->image = route('showMoviesImage', ['filename' => basename($movie->image)]);
+            }
+            
+            foreach ($languages as $language) {
+                $metaKeywords .= ', ' . $language->language;
             }
     
             return view('home.index', [
