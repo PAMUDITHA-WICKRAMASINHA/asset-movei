@@ -19,7 +19,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VFN8S6KG4Q"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2X527BFKCS"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 
@@ -28,6 +28,6 @@ function gtag() {
 }
 gtag('js', new Date());
 
-gtag('config', 'G-VFN8S6KG4Q');
+gtag('config', 'G-2X527BFKCS');
 </script>
 @yield('scripts')
