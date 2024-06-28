@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('disk_space')->nullable();
             $table->string('file')->nullable();
             $table->integer('download_count')->default(0);
-            $table->integer('sub_seeds')->nullable();
+            $table->string('sub_seeds')->nullable();
             $table->timestamps();
         });
     }

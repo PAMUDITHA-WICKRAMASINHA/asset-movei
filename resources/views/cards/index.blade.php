@@ -3,7 +3,7 @@
     <div class="card-frame">
         <div class="card">
             <a href="/get-movie/{{ $movie->id }}">
-                <img src="{{ url($movie->image) }}" class="card-img-top" alt="Placeholder Image">
+                <img src="{{ $movie->image }}" class="card-img-top" alt="Placeholder Image">
             </a>
             <div class="card-name">
                 {{ strlen($movie->title) > 23 ? substr($movie->title, 0, 23) . '...' : $movie->title }}
