@@ -1,3 +1,11 @@
-*
+assets/img/director_images/*
+!assets/img/director_images/profile.webp
+assets/img/movie_images
+assets/img/top_cast_images/*
+!assets/img/top_cast_images/profile.webp
+
+assets/file/movie_file
 !public/
 !.gitignore
+
+

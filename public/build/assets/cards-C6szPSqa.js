@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#more-movie-button").on("click",function(){var o=$(this).data("id");window.location.href="/get-movie/"+o})});$(document).ready(function(){$(".show-movie-button").on("click",function(){var o=$(this).data("id");window.location.href="/get-movie/"+o})});

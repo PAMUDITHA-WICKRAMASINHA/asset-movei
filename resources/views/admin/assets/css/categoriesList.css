@@ -1,0 +1,7 @@
+table.dataTable td {
+    text-align: left;
+}
+
+#categories-list th {
+    font-weight: bold;
+}

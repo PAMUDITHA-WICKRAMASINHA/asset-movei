@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('title', 'Asset Movies - Explore International Cinema And Torrents Download Movies')
 
@@ -9,26 +9,22 @@ cinematic exploration. Discover a world of movies on Asset Movies. Browse films 
 languages, and download torrents for your favorite picks.')
 
 @section('meta_keywords',
-($metaKeywords ?? '') .
-', asset movie, asset movies, asset movie store, asset movies store, asset store, movies, movie, asset, movie store,
+'asset movie, asset movies, asset movie store, asset movies store, asset store, movies, movie, asset, movie store,
 movies store, stores, torrents, movie downloads, torrents downloads, free movies, movie torrents, streaming, cinema,
-film, new releases, Hollywood, Bollywood')
+film, new releases, Hollywood, Bollywood' . ($metaKeywords ?? ''))
 
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
-<noscript>
-    <link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
-</noscript>
-
-<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
-<noscript>
-    <link rel="stylesheet" href="{{ asset('assets/css/cards.css') }}">
-</noscript>
+@vite([
+'resources/css/cards.css',
+'resources/css/home.css'
+])
 @stop
 
 @section('scripts')
-<script src="{{ asset('assets/js/cards.js') }}"></script>
+@vite([
+'resources/js/cards.js'
+])
 @stop
 
 @section('content')

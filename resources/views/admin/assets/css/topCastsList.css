@@ -1,0 +1,13 @@
+table.dataTable td {
+    text-align: left;
+}
+
+.topCasts-image {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#topCasts-list th {
+    font-weight: bold;
+}

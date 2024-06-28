@@ -4,12 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\TopCastController;
-use App\Http\Controllers\DirectorController;
-use App\Http\Controllers\FormatController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\TopCastController;
+use App\Http\Controllers\Admin\DirectorController;
+use App\Http\Controllers\Admin\FormatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +22,6 @@ use App\Http\Controllers\FormatController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('admin/get-all-movie', [AdminController::class, 'get_all']);
-Route::post('admin/add-format', [AdminController::class, 'addFormat']);
-Route::resource('admin', AdminController::class);
-
-Route::resource('directors', DirectorController::class);
-Route::resource('categories', CategoryController::class);
-Route::resource('top_casts', TopCastController::class);
-Route::resource('languages', LanguageController::class);
-Route::resource('format', FormatController::class);
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
